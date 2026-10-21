@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>총정리 연습문제 — CSED331 알고리즘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="content-style.css">
+<link rel="stylesheet" href="study-note.css">
+<link rel="stylesheet" href="extra.css">
+</head>
+<body>
+<div class="paper"><article class="prob-page">
+<div class="phead"><a class="to-home" href="index.html">‹ 홈으로</a><span class="phead-c">총정리 연습문제</span><span class="phead-r">CSED331 · 알고리즘</span></div>
+<div class="body notes">
+<div class="ref">&gt; Instinct 작성 · 2026-10-21 · 기준: 총정리(압축본) · 숫자는 계산으로 확인함 (정답 직접 검증 필요하면 총정리와 대조)</div><h2>1. 점근 표기 · Efficiency</h2>
+<p>극한 규칙: lim f/g가 ≠∞ → O, ≠0 → Ω, 둘 다 → Θ, =0 → o, =∞ → ω</p>
+<div class="tbl"><table>
+<tr>
+<th>#</th>
+<th>문제</th>
+<th>풀이</th>
+</tr>
+<tr>
+<td>1</td>
+<td>f=3n²+n log n, g=n². 관계는?</td>
+<td>lim f/g = 3 (0도 ∞도 아님) → Θ(n²)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>f=n log₂n, g=n². 관계는?</td>
+<td>lim f/g = 0 → f=o(g) (따라서 O도 성립, Θ·Ω는 아님)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>f=3ⁿ, g=n⁵. 관계는? 역전은 언제?</td>
+<td>lim f/g = ∞ → ω. n=10에서는 3ⁿ&lt;n⁵, n≥11부터 3ⁿ&gt;n⁵ (작은 n에서 성장 순서는 안 맞음)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>log₂n vs log₁₀n</td>
+<td>log₂n = 3.32·log₁₀n, 상수배 → Θ (로그 밑은 무관)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>log n, n log n, n³, 1.5ⁿ, 2ⁿ, n! 을 성장 순서로</td>
+<td>log n &lt; n log n &lt; n³ &lt; 1.5ⁿ &lt; 2ⁿ &lt; n! (n이 클 때)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>FIB1(n=5)의 호출 수와 덧셈 수</td>
+<td>호출 수 2F₍ₙ₊₁₎−1 = 2F₆−1 = 2·8−1 = 15, 덧셈 F₆−1 = 7</td>
+</tr>
+<tr>
+<td>7</td>
+<td>FIB1은 O(2ⁿ)이라고 한다. Θ(2ⁿ)도 맞나?</td>
+<td>아니오. Θ(φⁿ), φ=1.618&lt;2. O(2ⁿ)은 상한으로만 맞음</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Graham's scan의 시간과 지배하는 단계는?</td>
+<td>x 정렬 O(n log n) + 스캔 O(n) → O(n log n), 정렬이 지배. 단계 2에서 지우는 것은 q (r 아님)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>f=O(g), g=O(h) 이면 f=? f=O(h), g=O(h) 이면 f+g=?</td>
+<td>Transitivity: f=O(h). Additivity: f+g=O(h)</td>
+</tr>
+</table></div>
+<h2>2. 재귀 · 분할정복 · master theorem(마스터 정리)</h2>
+<p>T(n)=aT(n/b)+O(nᵈ): d&gt;log_b a → O(nᵈ), d=log_b a → O(nᵈ log n), d&lt;log_b a → O(n^{log_b a})</p>
+<div class="tbl"><table>
+<tr>
+<th>#</th>
+<th>문제</th>
+<th>풀이</th>
+</tr>
+<tr>
+<td>1</td>
+<td>T(n)=2T(n/2)+n</td>
+<td>a=2,b=2,d=1, log_b a=1 = d → O(n log n)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>T(n)=4T(n/2)+n</td>
+<td>log₂4=2 &gt; d=1 → O(n²)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>T(n)=3T(n/2)+n²</td>
+<td>log₂3=1.585 &lt; d=2 → O(n²)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>T(n)=T(n/2)+n</td>
+<td>log₂1=0 &lt; d=1 → O(n)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>T(n)=T(n−1)+n</td>
+<td>master 불가(T(n/b) 꼴 아님). 펼치면 n+(n−1)+…+1 = n(n+1)/2 = Θ(n²)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>T(n)=2T(n−1)+1, T(0)=0 (Hanoi)</td>
+<td>펼치면 T(n)=2ⁿ−1 = Θ(2ⁿ). 이동 횟수 2ⁿ−1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>원소 1000개 정렬 배열의 binary search 최악 비교 횟수</td>
+<td>⌊log₂1000⌋+1 = 9+1 = 10</td>
+</tr>
+<tr>
+<td>8</td>
+<td>정렬된 6개 배열에 quicksort(맨 끝 원소 pivot). 비교 횟수와 Big-O는?</td>
+<td>n(n−1)/2 = 15번, O(n²) (매번 r=1 또는 n, T(n−1)+O(n))</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Karatsuba가 곱셈을 3번만 쓰는 이유와 시간</td>
+<td>x_L y_R+x_R y_L = (x_L+x_R)(y_L+y_R)−x_L y_L−x_R y_R. T(n)=3T(n/2)+O(n) → O(n^{log₂3})≈O(n^1.585)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Strassen의 점화식과 결과</td>
+<td>곱 7번 + 덧뺄셈 O(n²): T(n)=7T(n/2)+O(n²), log₂7=2.807&gt;2 → O(n^2.807). 4블록 분할만 하면 곱 8번 → O(n³)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>S={5,2,9,2,7,1,8}, selection(S,4)를 v=5로 한 번 실행</td>
+<td>S_L={2,2,1} (3개), S_v={5} (1개). |S_L|=3 &lt; 4 ≤ 3+1 → 답 v=5. (정렬하면 1,2,2,5,7,8,9 → 4번째 5 ✓)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>median of medians에서 블록 크기를 3으로 하면?</td>
+<td>재귀 크기 합 n/3+2n/3=n → 등비합이 안 줄어 O(n log n). 5이면 n/5+7n/10=9n/10&lt;n → O(n)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Closest pair 띠(strip)에서 y 순서로 몇 개 뒤까지 비교하나? 왜?</td>
+<td>11개. 띠 폭 2δ × 높이 δ를 변 δ/2 칸 4열×3행=12칸으로 나누면 칸당 점 ≤1개 → |i−j|≥12면 거리 ≥δ</td>
+</tr>
+</table></div>
+<h2>3. 그래프 · 탐색 · 최단 경로</h2>
+<p>DFS(깊이 우선 탐색)/BFS(너비 우선 탐색) O(V+E), Dijkstra(다익스트라) O((V+E)log V) 양수 간선, Bellman-Ford(벨만-포드) O(VE), Floyd-Warshall(플로이드-워셜) O(n³)</p>
+<div class="tbl"><table>
+<tr>
+<th>#</th>
+<th>문제</th>
+<th>풀이</th>
+</tr>
+<tr>
+<td>1</td>
+<td>무방향 연결 그래프에 n=7, m=6. tree인가? m=8이면?</td>
+<td>m=n−1=6 → tree. m=8&gt;n−1 → cycle 존재. (방향 그래프는 간선 수로 판단 불가, DFS back edge(백 엣지))</td>
+</tr>
+<tr>
+<td>2</td>
+<td>방향 그래프에서 cycle 판정 방법과 시간</td>
+<td>DFS 중 back edge (y_pre&lt;x_pre&lt;x_post&lt;y_post)를 만나면 cycle. O(V+E)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>간선 A→B, A→C, B→D, C→D, D→E. topological order 모두?</td>
+<td>post 내림차순. 가능한 순서: A,B,C,D,E / A,C,B,D,E (B와 C는 순서 자유)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Dijkstra 추적: A→B 4, A→C 2, B→C 3, C→B 1, B→D 2, B→E 3, C→D 4, C→E 5, E→D 1. A에서 E까지 최단 거리와 경로</td>
+<td>A(0): B=4,C=2 → C(2): B=3,D=6,E=7 → B(3): D=5,E=6 → D(5), E(6). 거리 6, 경로 A→C→B→E (2+1+3)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Dijkstra가 음수 간선에서 틀리는 예를 하나</td>
+<td>s→a 2, s→b 3, b→a −2. Dijkstra는 a(2)를 먼저 확정하지만 실제 dist(a)=3−2=1. 확정 후 갱신 불가라서 틀림 → Bellman-Ford</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bellman-Ford는 몇 라운드? negative cycle(음수 사이클) 판별은?</td>
+<td>모든 간선 update를 |V|−1번. |V|번째 라운드에도 dist가 줄면 negative cycle. 시간 O(VE)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>V=1000, E=1500일 때 Dijkstra에 array와 binary heap 중 무엇이 유리한가</td>
+<td>array O(V²)=10⁶, heap O((V+E)log V)≈2500·10≈2.5·10⁴ → heap (E가 V 수준이면 heap, V² 수준이면 array)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>DAG(방향 비순환 그래프)에서 longest path를 구하는 방법과 시간</td>
+<td>선형화 순서대로 나가는 간선을 update, 부등호를 뒤집고 초기값 −∞. O(V+E), 음수 간선도 OK</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Floyd-Warshall 점화식과 시간, 공간</td>
+<td>dist(i,j,k)=min{dist(i,k,k−1)+dist(k,j,k−1), dist(i,j,k−1)}, k가 가장 바깥 루프. O(n³), 표 하나 덮어쓰면 O(n²)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>DFS tree의 깊이가 최단 거리인가? 최단 거리가 필요하면?</td>
+<td>아니오. BFS (간선 길이 1일 때 dist=최단 거리). 연결요소·cycle은 DFS</td>
+</tr>
+<tr>
+<td>11</td>
+<td>BFS에서 같은 층 두 노드를 잇는 간선이 있으면 무엇이 보장되나</td>
+<td>홀수 길이 cycle이 존재</td>
+</tr>
+<tr>
+<td>12</td>
+<td>TSP(외판원 문제) 비트마스크 DP(동적 계획법)의 부분문제 수와 시간</td>
+<td>C(S,j): O(n·2ⁿ)개 × 칸당 O(n) = O(n²2ⁿ). (n−1)!보다 작지만 지수</td>
+</tr>
+</table></div>
+<h2>4. 그리디 · MST(최소 신장 트리) · Union-Find(유니온-파인드) · 스케줄링 · Huffman(허프만)</h2>
+<p>증명 도구: induction(귀납법), cut property(컷 성질), 교환 논증</p>
+<div class="tbl"><table>
+<tr>
+<th>#</th>
+<th>문제</th>
+<th>풀이</th>
+</tr>
+<tr>
+<td>1</td>
+<td>간선 A-B 1, A-C 2, B-C 3, C-D 4, B-D 5, D-E 1, C-E 6 에 Kruskal(크루스칼) 실행. MST 비용은?</td>
+<td>정렬: A-B1 추가, D-E1 추가, A-C2 추가, B-C3 버림(cycle), C-D4 추가(집합 1개) → 합 1+1+2+4 = 8. 이후 B-D5, C-E6 버림</td>
+</tr>
+<tr>
+<td>2</td>
+<td>위 그래프에서 MST는 유일한가</td>
+<td>가중치가 같은 간선은 A-B와 D-E뿐이고 둘 다 선택됨, 선택이 갈리는 지점이 없어 유일. 일반적으로 같은 가중치가 있으면 MST가 여러 개일 수 있음</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kruskal과 Prim(프림)의 시간</td>
+<td>둘 다 O(E log V) (Kruskal은 정렬+union-find, Prim은 binary heap). log E ≤ 2 log V</td>
+</tr>
+<tr>
+<td>4</td>
+<td>cut property를 말하라</td>
+<td>X가 어떤 MST의 일부이고 S를 X의 간선이 가로지르지 않으면, S와 V∖S 사이 최소 간선 e에 대해 X∪{e}도 어떤 MST의 일부</td>
+</tr>
+<tr>
+<td>5</td>
+<td>union by rank의 효과: rank k인 root의 tree 크기와 높이</td>
+<td>노드 ≥2ᵏ개 → 높이 ≤ log n, find·union O(log n)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>log*16, log*65536</td>
+<td>log 16=4, log 4=2, log 2=1 → 3번. 65536 → 16 → 4 → 2 → 1 → 4번</td>
+</tr>
+<tr>
+<td>7</td>
+<td>구간 [1,4),[3,5),[0,6),[5,7),[3,9),[5,9),[6,10),[8,11),[8,12),[2,14),[12,16) 에서 최대 compatible 집합 (earliest finish time)</td>
+<td>종료 순 정렬 후: [1,4) 선택 → [5,7) (s=5≥4) → [8,11) (s=8≥7) → [12,16) (s=12≥11). 크기 4</td>
+</tr>
+<tr>
+<td>8</td>
+<td>earliest start time greedy(그리디)가 틀리는 예</td>
+<td>L[0,9) 하나 vs a[1,2) b[3,4) c[5,6) d[7,8). earliest start는 L(1개), 최적은 4개</td>
+</tr>
+<tr>
+<td>9</td>
+<td>위 11개 구간을 최소 강의실로 나누려면 몇 개? (interval partitioning)</td>
+<td>depth=한 시각에 겹치는 최대 구간 수=6 (시각 8: [3,9),[5,9),[6,10),[8,11),[8,12),[2,14)) → 강의실 6개. 시작 시각 순 greedy의 결과 = depth</td>
+</tr>
+<tr>
+<td>10</td>
+<td>빈도 a5 b9 c12 d13 e16 f45 의 Huffman 트리와 cost</td>
+<td>5+9=14, 12+13=25, 14+16=30, 25+30=55, 45+55=100. 코드 길이 f1, c·d·e 3, a·b 4. cost=45·1+(12+13+16)·3+(5+9)·4=45+123+56=224 검산: 내부노드 합 14+25+30+55=124, 총빈도 100 → 124+100=224 ✓</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Interval scheduling earliest finish의 최적성 증명 핵심</td>
+<td>교환 논증: greedy가 r번째까지 최적과 같으면, f_{i_{r+1}} ≤ f_{j_{r+1}} 이므로 최적의 (r+1)번째를 greedy의 것으로 바꿔도 feasible</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Selecting breakpoints: 연료 용량 C일 때 greedy 규칙</td>
+<td>현재 위치 x에서 x+C 이내 가장 먼 충전소까지 가서 충전. 그 충전소가 x 자체면 no solution. O(n)</td>
+</tr>
+</table></div>
+<h2>5. 동적 계획법</h2>
+<p>1) 부분문제 정의 2) 점화식 3) 채우는 순서(DAG) 4) 답 위치와 시간</p>
+<div class="tbl"><table>
+<tr>
+<th>#</th>
+<th>문제</th>
+<th>풀이</th>
+</tr>
+<tr>
+<td>1</td>
+<td>SNOWY → SUNNY 의 edit distance와 table</td>
+<td>답 3. 마지막 행: [5,4,4,3,3,3]. 점화식 E(i,j)=min{E(i−1,j)+1, E(i,j−1)+1, E(i−1,j−1)+[a_i≠b_j]}. 시간 O(mn)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>knapsack(반복 불가) W=11, (w,v)=(1,1),(2,6),(5,18),(6,22),(7,28). 최대 가치</td>
+<td>답 40 (무게 5+6=11, 18+22). 마지막 행 K[5][11]=40, K[4][11]=40. 점화식 K(i,c)=max{K(i−1,c), K(i−1,c−w_i)+v_i}, 시간 O(nW) (pseudo-polynomial)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>LIS(최장 증가 부분수열): [3,1,4,1,5,9,2,6]</td>
+<td>L=[1,1,2,1,3,4,2,4], 최대 4 (예: 1,4,5,9 또는 3,4,5,9 또는 1,4,5,6). L(i)=1+max{L(j): j&lt;i, a_j&lt;a_i}, O(n²)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>최대 연속 부분합: [−2,1,−3,4,−1,2,1,−5,4]</td>
+<td>S(i)=max{a_i, S(i−1)+a_i}: [−2,1,−2,4,3,5,6,1,5], 답 6 (4,−1,2,1). O(n)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>길이 n 이진 문자열 중 '00'이 없는 것의 수</td>
+<td>S(n)=S(n−1)+S(n−2), S(1)=2, S(2)=3 → S(3)=5, S(4)=8 (Fibonacci(피보나치) 꼴)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>chain matrix: A(10×30) B(30×5) C(5×60). 최소 곱셈 횟수와 순서</td>
+<td>(AB)C = 10·30·5+10·5·60 = 1500+3000 = 4500. A(BC) = 30·5·60+10·30·60 = 9000+18000 = 27000. 답 4500. 일반 O(n³), 구간 DP, 길이 순으로 채움</td>
+</tr>
+<tr>
+<td>7</td>
+<td>트리의 independent set DP 점화식</td>
+<td>I(v)=max{ Σ_children I(c), 1+Σ_grandchildren I(g) } (또는 v 포함/미포함 두 값). O(n)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>subset sum: S={3,5,7,8}, target 12 가능한가</td>
+<td>5+7=12 가능. T(i,t)=T(i−1,t) ∨ T(i−1,t−a_i), O(n·target)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>weighted interval scheduling 점화식</td>
+<td>job을 종료 시각 순 정렬, p(j)=j와 compatible한 가장 큰 i. OPT(j)=max{OPT(j−1), v_j+OPT(p(j))}. 정렬 O(n log n) + O(n)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>DP의 시간 = ?</td>
+<td>(부분문제 수) × (칸당 계산 시간). 예: edit distance O(mn), chain matrix O(n³)=O(n²)칸×O(n), TSP O(n²2ⁿ)</td>
+</tr>
+</table></div>
+<h2>업데이트 (10/21 02:55)</h2>
+<ul>
+<li>시험 공지(PLMS): 10/26 08\:45-10\:45, B2-102. 시험이 HW와 비슷하게 나온다는 얘기 → HW1-5 원문(PLMS)을 기준으로 변형 문제 21개를 새로 만듦 (PDF 시험지와 정답지).</li>
+<li>위 표의 문제들은 슬라이드/요약 기반 초안이고, HW 변형 세트가 더 우선.</li>
+<li>PDF 모의고사(시험지+정답지): <a class="mention" href="https://app.notion.com/p/PDF-3ff81f9696cf812a97d8c1e4a5648380" target="_blank" rel="noopener">노션 원본</a></li>
+</ul>
+</div>
+<div class="pnav"><span><a href="practice.html">‹ 이전</a></span><a class="to-home" href="index.html">홈으로</a><span></span></div>
+</article></div>
+<script>window.__prev="practice.html";window.__next=null;</script>
+<script>
+(function(){
+  var p=window.__prev,d=window.__next;
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'&&d)location.href=d;
+    else if(e.key==='ArrowLeft'&&p)location.href=p;
+  });
+})();
+</script>
+</body>
+</html>

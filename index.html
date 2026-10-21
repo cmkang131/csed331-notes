@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSED331 알고리즘 노트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="study-note.css">
+</head>
+<body>
+<div class="paper">
+  <div class="course">CSED331 · 포스텍</div>
+  <h1>알고리즘 노트</h1>
+  <div class="sub">강의 정리와 시험 대비 요약. 중간고사 10월 26일 (월) 08:45–10:45. 시험 전날: 정리 → 강의 노트 → 시험 대비 순으로.</div>
+<section><h2>정리</h2><a class="card" href="summary.html"><span class="go">→</span><div class="card-t">총정리 (압축본)</div><div class="card-d">시험 전 날 보는 핵심 압축. 전 주제 풀이 틀·정의·점화식·자주 틀리는 것.</div><div class="card-m">문제풀이용 핵심만 · 예시는 접어 둠 · 2026-10-17 기준</div></a>
+<a class="card" href="exam-info.html"><span class="go">→</span><div class="card-t">시험 정보</div><div class="card-d">교수님이 수업에서 시험에 대해 한 말 모음. 일정·범위·유형 언급 정리.</div><div class="card-m">중간고사 10/26 (월) 08:45–10:45 · 2026-10-15 기준</div></a></section>
+<section><h2>강의 노트</h2><a class="card" href="intro.html"><span class="go">→</span><div class="card-t">Intro · Course Introduction (9/7)</div><div class="card-d">왜 알고리즘인가 · 문제 정식화(problem formulation) · 수업 운영.</div><div class="card-m">슬라이드 Intro p.1–11</div></a>
+<a class="card" href="efficiency.html"><span class="go">→</span><div class="card-t">Efficiency · Computational Efficiency (9/7)</div><div class="card-d">효율성의 기준 · Fibonacci(피보나치) FIB1/FIB2 · convex hull(볼록 껍질) · 점근 표기(asymptotic notation).</div><div class="card-m">슬라이드 Computational Efficiency p.1–22</div></a>
+<a class="card" href="recursion.html"><span class="go">→</span><div class="card-t">Recursion · Divide and Conquer (9/9·9/14)</div><div class="card-d">Reduction(환원)과 재귀(recursion) · 점화식 풀이 · master theorem(마스터 정리) · closest pair(최근접 쌍).</div><div class="card-m">슬라이드 Recursion p.1–27</div></a>
+<a class="card" href="graph.html"><span class="go">→</span><div class="card-t">Graph Algorithms · Traversal · Shortest Paths (9/16·9/21·9/23)</div><div class="card-d">그래프 기초 · BFS/DFS(너비·깊이 우선 탐색) · 위상 정렬(topological sort) · Dijkstra(다익스트라) · Bellman-Ford(벨만-포드) · Floyd-Warshall(플로이드-워셜) · TSP(외판원 문제).</div><div class="card-m">슬라이드 Graph Algorithms p.1–36</div></a>
+
+    
+    <a class="card" href="graph-1.html">
+      <span class="go">→</span>
+      <div class="card-t">그래프 · 탐색</div>
+      <div class="card-d">그래프 기초와 표현 · 인접 행렬 vs 리스트 · DFS(깊이 우선 탐색)/BFS(너비 우선 탐색)와 손계산 · 방향 그래프 pre/post · 간선 4종류 · cycle과 DAG(방향 비순환 그래프)</div>
+      <div class="card-m">9/16·9/21 · 슬라이드 Graph Algorithms p.1–18 · 연습문제 5개 (답 토글)</div>
+    </a>
+    <a class="card" href="graph-2.html">
+      <span class="go">→</span>
+      <div class="card-t">그래프 · 최단 경로</div>
+      <div class="card-d">Dijkstra(다익스트라)와 증명 · Bellman-Ford(벨만-포드) · DAG 최단 경로 · Floyd-Warshall(플로이드-워셜) · TSP(외판원 문제) 부분문제와 점화식</div>
+      <div class="card-m">9/21·9/23 · 슬라이드 Graph Algorithms p.19–36 · 손계산 2회 · 연습문제 6개</div>
+    </a>
+    <a class="card" href="greedy.html">
+      <span class="go">→</span>
+      <div class="card-t">Greedy</div>
+      <div class="card-d">Selecting Breakpoints(경유지 선택) · MST(최소 신장 트리): Kruskal(크루스칼)·Prim(프림)·cut property(컷 성질) · Union-Find(유니온-파인드)와 Path Compression(경로 압축) · Interval Scheduling(구간 스케줄링)/Partitioning · Huffman(허프만) · Clustering(군집화)</div>
+      <div class="card-m">9/28·9/30·10/5 · 슬라이드 Greedy Algorithms p.1–33 · 손계산 8회</div>
+    </a>
+    <a class="card" href="dp.html">
+      <span class="go">→</span>
+      <div class="card-t">Dynamic Programming(동적 계획법)</div>
+      <div class="card-d">1차원 DP(bit strings·max subarray·LIS(최장 증가 부분수열)) · 트리 위 독립집합 · Edit distance(편집 거리) · Subset sum(부분집합 합) · Optimal BST · Chain matrix · Knapsack(배낭) · Weighted interval · Segmented least squares(구간별 최소 제곱)</div>
+      <div class="card-m">10/20 · 슬라이드 Dynamic Programming p.1–28 · 손계산 12회 · 연습문제 + 시험 포인트</div>
+    </a>
+  
+</section>
+  <section>
+    <h2>시험 대비</h2>
+    <a class="card" href="review.html">
+      <span class="go">→</span>
+      <div class="card-t">총정리 연습문제</div>
+      <div class="card-d">점근 표기 · 재귀와 master theorem(마스터 정리) · 그래프 · Greedy · DP — 단원별 확인 문제와 풀이 표, 숫자는 계산으로 검증됨</div>
+      <div class="card-m">2026.10.21 업데이트분 포함</div>
+    </a>
+    <a class="card" href="practice.html">
+      <span class="go">→</span>
+      <div class="card-t">HW ↔ 코딩 문제 매핑</div>
+      <div class="card-d">HW1–HW5 전체 26문항을 LeetCode/CSES 문제와 대응 · 일치도 표기 · 과제별 특수 변형 주의점</div>
+      <div class="card-m">무료 문제 우선 · Premium 문제는 대안 링크 제공</div>
+    </a>
+  </section>
+  <div class="foot">2026년 가을학기 · 알고리즘 (CSED331) 수업 노트 정리.</div>
+</div>
+</body>
+</html>
