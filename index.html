@@ -3,77 +3,46 @@
 <head><script src="assets/theme.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CSED331 알고리즘 노트</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/home.css">
+<title>CSED331 알고리즘 · 중간고사 스터디 노트</title>
+<link rel="stylesheet" href="assets/study-note.css">
 </head>
 <body>
 <div class="paper">
-  <div class="course">CSED331 &middot; 알고리즘 &middot; POSTECH</div>
-  <h1>CSED331 알고리즘 노트</h1>
-  <div class="sub">안희갑 교수님 &middot; 2026 가을 &middot; 중간고사 10/26(월) 08:45&ndash;10:45, B2-102 (PLMS 공지). 슬라이드 기반 정리 + 기존 문제&middot;풀이 모음.</div>
+  <div class="phead">
+    <a class="to-home" href="index.html">&larr; 목차</a>
+    <div class="phead-c">목차</div>
+    <div class="phead-r">CSED331 &middot; 알고리즘 <a class="to-root" href="https://cmkang131.github.io">전체 홈&#8599;</a></div>
+  </div>
+  <div class="body notes">
 
-  <section>
-    <h2>강의 정리</h2>
-    <a class="card" href="efficiency.html">
-      <span class="go">→</span>
-      <div class="card-t"><span class="no">1</span>알고리즘 효율 (efficiency)</div>
-      <div class="card-d">O&middot;&Omega;&middot;&Theta;, FIB1/FIB2, CCW, Graham's scan</div>
-    </a>
-    <a class="card" href="recursion.html">
-      <span class="go">→</span>
-      <div class="card-t"><span class="no">2</span>재귀와 분할 정복 (recursion)</div>
-      <div class="card-d">Master theorem, Karatsuba, selection, closest pair</div>
-    </a>
-    <a class="card" href="graph-1.html">
-      <span class="go">→</span>
-      <div class="card-t"><span class="no">3</span>그래프 (1) — 탐색과 DAG</div>
-      <div class="card-d">DFS/BFS, 연결요소, cycle, 위상 정렬</div>
-    </a>
-    <a class="card" href="graph-2.html">
-      <span class="go">→</span>
-      <div class="card-t"><span class="no">3</span>그래프 (2) — 최단 경로</div>
-      <div class="card-d">Dijkstra, Bellman-Ford, Floyd-Warshall, TSP</div>
-    </a>
-    <a class="card" href="greedy.html">
-      <span class="go">→</span>
-      <div class="card-t"><span class="no">4</span>그리디 · MST · 스케줄링 (greedy)</div>
-      <div class="card-d">Kruskal/Prim, union-find, interval, Huffman</div>
-    </a>
-    <a class="card" href="dp.html">
-      <span class="go">→</span>
-      <div class="card-t"><span class="no">5</span>동적 계획법 (dynamic programming)</div>
-      <div class="card-d">Edit distance, knapsack, LIS, chain matrix</div>
-    </a>
-  </section>
+  <h1 style="font-size:26px">CSED331 알고리즘 — 중간고사 스터디 노트</h1>
 
-  <section>
-    <h2>시험 대비</h2>
-    <a class="card" href="summary.html">
-      <span class="go">→</span>
-      <div class="card-t"><span class="no">요약</span>한 장 요약</div>
-      <div class="card-d">5개 주제 핵심 공식&middot;규칙 압축</div>
-    </a>
-    <a class="card" href="practice.html">
-      <span class="go">→</span>
-      <div class="card-t"><span class="no">로드맵</span>연습문제 로드맵</div>
-      <div class="card-d">HW1&ndash;HW5 26문항 대응 LeetCode/CSES 로드맵</div>
-    </a>
-    <a class="card" href="review.html">
-      <span class="go">→</span>
-      <div class="card-t"><span class="no">체크</span>복습 체크리스트</div>
-      <div class="card-d">빈칸 채우기 56문제 (힌트&middot;정답 토글)</div>
-    </a>
-    <a class="card" href="problems.html">
-      <span class="go">→</span>
-      <div class="card-t"><span class="no">풀이</span>문제별 풀이 페이지</div>
-      <div class="card-d">복습 56 + HW 변형 21 + 모의 9 + NP 8 — 문제당 한 페이지 (힌트·정답 토글)</div>
-    </a>
-  </section>
+  <div class="plain-block">
+    <p class="bt">중간고사</p>
+    <p><b>10월 26일(월) 08:45–10:45 · B2-102</b> (PLMS 공지). 시험이 HW와 비슷하게 나온다는 발언 → HW 대응 연습문제가 우선. 자세한 내용은 <a href="exam-info.html">시험 정보</a></p>
+  </div>
 
-  <div class="foot">슬라이드(안희갑 교수)와 수업 내용을 바탕으로 정리. 수치는 계산으로 확인함. 기출은 공개된 곳에 없음.</div>
+  <h2>강의 노트</h2>
+  <table class="t">
+    <tr><th>#</th><th>페이지</th><th>내용</th></tr>
+    <tr><td>1</td><td><a href="efficiency.html">효율성 · 점근 표기 · 기하 기초</a></td><td>O·Ω·Θ, FIB1/FIB2, CCW, Graham's scan</td></tr>
+    <tr><td>2</td><td><a href="recursion.html">재귀 · 분할정복</a></td><td>Master theorem, Karatsuba, selection, closest pair</td></tr>
+    <tr><td>3</td><td><a href="graph-1.html">그래프 1 — 탐색과 DAG</a></td><td>DFS/BFS, 연결요소, cycle, 위상 정렬</td></tr>
+    <tr><td>3</td><td><a href="graph-2.html">그래프 2 — 최단 경로</a></td><td>Dijkstra, Bellman-Ford, Floyd-Warshall, TSP</td></tr>
+    <tr><td>4</td><td><a href="greedy.html">그리디 · MST · 스케줄링</a></td><td>Kruskal/Prim, union-find, interval, Huffman</td></tr>
+    <tr><td>5</td><td><a href="dp.html">동적 계획법</a></td><td>Edit distance, knapsack, LIS, chain matrix</td></tr>
+  </table>
+
+  <h2>시험 대비</h2>
+  <table class="t">
+    <tr><th>페이지</th><th>내용</th></tr>
+    <tr><td><a href="summary.html">한 장 요약</a></td><td>5개 주제 핵심 공식·규칙 압축</td></tr>
+    <tr><td><a href="practice.html">연습문제 로드맵</a></td><td>HW1–HW5 26문항 대응 LeetCode/CSES 로드맵</td></tr>
+    <tr><td><a href="review.html">복습 체크리스트</a></td><td>빈칸 채우기 56문제 (힌트·정답 토글)</td></tr>
+    <tr><td><a href="exam-info.html">시험 정보</a></td><td>일정 · 범위 · 유형 — 수업 발언과 PLMS 공지 정리</td></tr>
+  </table>
+
+  </div>
 </div>
 </body>
 </html>

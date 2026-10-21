@@ -327,3 +327,34 @@ html[data-theme="dark"] .theme-toggle{background:#fff}
 html[data-theme="dark"] .nb,html[data-theme="dark"] .bx,html[data-theme="dark"] .fbox,html[data-theme="dark"] table,html[data-theme="dark"] figure{background:#ededed}
 html[data-theme="dark"] svg [fill="#fff"],html[data-theme="dark"] svg [fill="#ffffff"]{fill:#ededed}
 html[data-theme="dark"] svg [fill="#f2f2f2"]{fill:#e0e0e0}
+
+/* ==== v4 통합 (2026-10-22): deflist 개선 + exrow + tap + phead + 모바일 넘침 ==== */
+.notes dl.def>div{grid-template-columns:minmax(7.5em,max-content) 1fr}
+.notes dl.def>div:has(>dt:empty){grid-template-columns:1fr}
+.notes dl.def>div>dt:empty{display:none}
+.notes .bx dl.def{border-top:none;border-bottom:none;margin:6px 0}
+.notes .bx dl.def>div{padding:6px 2px;border-top:1px solid #e8e8e8}
+.notes .bx dl.def>div:first-child{border-top:none;padding-top:2px}
+.notes dl.def>div.exrow>dd{border-left:2px solid #d9d9d9;padding-left:10px;color:#444}
+.notes p.exrow,.notes li.exrow{border-left:2px solid #d9d9d9;padding-left:10px;color:#444}
+a.tap{display:block;position:relative;border:1px solid var(--hairline,#d9d9d9);border-radius:6px;padding:10px 44px 10px 16px;margin:8px 0;color:inherit;text-decoration:none;cursor:pointer;background:#fff;transition:background .12s,border-color .12s,transform .12s}
+a.tap::after{content:"\2192";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--gray,#666)}
+a.tap.na::after{display:none}
+a.tap:hover{background:var(--soft,#f2f2f2);border-color:var(--edge,#555)}
+a.tap:active{transform:translateY(1px)}
+a.tap:focus-visible{outline:2px solid var(--ink,#1a1a1a);outline-offset:2px}
+.tapc{display:inline-block;border:1px solid #dcdcdc;border-radius:4px;padding:1px 6px;color:inherit;text-decoration:none;cursor:pointer;transition:background .12s,border-color .12s}
+.tapc:hover{background:var(--soft,#f2f2f2);border-color:var(--edge,#555)}
+.tapc:active{transform:translateY(1px)}
+.tapc:focus-visible{outline:2px solid var(--ink,#1a1a1a);outline-offset:2px}
+.to-root{margin-left:8px;color:var(--gray)}
+.to-root:hover{color:var(--ink)}
+.notes a:not(.to-home):not(.tap):not(.tapc):not(.to-root){color:var(--ink)}
+.paper pre{overflow-x:auto}
+.figwrap{overflow-x:auto}
+@media(max-width:560px){.figwrap svg{min-width:480px}}
+.phead-r .theme-toggle{position:static;margin-left:8px}
+
+/* 모바일: phead-r 텍스트만 숨기고 테마 버튼 유지 */
+@media(max-width:560px){.phead-r{display:flex;align-items:baseline}.phead-r .phead-r-txt{display:none}}
+@media(max-width:560px){.notes dl.def>div{grid-template-columns:1fr}.notes dl.def dt{padding-bottom:0}}

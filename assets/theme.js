@@ -9,6 +9,8 @@
     function lab(){b.textContent=d.getAttribute('data-theme')==='dark'?'라이트':'다크';b.setAttribute('aria-label','화면 모드 전환')}
     lab();
     b.onclick=function(){var t=d.getAttribute('data-theme')==='dark'?'light':'dark';apply(t);try{localStorage.setItem(k,t)}catch(e){}lab()};
-    document.body.appendChild(b);
+    var host=document.querySelector('.phead-r')||document.querySelector('.phead')||document.body;
+    if(host.classList.contains('phead-r')){host.innerHTML='<span class="phead-r-txt">'+host.innerHTML+'</span>'}
+    host.appendChild(b);
   });
 })();
