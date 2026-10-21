@@ -33,7 +33,7 @@
 <section>
   <details class="pd"><summary>힌트 보기</summary>
     <div class="pd-body">
-      <p>격자 DP — (i,j)까지의 최댓값 = max(위, 왼쪽) + 현재 칸.</p>
+      <p>행마다 오른쪽 방향 R, 왼쪽 방향 L을 따로 계산한 뒤 max(R[j], L[j])를 다음 행으로 전달한다.</p>
     </div>
   </details>
   <details class="pd"><summary>정답 보기</summary>

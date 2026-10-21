@@ -548,7 +548,7 @@ dfs(G):
           <li>2→3: 3이 스택에 있음 → back. 4→3: 3이 스택에 있음 → back</li>
           <li>1→4: 4가 끝났고 1보다 늦게 시작 → forward</li>
           <li>pre/post: 3(1,8) 1(2,7) 2(3,6) 4(4,5)</li>
-          <li>back edge 2개 → cycle 2개: 3→1→2→3, 3→1→4→3. 시작 노드가 달라도 back edge 존재 결론은 같음 (시작 1에서는 3→1 하나)</li>
+          <li>back edge 2개 → cycle이 있음. 예: 3→1→2→3, 3→1→4→3. 시작 노드가 달라도 back edge 존재 결론은 같음 (시작 1에서는 3→1 하나)</li>
         </ol>
         <div class="ans-final"><span class="lb">최종 답</span><span class="val"><span class="hl">back</span> edge 2개 (2→3, 4→3) → cycle 있음. 시작 노드와 무관하게 결론 동일</span></div>
       </div>

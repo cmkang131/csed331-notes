@@ -835,7 +835,7 @@
     <div class="prob-head"><span class="prob-no">문제 10</span></div>
     <div class="prob-q"><p>빈도 a5 b9 c12 d13 e16 f45의 Huffman 트리와 cost.</p></div>
     <details class="pd hint"><summary>힌트 보기</summary>
-      <div class="pd-body"><p>가장 작은 둘을 반복 합침. cost = 내부 노드 값의 합 + 총 빈도.</p></div>
+      <div class="pd-body"><p>가장 작은 둘을 반복 합침. cost = 루트를 제외한 내부 노드 값의 합 + 총 빈도.</p></div>
     </details>
     <details class="pd ans"><summary>정답 보기</summary>
       <div class="pd-body">
@@ -843,7 +843,7 @@
         <ol class="steps">
           <li>5+9=14, 12+13=25, 14+16=30, 25+30=55, 45+55=100</li>
           <li>코드 길이: f 1, c·d·e 3, a·b 4</li>
-          <li>cost = 45·1 + (12+13+16)·3 + (5+9)·4 = 45+123+56 = 224. 검산: 내부노드 합 14+25+30+55 = 124, 총빈도 100 → 124+100 = 224 ✓</li>
+          <li>cost = 45·1 + (12+13+16)·3 + (5+9)·4 = 45+123+56 = 224. 검산: 루트를 제외한 내부노드 합 14+25+30+55 = 124, 총빈도 100 → 124+100 = 224 ✓</li>
         </ol>
         <div class="ans-final"><span class="lb">최종 답</span><span class="val"><span class="hl">cost</span> 224</span></div>
       </div>
