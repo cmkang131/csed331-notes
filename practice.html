@@ -40,7 +40,7 @@
     <tr><td>☐ 03</td><td><a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/">LeetCode 315 Count of Smaller Numbers After Self</a></td><td>HW2 P1 inversion counting · 유사</td><td>반환된 각 인덱스의 수를 합치면 HW의 inversion 개수. 병합정렬 방식</td></tr>
     <tr><td>☐ 04</td><td><a href="https://cses.fi/problemset/task/1722/">CSES Fibonacci Numbers</a></td><td>HW1 P3 행렬 거듭제곱 · 거의 동일</td><td>O(log n) 알고리즘으로 구현</td></tr>
     <tr><td>☑ 05</td><td><a href="https://leetcode.com/problems/flower-planting-with-no-adjacent/">LeetCode 1042 Flower Planting With No Adjacent</a></td><td>HW4 P1 Greedy 색칠 · 거의 동일</td><td>사이트는 d≤3, HW는 일반 최대 차수 d에 대해 d+1색</td></tr>
-    <tr><td>☐ 06</td><td><a href="https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/">LeetCode 2093 Minimum Cost to Reach City With Discounts</a> (Premium)</td><td>HW3 P3 상태 확장 Dijkstra · 유사</td><td>HW는 간선 하나를 0으로, LC는 여러 간선 반값 할인(무방향). 접근이 안 되면 <a href="https://cses.fi/problemset/task/1195/">CSES Flight Discount</a></td></tr>
+    <tr><td>☐ 06</td><td><a href="https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/">LeetCode 2093 Minimum Cost to Reach City With Discounts</a> (Premium)</td><td>HW3 P3 상태 확장 Dijkstra · 유사</td><td>HW는 간선 하나를 0으로, LC는 여러 간선 반값 할인(무방향). 접근이 안 되면 <a href="https://cses.fi/problemset/task/1195/">CSES Flight Discount</a> (단 CSES는 항공편 하나 반값이라 HW의 0 변경과도 다름 — 상태 확장 연습용)</td></tr>
     <tr><td>☐ 07</td><td><a href="https://leetcode.com/problems/parallel-courses-iii/">LeetCode 2050 Parallel Courses III</a></td><td>HW3 P4 DAG 최장 경로 · 유사</td><td>LC는 양수 정점 가중치, HW는 음수까지 가능한 간선 가중치</td></tr>
     <tr><td>☐ 08</td><td><a href="https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/">LeetCode 363 Max Sum of Rectangle No Larger Than K</a></td><td>HW5 P2 2차원 최대 부분행렬 · 심화 변형</td><td>합 ≤ K 조건이 추가됨. 원문 먼저 구현한 뒤 도전</td></tr>
     <tr><td>☐ 09</td><td><a href="https://leetcode.com/problems/choose-edges-to-maximize-score-in-a-tree/">LeetCode 2378 Choose Edges to Maximize Score in a Tree</a> (Premium)</td><td>HW4 P2 트리 매칭 · 유사</td><td>모든 간선 가중치를 1로 두면 최대 매칭 크기 연습. 접근이 안 되면 <a href="https://cses.fi/problemset/task/1130/">CSES Tree Matching</a></td></tr>
@@ -121,6 +121,7 @@
     <tr><td>DAG 최장 경로</td><td>☐ <a href="https://leetcode.com/problems/parallel-courses-iii/">LeetCode 2050</a></td><td>HW3 P4의 음수 포함 간선 가중치와 다름</td></tr>
     <tr><td>Floyd-Warshall</td><td>☐ <a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/">LeetCode 1334</a></td><td>Floyd 또는 반복 Dijkstra</td></tr>
     <tr><td>Dijkstra 상태 확장</td><td>☐ <a href="https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/">LeetCode 2093</a> (Premium)</td><td>HW의 무료 간선 1개와 다름. <a href="https://cses.fi/problemset/task/1195/">CSES Flight Discount</a>로 대체 가능</td></tr>
+    <tr><td>Dijkstra 상태 확장</td><td>☐ <a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">LeetCode 787 Cheapest Flights Within K Stops</a> (무료)</td><td>경유 횟수 제한 최단 경로 — 상태(경유 수) 확장 연습. HW3 P3와 관련되나 간선 비용 변경은 아님</td></tr>
     <tr><td>Bitmask TSP</td><td>☐ <a href="https://leetcode.com/problems/shortest-path-visiting-all-nodes/">LeetCode 847</a></td><td>무가중·재방문 허용·복귀 불필요 — 일반 TSP와 다름</td></tr>
     <tr><td>Hamiltonian DP</td><td>☐ <a href="https://leetcode.com/problems/unique-paths-iii/">LeetCode 980 Unique Paths III</a></td><td>격자 전체를 한 번씩 방문하는 경로 수</td></tr>
   </table>
@@ -199,7 +200,7 @@
   <table class="t rt">
     <tr><th>문항</th><th>HW 주제</th><th>풀 문제 / 추가 학습</th><th>일치도</th></tr>
     <tr><td>P1</td><td>Greedy d+1 vertex coloring</td><td><a href="https://leetcode.com/problems/flower-planting-with-no-adjacent/">LeetCode 1042</a> — 사이트는 최대 차수 3, HW는 일반 d에 대해 d+1색</td><td>거의 동일</td></tr>
-    <tr><td>P2</td><td>Tree perfect matching 존재 판정</td><td><a href="https://leetcode.com/problems/choose-edges-to-maximize-score-in-a-tree/">LeetCode 2378</a> (Premium) — 가중치를 1로 두면 크기, 그 값이 |V|/2인지 검사. 원문 증명 별도</td><td>관련 문제</td></tr>
+    <tr><td>P2</td><td>Tree perfect matching 존재 판정</td><td><a href="https://leetcode.com/problems/choose-edges-to-maximize-score-in-a-tree/">LeetCode 2378</a> (Premium) — 가중치를 1로 두면 크기, 그 값이 |V|/2인지 검사. 원문 증명 별도. Premium 접근이 안 되면 <a href="https://cses.fi/problemset/task/1130/">CSES Tree Matching</a>으로 최대 매칭 크기 연습, 완전 매칭 존재 판정은 별도 구현</td><td>관련 문제</td></tr>
     <tr><td>P3</td><td>3진 prefix-free optimal coding</td><td><a href="https://leetcode.com/problems/minimum-cost-to-connect-sticks/">LeetCode 1167</a> — 2개씩 최소 병합(유료일 수 있음). HW의 3진 Huffman은 3개씩 병합 + dummy 처리</td><td>2진 유사</td></tr>
     <tr><td>P4</td><td>음수 합 구간으로 모든 음수 원소 최소 횟수 덮기</td><td>원본 HW 직접 구현 — 다른 구간합 문제와 다름</td><td>직접</td></tr>
     <tr><td>P5</td><td>Second-best MST</td><td><a href="https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/">LeetCode 1489</a> — critical/pseudo-critical 분류, HW의 second-best 비용과 별개</td><td>관련 심화</td></tr>
