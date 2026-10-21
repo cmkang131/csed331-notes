@@ -33,7 +33,7 @@
   </div>
 
   <h2><a id="sec-1"></a>A. 강의와 HW에서 동시에 다룬 알고리즘 — 먼저 도전</h2>
-  <table class="t">
+  <table class="t rt">
     <tr><th>#</th><th>문제</th><th>HW 대응 · 일치도</th><th>메모</th></tr>
     <tr><td>☑ 01</td><td><a href="https://leetcode.com/problems/coin-change/">LeetCode 322 Coin Change</a></td><td>HW5 P1 동전 DP · 거의 동일</td><td>원래 HW의 동전 1·4·6으로도 실행. 첫 문제 추천</td></tr>
     <tr><td>☑ 02</td><td><a href="https://leetcode.com/problems/maximum-subarray/">LeetCode 53 Maximum Subarray</a></td><td>HW2 P5 최대 부분배열 · 목표 동일</td><td>HW는 분할정복이므로 O(n log n) 분할정복으로 풀어 보기</td></tr>
@@ -49,7 +49,7 @@
   </table>
 
   <h2><a id="sec-2"></a>B. 실제로 중요한 알고리즘 — 과제와 무관해도 필수</h2>
-  <table class="t">
+  <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>왜</th></tr>
     <tr><td>DFS/BFS</td><td>☐ <a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200 Number of Islands</a></td><td>그래프 탐색과 방문 처리의 기본</td></tr>
     <tr><td>Topological Ordering</td><td>☐ <a href="https://leetcode.com/problems/course-schedule-ii/">LeetCode 210 Course Schedule II</a></td><td>위상정렬 필수, DAG 응용 전에 권장</td></tr>
@@ -65,13 +65,17 @@
   </table>
   <p class="bx-h">추천 시작 순서</p>
   <div class="bx">
-    <p>① LeetCode 322 → ② LeetCode 53 → ③ LeetCode 315 → ④ LeetCode 743 → ⑤ <a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">LeetCode 787</a>(무료) → ⑥ LeetCode 2050. 이후 MST, Floyd-Warshall, TSP로 이동. LeetCode 2093(Premium)은 접근 가능할 때만</p>
+    <ul>
+    <li>순서: ① LeetCode 322 → ② LeetCode 53 → ③ LeetCode 315 → ④ LeetCode 743 → ⑤ <a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">LeetCode 787</a>(무료) → ⑥ LeetCode 2050</li>
+    <li>이후 MST, Floyd-Warshall, TSP로 이동</li>
+    <li>LeetCode 2093(Premium)은 접근 가능할 때만</li>
+    </ul>
   </div>
 
   <h2><a id="sec-3"></a>강의별 코딩 문제 로드맵</h2>
 
   <h3>1. 효율성 · 점근표기 · 기하 기초</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
     <tr><td>Fibonacci 재귀 vs DP</td><td>☐ <a href="https://leetcode.com/problems/fibonacci-number/">LeetCode 509</a></td><td>동일한 계산을 다른 복잡도로 구현</td></tr>
     <tr><td>Fibonacci O(log n)</td><td>☐ <a href="https://cses.fi/problemset/task/1722/">CSES Fibonacci Numbers</a></td><td>HW1 P3에 가까운 무료 LeetCode가 없어 CSES</td></tr>
@@ -81,7 +85,7 @@
   </table>
 
   <h3>2. 재귀 · 분할정복 · 선택 · 정렬</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
     <tr><td>하노이 탑 재귀</td><td>☐ <a href="https://leetcode.com/problems/hanota-lcci/">LeetCode 08.06 Hanota (LCCI)</a></td><td>재귀 호출 · base case</td></tr>
     <tr><td>Binary Search</td><td>☐ <a href="https://leetcode.com/problems/binary-search/">LeetCode 704</a></td><td>탐색 범위 불변식</td></tr>
@@ -96,7 +100,7 @@
   </table>
 
   <h3>3. 그래프 탐색 · DAG</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
     <tr><td>DFS/BFS 기초</td><td>☐ <a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200</a></td><td>한 방법으로 풀고 다른 방법으로 재구현</td></tr>
     <tr><td>Connected Components</td><td>☐ <a href="https://leetcode.com/problems/number-of-provinces/">LeetCode 547 Number of Provinces</a></td><td>DFS forest나 Union-Find (인접행렬 입력)</td></tr>
@@ -108,7 +112,7 @@
   </table>
 
   <h3>4. Dijkstra · Bellman-Ford · Floyd-Warshall · TSP</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
     <tr><td>Dijkstra</td><td>☐ <a href="https://leetcode.com/problems/network-delay-time/">LeetCode 743</a></td><td>가장 중요한 heap+relaxation 구현</td></tr>
     <tr><td>Dijkstra 응용</td><td>☐ <a href="https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/">LeetCode 1976 Number of Ways to Arrive</a></td><td>최단 경로의 개수까지 계산</td></tr>
@@ -123,7 +127,7 @@
   </table>
 
   <h3>5. Greedy · Union-Find · MST · Huffman</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
     <tr><td>충전소 선택 Greedy</td><td>☐ 강의 Selecting Breakpoints 직접 구현</td><td>강의 모델 그대로 코딩</td></tr>
     <tr><td>Union-Find</td><td>☐ <a href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/">LeetCode 1319</a></td><td>연결 요소 수/여분 간선 기반</td></tr>
@@ -138,7 +142,7 @@
   </table>
 
   <h3>6. Dynamic Programming</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
     <tr><td>Fibonacci DP</td><td>☐ <a href="https://leetcode.com/problems/fibonacci-number/">LeetCode 509</a></td><td>Bottom-up / memoization 비교</td></tr>
     <tr><td>Bit strings 인접 1 제한</td><td>☐ 원본 노트 점화식 직접 구현</td><td>S(n) = S(n−1) + S(n−2)</td></tr>
@@ -160,7 +164,7 @@
   <p>26문항 · 세부 28항목 (HW2 P3, HW5 P4의 (a)/(b) 별도 표시). 원본 과제와 완전히 같지 않으면 일치도를 확인.</p>
 
   <h3>HW1 — 점근 표기 · 행렬 · 곱셈</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>문항</th><th>HW 주제</th><th>풀 문제 / 추가 학습</th><th>일치도</th></tr>
     <tr><td>P1</td><td>Big-O 식 증명</td><td>강의 직접 증명 — 온라인 제출만으로는 Big-O 수학적 증명 대체 불가</td><td>직접</td></tr>
     <tr><td>P2</td><td>성장률 순서 정렬</td><td>강의 직접 증명 — 로그·다항·지수·팩토리얼 순서 직접 분석</td><td>직접</td></tr>
@@ -169,7 +173,7 @@
   </table>
 
   <h3>HW2 — 분할정복 · 기하</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>문항</th><th>HW 주제</th><th>풀 문제 / 추가 학습</th><th>일치도</th></tr>
     <tr><td>P1</td><td>Inversion 개수</td><td><a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/">LeetCode 315</a> — 각 인덱스 결과를 합하면 전체 inversion 수</td><td>목표 유사</td></tr>
     <tr><td>P2</td><td>O(log n) local minimum</td><td><a href="https://leetcode.com/problems/find-peak-element/">LeetCode 162 Find Peak Element</a> — 부호를 뒤집어 local minimum. HW의 경계 조건 검토</td><td>동형 변형</td></tr>
@@ -181,7 +185,7 @@
   </table>
 
   <h3>HW3 — 그래프 · 최단 경로</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>문항</th><th>HW 주제</th><th>풀 문제 / 추가 학습</th><th>일치도</th></tr>
     <tr><td>P1</td><td>무방향 그래프 triangle 개수</td><td>원본 HW 직접 구현 — 세 정점 사이 간선 3개 검사, 중복 카운트 방지</td><td>직접</td></tr>
     <tr><td>P2</td><td>모든 간선에 +c 후 SPT 보존?</td><td>원본 HW 반례 + 실험 — 사용 간선 수가 다르면 +c가 경로 순위를 바꿀 수 있음</td><td>증명형</td></tr>
@@ -193,7 +197,7 @@
   </table>
 
   <h3>HW4 — Greedy · Matching · Huffman · MST</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>문항</th><th>HW 주제</th><th>풀 문제 / 추가 학습</th><th>일치도</th></tr>
     <tr><td>P1</td><td>Greedy d+1 vertex coloring</td><td><a href="https://leetcode.com/problems/flower-planting-with-no-adjacent/">LeetCode 1042</a> — 사이트는 최대 차수 3, HW는 일반 d에 대해 d+1색</td><td>거의 동일</td></tr>
     <tr><td>P2</td><td>Tree perfect matching 존재 판정</td><td><a href="https://leetcode.com/problems/choose-edges-to-maximize-score-in-a-tree/">LeetCode 2378</a> (Premium) — 가중치를 1로 두면 크기, 그 값이 |V|/2인지 검사. 원문 증명 별도</td><td>관련 문제</td></tr>
@@ -203,7 +207,7 @@
   </table>
 
   <h3>HW5 — 동적 계획법 · 기하</h3>
-  <table class="t">
+  <table class="t rt">
     <tr><th>문항</th><th>HW 주제</th><th>풀 문제 / 추가 학습</th><th>일치도</th></tr>
     <tr><td>P1</td><td>1·4·6 동전 최소 개수</td><td><a href="https://leetcode.com/problems/coin-change/">LeetCode 322 Coin Change</a> — HW 동전값을 넣어 점화식 테스트</td><td>거의 동일</td></tr>
     <tr><td>P2</td><td>최대 합 직사각형</td><td><a href="https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/">LeetCode 363</a> — K 이하 제약이 추가되어 더 어려움. 원문부터 직접 구현</td><td>심화 변형</td></tr>

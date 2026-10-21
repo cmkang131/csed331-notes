@@ -502,7 +502,11 @@ dfs(G):
     <div class="prob-q"><p>슬라이드 2 그래프(인접 리스트 순서는 번호 오름차순)에서 6번에서 시작한 DFS의 방문 순서, 각 노드의 pre/post, tree edge를 구하시오.</p></div>
     <details class="pd hint"><summary>힌트 보기</summary>
       <div class="pd-body">
-      <p>explore가 이웃을 리스트 순서대로 보고, 미방문 이웃을 만나면 즉시 그 노드로 내려감. 스택에서 빠질 때가 post. 6의 유일한 이웃은 5.</p>
+      <ol class="steps">
+      <li>explore가 이웃을 리스트 순서대로 보고, 미방문 이웃을 만나면 즉시 그 노드로 내려감</li>
+      <li>스택에서 빠질 때가 post</li>
+      <li>6의 유일한 이웃은 5</li>
+      </ol>
       </div>
     </details>
     <details class="pd ans"><summary>정답 보기</summary>
@@ -547,7 +551,11 @@ dfs(G):
     <div class="prob-q"><p>방향 그래프(1→2, 1→4, 2→3, 2→4, 3→1, 4→3)를 3번에서 시작해 DFS(이웃은 번호 순)할 때 pre/post와 간선 종류, cycle 유무를 구하시오.</p></div>
     <details class="pd hint"><summary>힌트 보기</summary>
       <div class="pd-body">
-      <p>화살표 방향으로만 따라감. 간선 (x,y)에서 y가 스택에 있으면 back, y가 끝났고 x보다 늦게 시작했으면 forward/tree, y가 먼저 시작해 끝났으면 cross. back edge가 있으면 cycle.</p>
+      <dl class="def">
+      <div><dt>규칙</dt><dd>화살표 방향으로만 따라감</dd></div>
+      <div><dt>간선 분류</dt><dd>(x,y)에서 y가 스택에 있으면 back · y가 끝났고 x보다 늦게 시작했으면 forward/tree · y가 먼저 시작해 끝났으면 cross</dd></div>
+      <div><dt>cycle 판정</dt><dd>back edge가 있으면 cycle</dd></div>
+      </dl>
       </div>
     </details>
     <details class="pd ans"><summary>정답 보기</summary>
@@ -567,7 +575,11 @@ dfs(G):
 
   <div class="prob">
     <div class="prob-head"><span class="prob-no">문제 4</span></div>
-    <div class="prob-q"><p>(a) 연결된 무방향 그래프가 노드 9개, 간선 9개이면 cycle이 있는가. (b) cycle 없는 무방향 그래프가 노드 9개, 간선 7개이면 연결되어 있는가. (c) 노드 4개, 간선 6개인 방향 그래프는 반드시 cycle이 있는가.</p></div>
+    <div class="prob-q"><ol class="steps">
+    <li>(a) 연결된 무방향 그래프가 노드 9개, 간선 9개이면 cycle이 있는가</li>
+    <li>(b) cycle 없는 무방향 그래프가 노드 9개, 간선 7개이면 연결되어 있는가</li>
+    <li>(c) 노드 4개, 간선 6개인 방향 그래프는 반드시 cycle이 있는가</li>
+    </ol></div>
     <details class="pd hint"><summary>힌트 보기</summary>
       <div class="pd-body">
       <p>tree Theorem: connected / acyclic / <span class="mjx"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="5.254ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 2322.4 748"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(822.2,0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(1822.4,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></svg></span> 간선 중 둘이면 나머지 하나. 무방향은 간선 수로 cycle 판정 가능하지만 방향 그래프는 불가 — 반례 하나면 충분.</p>

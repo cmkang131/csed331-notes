@@ -325,6 +325,7 @@ html[data-theme="dark"] .theme-toggle{background:#fff}
 @media print{html[data-theme="dark"]{filter:none;background:#fff}html[data-theme="dark"] body,html[data-theme="dark"] .paper{background:#fff}.theme-toggle{display:none}}
 
 html[data-theme="dark"] .nb,html[data-theme="dark"] .bx,html[data-theme="dark"] .fbox,html[data-theme="dark"] table,html[data-theme="dark"] figure{background:#ededed}
+html[data-theme="dark"] a.tap,html[data-theme="dark"] .toc-fold,html[data-theme="dark"] .tapc,html[data-theme="dark"] .notes table.rt tr,html[data-theme="dark"] details.fig-fold{background:#ededed}
 html[data-theme="dark"] svg [fill="#fff"],html[data-theme="dark"] svg [fill="#ffffff"]{fill:#ededed}
 html[data-theme="dark"] svg [fill="#f2f2f2"]{fill:#e0e0e0}
 
@@ -370,3 +371,12 @@ a.tap:focus-visible{outline:2px solid var(--ink,#1a1a1a);outline-offset:2px}
 details.fig-fold{margin:14px 0}
 details.fig-fold>summary{cursor:pointer;font-weight:700;font-size:13.5px;color:var(--gray);margin-bottom:6px}
 details.fig-fold>summary:hover{color:var(--ink)}
+
+/* 모바일: 로드맵 표 카드형 스택 */
+@media(max-width:560px){
+.notes table.rt,.notes table.rt tbody{display:block}
+.notes table.rt tr{display:block;border:1px solid var(--hairline,#d9d9d9);border-radius:6px;margin:8px 0;padding:8px 12px}
+.notes table.rt tr:has(th){display:none}
+.notes table.rt td{display:block;border:none;padding:2px 0;width:auto}
+.notes table.rt td:first-child{color:var(--gray);font-size:12.5px}
+}
