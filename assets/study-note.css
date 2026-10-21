@@ -358,3 +358,9 @@ a.tap:focus-visible{outline:2px solid var(--ink,#1a1a1a);outline-offset:2px}
 /* 모바일: phead-r 텍스트만 숨기고 테마 버튼 유지 */
 @media(max-width:560px){.phead-r{display:flex;align-items:baseline}.phead-r .phead-r-txt{display:none}}
 @media(max-width:560px){.notes dl.def>div{grid-template-columns:1fr}.notes dl.def dt{padding-bottom:0}}
+
+/* 이 페이지 접이식 목차 */
+.toc-fold{margin:10px 0 4px;border:1px solid var(--hairline,#d9d9d9);border-radius:6px;padding:8px 14px;background:#fff}
+.toc-fold>summary{cursor:pointer;font-weight:700;font-size:13.5px;color:var(--ink)}
+.toc-fold>ol{margin:8px 0 2px;padding-left:20px;font-size:13.5px;line-height:1.7}
+.toc-fold a{color:var(--ink)}
