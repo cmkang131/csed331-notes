@@ -55,7 +55,6 @@ pre code{background:none;padding:0}
 u{text-underline-offset:3px}
 /* ===== boxes ===== */
 .box{position:relative;border-radius:8px;padding:12px 18px 12px;margin:14px 0;font-size:15.5px;line-height:1.65;border:1.5px solid #16181d;background:#fff}
-.box .box-label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;margin-bottom:6px;color:#16181d}
 .box p{margin:.22em 0}
 .box ul{margin:.2em 0}
 .box-concept,.box-def,.box-warn,.box-warning,.box-formula,.box-example,.box-proof,.box-algo,.box-code,.box-exam{border:1.5px solid #16181d;background:#fff}
@@ -77,16 +76,15 @@ table{border-collapse:collapse;font-size:14.5px;background:#fff}
 th,td{border:1px solid #999;padding:5px 10px;text-align:left;vertical-align:top;line-height:1.5}
 th{font-weight:700;background:#f5f5f5}
 /* generic details (예시 접기) */
-details.fold{border:1px solid #d8d8d8;border-radius:10px;padding:0;margin:12px 0;background:#fff;overflow:hidden}
-details.fold summary{font-weight:700;font-size:15px;cursor:pointer;list-style:none;color:var(--blue);padding:10px 16px}
+details.fold{border:none;padding:0;margin:8px 0;background:none}
+details.fold summary{font-weight:700;font-size:15px;cursor:pointer;list-style:none;color:var(--blue);padding:2px 0}
 details.fold summary::before{content:"▸";display:inline-block;margin-right:7px;color:var(--gray);transition:transform .15s}
 details.fold[open] summary::before{transform:rotate(90deg)}
-details.fold .det-body{padding:2px 16px 14px;border-top:1px solid #eee}
+details.fold .det-body{padding:4px 0 8px 18px;border-top:none}
 /* ===== 문제 + 힌트/정답 ===== */
 .prob{margin:20px 0;padding:14px 0 6px;border-top:1px solid #ddd}
 .prob-head{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
 .prob-no{font-weight:700;font-size:16px;color:var(--ink)}
-.prob-tag{font-size:12.5px;color:var(--gray)}
 .prob-stmt{font-size:16px;line-height:1.7}
 .prob-stmt p{margin:.25em 0}
 .prob details{margin:5px 0 0}
@@ -186,3 +184,8 @@ a.card:hover .card-t{color:var(--blue)}
 .figwrap svg .ew{font:10px 'Noto Sans KR',sans-serif;fill:#666;text-anchor:middle}
 .figwrap svg .ewb{font:700 10.5px 'Noto Sans KR',sans-serif;fill:#2456c4;text-anchor:middle}
 .figwrap svg .barn{font:10.5px 'Noto Sans KR',sans-serif;fill:#444;text-anchor:middle}
+.plain-block{border-top:1px solid #d8dbe0;border-bottom:1px solid #d8dbe0;padding:10px 2px;margin:14px 0;font-size:15.5px;line-height:1.65}
+.plain-block p{margin:.22em 0}
+.plain-block ul{margin:.2em 0}
+.bt{font-weight:700;font-size:15.5px;margin:16px 0 4px}
+.bt + .box, .bt + .plain-block{margin-top:4px}
