@@ -17,9 +17,8 @@
    ============================================================ */
 :root{
   --ink:#1a1a1a; --gray:#666; --rule:#1a1a1a;
-  --blue:#2456c4; --blue-bg:#eef3fd; --blue-bd:#c9d8f6; --blue-ink:#1d4bb5;
-  --red:#b03a32;  --red-bg:#fdf0ee;  --red-bd:#efc9c4;  --red-ink:#a33227;
-  --green:#2e7d4f;--green-bg:#eef7f0;--green-bd:#c9e5d2;--green-ink:#256e44;
+  /* v3 팔레트: 잉크/회색/#9e2b25 */
+  --red:#9e2b25;  --red-bg:#f2f2f2;  --red-bd:#d9d9d9;  --red-ink:#9e2b25;
   --hl:#fff1a8;
   --card-bd:#e6e3da;
   --shadow:0 1px 2px rgba(26,26,26,.05),0 2px 8px rgba(26,26,26,.04);
@@ -33,7 +32,7 @@ svg{max-width:100%}
 .paper{max-width:780px;margin:0 auto;background:#fff;padding:28px 40px 56px}
 .phead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13px;color:var(--gray);padding-bottom:12px;border-bottom:1px solid var(--rule)}
 a.to-home{color:var(--ink);text-decoration:none;cursor:pointer;border-bottom:1px solid #999;white-space:nowrap;font-size:13px}
-a.to-home:hover{color:var(--blue);border-color:var(--blue)}
+a.to-home:hover{color:#1a1a1a;border-color:#1a1a1a}
 .phead-c{color:var(--ink);font-weight:700;font-size:13.5px;text-align:center}
 .phead-r{font-size:12.5px;white-space:nowrap}
 h1.pagetitle{font-size:25px;font-weight:900;letter-spacing:-0.01em;margin:22px 0 4px;line-height:1.35}
@@ -44,7 +43,7 @@ h1.pagetitle{font-size:25px;font-weight:900;letter-spacing:-0.01em;margin:22px 0
 
 /* ---------- 본문 노트 ---------- */
 .notes h2{font-size:19px;font-weight:900;color:var(--ink);letter-spacing:-0.01em;margin:36px 0 12px;padding-bottom:6px;border-bottom:1.5px solid var(--rule)}
-.notes h2 .h2no{color:var(--blue);margin-right:.35em}
+.notes h2 .h2no{color:#1a1a1a;margin-right:.35em}
 .notes h3{font-size:16px;font-weight:700;color:var(--ink);margin:36px 0 10px;padding-top:16px;border-top:1px solid #e2e2e2}
 .notes h2 + .refline + h3,.notes h2 + h3{border-top:none;padding-top:0;margin-top:20px}
 .notes h4{font-size:15px;font-weight:700;color:#333;margin:22px 0 8px}
@@ -77,9 +76,8 @@ h1.pagetitle{font-size:25px;font-weight:900;letter-spacing:-0.01em;margin:22px 0
 .notes table .num{text-align:right}
 
 /* 강조 표기 */
-.k-blue{color:var(--blue);font-weight:700}
+/* 리드어는 .lt(볼드 검정) */
 .k-red{color:var(--red);font-weight:700}
-.k-green{color:var(--green);font-weight:700}
 .hl{background:var(--hl);padding:.02em .18em;border-radius:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* ---------- 박스: 개념 문장·공식·최종 답·한 줄 정리만 ---------- */
@@ -114,14 +112,14 @@ h1.pagetitle{font-size:25px;font-weight:900;letter-spacing:-0.01em;margin:22px 0
 
 /* 숫자 통계 카드 */
 .stats{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
-.stat{flex:1;min-width:120px;border:1px solid var(--blue-bd);background:var(--blue-bg);border-radius:8px;padding:10px 14px;text-align:center}
-.stat .v{font-size:23px;font-weight:700;color:var(--blue-ink);line-height:1.25;font-variant-numeric:tabular-nums}
+.stat{flex:1;min-width:120px;border:1px solid #d9d9d9;background:#f2f2f2;border-radius:8px;padding:10px 14px;text-align:center}
+.stat .v{font-size:23px;font-weight:700;color:#1a1a1a;line-height:1.25;font-variant-numeric:tabular-nums}
 .stat .v small{font-size:14px;font-weight:700}
-.stat .l{font-size:12.5px;color:#4a5a7a;margin-top:2px}
+.stat .l{font-size:12.5px;color:#555555;margin-top:2px}
 .stat.warn2{background:var(--red-bg);border-color:var(--red-bd)}
-.stat.warn2 .v{color:var(--red-ink)} .stat.warn2 .l{color:#7a4a44}
-.stat.green2{background:var(--green-bg);border-color:var(--green-bd)}
-.stat.green2 .v{color:var(--green-ink)} .stat.green2 .l{color:#3f6b4f}
+.stat.warn2 .v{color:var(--red-ink)} .stat.warn2 .l{color:#9e2b25}
+.stat.alt2{background:#f2f2f2;border-color:#d9d9d9}
+.stat.alt2 .v{color:#555555} .stat.alt2 .l{color:#555555}
 
 /* 그림 */
 figure{margin:16px 0;text-align:center}
@@ -138,7 +136,7 @@ figcaption{font-size:13px;color:#666;margin-top:8px}
 .notes details.tg{border:1px solid var(--card-bd);border-radius:8px;padding:12px 18px;margin:12px 0;background:#fff}
 .notes details.tg summary{font-weight:700;font-size:16px;cursor:pointer;list-style:none;position:relative;padding-left:1.2em}
 .notes details.tg summary::-webkit-details-marker{display:none}
-.notes details.tg summary::before{content:"▸";position:absolute;left:0;color:var(--blue);transition:transform .12s}
+.notes details.tg summary::before{content:"▸";position:absolute;left:0;color:#1a1a1a;transition:transform .12s}
 .notes details.tg[open] summary::before{transform:rotate(90deg)}
 .notes details.tg > *:not(summary){margin-top:10px}
 
@@ -155,8 +153,8 @@ figcaption{font-size:13px;color:#666;margin-top:8px}
 .xl td.l,.xl th.l{text-align:left}
 .xl td.c{text-align:center}
 .xl td.selcell{background:#fff2c2;font-weight:700}
-.xl td.hlcell{background:#eaf1fd;font-weight:700;color:var(--blue-ink)}
-.xl td.warn{background:#fdeceb;color:var(--red-ink);font-weight:700}
+.xl td.hlcell{background:#f2f2f2;font-weight:700;color:#1a1a1a}
+.xl td.warn{background:#f2f2f2;color:var(--red-ink);font-weight:700}
 .xl-cap{font-size:13px;color:#666;padding:8px 12px;border-top:1px solid #eeeee8;background:#fbfaf7;text-align:left}
 .xl .rowhdr{background:#f6f6f3;color:#666;text-align:center;font-size:12px}
 
@@ -170,11 +168,11 @@ figcaption{font-size:13px;color:#666;margin-top:8px}
 .dlg-row .v.sel{background:#fff2c2;font-weight:700}
 .dlg-row .opt{display:flex;gap:14px;font-size:13px}
 .dlg-row .opt .on{font-weight:700}
-.dlg-row .opt .on::before{content:"●";color:var(--blue);margin-right:4px;font-size:10px}
+.dlg-row .opt .on::before{content:"●";color:#1a1a1a;margin-right:4px;font-size:10px}
 .dlg-row .opt .off::before{content:"○";color:#999;margin-right:4px;font-size:10px}
 .dlg-foot{display:flex;justify-content:flex-end;gap:8px;padding:10px 14px;border-top:1px solid #eee;background:#fbfaf7}
 .dlg-btn{border:1px solid #b9b6ac;border-radius:5px;background:linear-gradient(#fff,#f0eee8);padding:3px 16px;font-size:13px}
-.dlg-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:700}
+.dlg-btn.primary{background:#1a1a1a;border-color:#1a1a1a;color:#fff;font-weight:700}
 .dlg-note{font-size:12.5px;color:#777;margin-top:6px}
 
 /* ---------- 문제 + 힌트/정답 토글 ----------
@@ -198,9 +196,9 @@ figcaption{font-size:13px;color:#666;margin-top:8px}
 .pd summary::-webkit-details-marker{display:none}
 .pd summary::before{content:"▸";color:var(--ink);font-size:13px;margin-right:7px}
 .pd[open] summary::before{content:"▾"}
-.pd summary:hover{color:var(--blue)}
-.pd summary:hover::before{color:var(--blue)}
-.pd summary:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:3px}
+.pd summary:hover{color:#1a1a1a}
+.pd summary:hover::before{color:#1a1a1a}
+.pd summary:focus-visible{outline:2px solid #1a1a1a;outline-offset:2px;border-radius:3px}
 .pd .pd-body{margin:4px 0 14px;padding:12px 2px 2px;border-top:1px solid var(--rule)}
 .pd .pd-body > :first-child{margin-top:0}
 .pd .pd-body > :last-child{margin-bottom:0}
@@ -215,7 +213,7 @@ figcaption{font-size:13px;color:#666;margin-top:8px}
 /* 풀이 단계: "Step N" 파란 라벨 + 각 단계의 이유(.why) */
 ol.steps{counter-reset:st;list-style:none;padding-left:0;margin:10px 0}
 ol.steps > li{counter-increment:st;position:relative;padding:2px 0 12px 62px;margin:0;line-height:1.7}
-ol.steps > li::before{content:"Step " counter(st);position:absolute;left:0;top:5px;font-weight:700;font-size:13px;color:var(--blue);white-space:nowrap}
+ol.steps > li::before{content:"Step " counter(st);position:absolute;left:0;top:5px;font-weight:700;font-size:13px;color:#1a1a1a;white-space:nowrap}
 ol.steps .st-t{font-weight:700}
 .why{display:block;color:#555;font-size:14px;margin-top:4px;padding-left:10px;border-left:2px solid #e5e5e5}
 ol.steps .mjx-display{text-align:left;margin:.35em 0}
@@ -232,7 +230,7 @@ ol.steps .mjx-display{text-align:left;margin:.35em 0}
 /* 문제별 페이지 하단 이전/홈/다음 */
 .pnav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px;padding-top:14px;border-top:1px solid var(--rule);font-size:13px}
 .pnav a{color:var(--ink);text-decoration:none;cursor:pointer;border-bottom:1px solid #999}
-.pnav a:hover{color:var(--blue);border-color:var(--blue)}
+.pnav a:hover{color:#1a1a1a;border-color:#1a1a1a}
 
 /* 흐름도 칩 (텍스트 + 화살표, 배경 칩 아님) */
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0}
@@ -282,9 +280,9 @@ ol.steps .mjx-display{text-align:left;margin:.35em 0}
   --hairline:#d9d9d9; /* 가는 구분선 */
   --edge:#555555;     /* 도판 화살표·보조선 */
 }
-.k-blue{color:var(--ink);font-weight:700}        /* 파랑 리드어 → 볼드 검정 */
+/* 리드어는 .lt(볼드 검정) */        /* 파랑 리드어 → 볼드 검정 */
 .k-red{color:var(--accent);font-weight:700}
-.k-green{color:var(--ink);font-weight:700}
+.k-gray{color:var(--gray);font-weight:700}  /* 기능적 표시(버림/충돌 등)용 회색 */
 .notes h2 .h2no{color:var(--gray)}
 ol.steps > li::before{color:var(--gray)}         /* Step 번호 회색 */
 .notes details.tg summary::before{color:var(--gray)}
