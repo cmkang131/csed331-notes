@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>복습 4-4 · 그리디 · MST · Union-Find · 스케줄링 · Huffman — CSED331 알고리즘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/study-note.css">
+</head>
+<body>
+<article class="paper prob-page">
+<div class="phead">
+  <a class="to-home" href="../problems.html">&larr; 문제 목록</a>
+  <span class="phead-c">복습 체크리스트 &middot; 그리디 · MST · Union-Find · 스케줄링 · Huffman</span>
+  <span class="phead-r">CSED331 &middot; 알고리즘</span>
+</div>
+<div class="body notes boxmath">
+<section>
+  <div class="problem">
+    <span class="prob-no">문제 4-4</span>
+    <p>Cut property를 말하라.</p>
+  </div>
+</section>
+<section>
+  <details class="pd"><summary>힌트 보기</summary>
+    <div class="pd-body">
+      <p>컷을 가로지르는 최소 간선.</p>
+    </div>
+  </details>
+  <details class="pd"><summary>정답 보기</summary>
+    <div class="pd-body">
+      <p class="ans-ref">개념은 위 힌트 보기에 있음</p>
+      <span class="sol-tag">풀이</span>
+      <ol class="steps">
+          <li>X가 어떤 MST의 일부이고 S를 X의 간선이 가로지르지 않으면</li>
+          <li>S와 V∖S 사이 최소 간선 e에 대해 X∪{e}도 어떤 MST의 일부</li>
+        </ol>
+      <div class="ans-final"><span class="lb">최종 답</span><span class="val"><span class="hl">X ∪ {e} ⊂ 어떤 MST (e = 컷의 최소 간선)</span></span></div>
+    </div>
+  </details>
+</section>
+<div class="pnav"><a href="rv-403.html">&larr; 이전</a><a href="../problems.html">문제 목록</a><a href="rv-405.html">다음 &rarr;</a></div>
+</div>
+</article>
+<script>window.addEventListener("beforeprint",function(){document.querySelectorAll("details").forEach(function(d){d.setAttribute("open","")})});</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>복습 3-3 · 그래프 · 탐색 · 최단 경로 — CSED331 알고리즘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/study-note.css">
+</head>
+<body>
+<article class="paper prob-page">
+<div class="phead">
+  <a class="to-home" href="../problems.html">&larr; 문제 목록</a>
+  <span class="phead-c">복습 체크리스트 &middot; 그래프 · 탐색 · 최단 경로</span>
+  <span class="phead-r">CSED331 &middot; 알고리즘</span>
+</div>
+<div class="body notes boxmath">
+<section>
+  <div class="problem">
+    <span class="prob-no">문제 3-3</span>
+    <p>간선 A→B, A→C, B→D, C→D, D→E. topological order를 모두 구하라.</p>
+  </div>
+</section>
+<section>
+  <details class="pd"><summary>힌트 보기</summary>
+    <div class="pd-body">
+      <p>DFS post 번호의 내림차순 = topological order. B와 C는 서로 비교 불가.</p>
+    </div>
+  </details>
+  <details class="pd"><summary>정답 보기</summary>
+    <div class="pd-body">
+      <p class="ans-ref">개념은 위 힌트 보기에 있음</p>
+      <span class="sol-tag">풀이</span>
+      <ol class="steps">
+          <li>A가 맨 앞, D 다음 E가 맨 뒤로 고정</li>
+          <li>B와 C는 순서 자유</li>
+        </ol>
+      <div class="ans-final"><span class="lb">최종 답</span><span class="val"><span class="hl">A,B,C,D,E / A,C,B,D,E</span></span></div>
+    </div>
+  </details>
+</section>
+<div class="pnav"><a href="rv-302.html">&larr; 이전</a><a href="../problems.html">문제 목록</a><a href="rv-304.html">다음 &rarr;</a></div>
+</div>
+</article>
+<script>window.addEventListener("beforeprint",function(){document.querySelectorAll("details").forEach(function(d){d.setAttribute("open","")})});</script>
+</body>
+</html>

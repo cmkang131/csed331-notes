@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>복습 4-2 · 그리디 · MST · Union-Find · 스케줄링 · Huffman — CSED331 알고리즘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/study-note.css">
+</head>
+<body>
+<article class="paper prob-page">
+<div class="phead">
+  <a class="to-home" href="../problems.html">&larr; 문제 목록</a>
+  <span class="phead-c">복습 체크리스트 &middot; 그리디 · MST · Union-Find · 스케줄링 · Huffman</span>
+  <span class="phead-r">CSED331 &middot; 알고리즘</span>
+</div>
+<div class="body notes boxmath">
+<section>
+  <div class="problem">
+    <span class="prob-no">문제 4-2</span>
+    <p>위 그래프에서 MST는 유일한가?</p>
+  </div>
+</section>
+<section>
+  <details class="pd"><summary>힌트 보기</summary>
+    <div class="pd-body">
+      <p>같은 가중치 간선이 선택을 갈라놓는지 확인.</p>
+    </div>
+  </details>
+  <details class="pd"><summary>정답 보기</summary>
+    <div class="pd-body">
+      <p class="ans-ref">개념은 위 힌트 보기에 있음</p>
+      <span class="sol-tag">풀이</span>
+      <ol class="steps">
+          <li>가중치가 같은 간선은 A-B와 D-E뿐이고 둘 다 선택됨</li>
+          <li>선택이 갈리는 지점이 없어 유일. 일반적으로 같은 가중치가 있으면 MST가 여러 개일 수 있음</li>
+        </ol>
+      <div class="ans-final"><span class="lb">최종 답</span><span class="val"><span class="hl">유일하다</span></span></div>
+    </div>
+  </details>
+</section>
+<div class="pnav"><a href="rv-401.html">&larr; 이전</a><a href="../problems.html">문제 목록</a><a href="rv-403.html">다음 &rarr;</a></div>
+</div>
+</article>
+<script>window.addEventListener("beforeprint",function(){document.querySelectorAll("details").forEach(function(d){d.setAttribute("open","")})});</script>
+</body>
+</html>

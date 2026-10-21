@@ -4,22 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>연습문제 로드맵 | CSED331 알고리즘</title>
-<link rel="stylesheet" href="notes.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/study-note.css">
 </head>
 <body>
 <div class="paper">
   <div class="phead">
-    <a class="to-home" href="index.html">CSED331 알고리즘 · 중간고사</a>
+    <a class="to-home" href="index.html">&larr; 목차</a>
     <div class="phead-c">스터디 노트</div>
     <div class="phead-r">연습문제 로드맵</div>
   </div>
   <div class="body notes">
 
-  <h1 style="font-size:24px">연습문제 로드맵 — HW1–HW5 대응</h1>
-  <p class="page-meta">2026-10-19 정리 · HW1–HW5 전체 26개 문항 대응 · 무료 LeetCode 우선, 없으면 CSES · Premium 문제는 명시</p>
+  <h1 class="pagetitle">연습문제 로드맵 — HW1–HW5 대응</h1>
+  <p class="psub">2026-10-19 정리 · HW1–HW5 전체 26개 문항 대응 · 무료 LeetCode 우선, 없으면 CSES · Premium 문제는 명시</p>
 
-  <div class="plain-block">
-    <p class="bt">사용법과 일치도</p>
+  <div class="nb">
+    <p class="bx-h">사용법과 일치도</p>
     <ul>
       <li><b>사용법</b> — 위에서부터 풀기. 먼저 30분 혼자 시도 → 막히면 해당 강의 노트 확인 → 정답 판정 후 시간복잡도와 Correctness를 한두 문장으로 기록</li>
       <li><b>일치도</b> — '동일/거의 동일'은 풀이 조건이 매우 비슷함. '유사/부분 유사'는 학습용일 뿐 과제의 완전한 대체가 아님. 증명·특수 기하 문제는 온라인 저지 1:1 대체가 어려움</li>
@@ -58,8 +61,8 @@
     <tr><td>Edit Distance</td><td>☐ <a href="https://leetcode.com/problems/edit-distance/">LeetCode 72 Edit Distance</a></td><td>2차원 DP</td></tr>
     <tr><td>Bitmask DP / TSP</td><td>☐ <a href="https://leetcode.com/problems/shortest-path-visiting-all-nodes/">LeetCode 847 Shortest Path Visiting All Nodes</a></td><td>무가중·재방문 허용·복귀 불필요 — 일반 가중치 TSP 폐회로와 다름</td></tr>
   </table>
-  <p class="bt">추천 시작 순서</p>
-  <div class="box box-def">
+  <p class="bx-h">추천 시작 순서</p>
+  <div class="bx">
     <p>① LeetCode 322 → ② LeetCode 53 → ③ LeetCode 315 → ④ LeetCode 743 → ⑤ <a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">LeetCode 787</a>(무료) → ⑥ LeetCode 2050. 이후 MST, Floyd-Warshall, TSP로 이동. LeetCode 2093(Premium)은 접근 가능할 때만</p>
   </div>
 
@@ -207,8 +210,8 @@
     <tr><td>P4(b)</td><td>원 위 현 최대 모든 쌍 교차 부분집합</td><td>원본 HW 직접 구현 — 원주상 끝점 순서 관계로 환원하는 알고리즘 직접 설계</td><td>직접</td></tr>
   </table>
 
-  <div class="plain-block">
-    <p class="bt">사이트 문제만 풀면 빠지는 부분</p>
+  <div class="nb">
+    <p class="bx-h">사이트 문제만 풀면 빠지는 부분</p>
     <ul>
       <li><b>HW1 P1·P2·P4</b> — Big-O 증명, 성장률 정렬, 자릿수 곱셈 시간분석은 코드 제출만으로 연습이 완결되지 않음</li>
       <li><b>HW2 P2·P3(b)·P4·P6</b> — local minimum↔peak 부호 반전, 접선 O(log n), 일반 k번째, 경계 출력은 저지와 다른 부분을 직접 구현</li>
@@ -227,5 +230,6 @@
 
   </div>
 </div>
+<script>window.addEventListener("beforeprint",function(){document.querySelectorAll("details").forEach(function(d){d.setAttribute("open","")})});</script>
 </body>
 </html>

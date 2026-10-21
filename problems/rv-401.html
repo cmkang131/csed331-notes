@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>복습 4-1 · 그리디 · MST · Union-Find · 스케줄링 · Huffman — CSED331 알고리즘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/study-note.css">
+</head>
+<body>
+<article class="paper prob-page">
+<div class="phead">
+  <a class="to-home" href="../problems.html">&larr; 문제 목록</a>
+  <span class="phead-c">복습 체크리스트 &middot; 그리디 · MST · Union-Find · 스케줄링 · Huffman</span>
+  <span class="phead-r">CSED331 &middot; 알고리즘</span>
+</div>
+<div class="body notes boxmath">
+<section>
+  <div class="problem">
+    <span class="prob-no">문제 4-1</span>
+    <p>간선 A-B 1, A-C 2, B-C 3, C-D 4, B-D 5, D-E 1, C-E 6에 Kruskal 실행. MST 비용은?</p>
+  </div>
+</section>
+<section>
+  <details class="pd"><summary>힌트 보기</summary>
+    <div class="pd-body">
+      <p>가중치 오름차순 정렬 → cycle이 생기지 않으면 추가 (union-find).</p>
+    </div>
+  </details>
+  <details class="pd"><summary>정답 보기</summary>
+    <div class="pd-body">
+      <p class="ans-ref">개념은 위 힌트 보기에 있음</p>
+      <span class="sol-tag">풀이</span>
+      <ol class="steps">
+          <li>A-B(1) 추가, D-E(1) 추가, A-C(2) 추가</li>
+          <li>B-C(3) 버림 (cycle), C-D(4) 추가 → 집합 1개</li>
+          <li>이후 B-D(5), C-E(6) 버림</li>
+        </ol>
+      <div class="ans-final"><span class="lb">최종 답</span><span class="val"><span class="hl">비용 1+1+2+4 = 8</span></span></div>
+    </div>
+  </details>
+</section>
+<div class="pnav"><span></span><a href="../problems.html">문제 목록</a><a href="rv-402.html">다음 &rarr;</a></div>
+</div>
+</article>
+<script>window.addEventListener("beforeprint",function(){document.querySelectorAll("details").forEach(function(d){d.setAttribute("open","")})});</script>
+</body>
+</html>

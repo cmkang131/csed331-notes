@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>복습 3-5 · 그래프 · 탐색 · 최단 경로 — CSED331 알고리즘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/study-note.css">
+</head>
+<body>
+<article class="paper prob-page">
+<div class="phead">
+  <a class="to-home" href="../problems.html">&larr; 문제 목록</a>
+  <span class="phead-c">복습 체크리스트 &middot; 그래프 · 탐색 · 최단 경로</span>
+  <span class="phead-r">CSED331 &middot; 알고리즘</span>
+</div>
+<div class="body notes boxmath">
+<section>
+  <div class="problem">
+    <span class="prob-no">문제 3-5</span>
+    <p>Dijkstra가 음수 간선에서 틀리는 예를 하나 드시오.</p>
+  </div>
+</section>
+<section>
+  <details class="pd"><summary>힌트 보기</summary>
+    <div class="pd-body">
+      <p>확정 이후에 더 짧은 경로가 뒤늦게 생기는 구조.</p>
+    </div>
+  </details>
+  <details class="pd"><summary>정답 보기</summary>
+    <div class="pd-body">
+      <p class="ans-ref">개념은 위 힌트 보기에 있음</p>
+      <span class="sol-tag">풀이</span>
+      <ol class="steps">
+          <li>s→a 2, s→b 3, b→a −2. Dijkstra는 a(2)를 먼저 확정</li>
+          <li>실제 dist(a) = 3−2 = 1. 확정 후 갱신 불가라서 틀림</li>
+        </ol>
+      <div class="ans-final"><span class="lb">최종 답</span><span class="val"><span class="hl">음수 간선이 있으면 확정이 깨짐 → Bellman-Ford 사용</span></span></div>
+    </div>
+  </details>
+</section>
+<div class="pnav"><a href="rv-304.html">&larr; 이전</a><a href="../problems.html">문제 목록</a><a href="rv-306.html">다음 &rarr;</a></div>
+</div>
+</article>
+<script>window.addEventListener("beforeprint",function(){document.querySelectorAll("details").forEach(function(d){d.setAttribute("open","")})});</script>
+</body>
+</html>

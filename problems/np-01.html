@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NP-1 · 개념 — CSED331 알고리즘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/study-note.css">
+</head>
+<body>
+<article class="paper prob-page">
+<div class="phead">
+  <a class="to-home" href="../problems.html">&larr; 문제 목록</a>
+  <span class="phead-c">NP · 계산 불가능성 (범위 미확정)</span>
+  <span class="phead-r">CSED331 &middot; 알고리즘</span>
+</div>
+<div class="body notes boxmath">
+<section>
+  <p class="psub">범위 미확정 — 10/21 수업에서 NP를 다뤘으면 시험 범위 포함. 근거: 9/7 일정표 슬라이드의 이론 주제 순서가 복잡도 → 재귀 → 그래프 → 그리디 → DP → NP → [중간고사]. 10/20까지 DP까지 진도, 10/21(수)이 시험 전 마지막 수업이라 이날 NP를 다뤘다면 범위에 들어감. 실제 출제 여부는 10/21 수업 내용 확인 필요. 모범답안은 과제 규정(영어 답안)에 맞춰 영어로 작성.</p>
+  <div class="problem">
+    <span class="prob-no">문제 NP-1 <span class="prob-src">(개념)</span></span>
+    <p>P, NP, NP-hard, NP-complete의 정의를 쓰고, 네 클래스의 포함 관계를 설명하라. NP이면서 NP-hard인 문제 모음의 이름은?</p>
+  </div>
+</section>
+<section>
+  <details class="pd"><summary>힌트 보기</summary>
+    <div class="pd-body">
+      <p>P = 다항시간 결정 · NP = 다항 크기 certificate를 다항시간에 검증 · NP-hard = 모든 NP 문제가 다항 reduce · NP-complete = NP ∩ NP-hard.</p>
+    </div>
+  </details>
+  <details class="pd"><summary>정답 보기</summary>
+    <div class="pd-body">
+      <p class="ans-ref">개념은 위 힌트 보기에 있음 · 모범답안은 과제 규정에 맞춰 영어</p>
+      <span class="sol-tag">풀이 (English)</span>
+      <ol class="steps"><li>P = decision problems solvable in polynomial time.</li><li>NP = problems whose YES instances have a polynomial-size certificate verifiable in polynomial time.</li><li>NP-hard = every problem in NP reduces to it in polynomial time.</li><li>NP-complete = NP ∩ NP-hard.</li><li>P ⊆ NP, and NP-complete ⊂ NP; if P = NP then P = NP = NP-complete.</li></ol>
+      <div class="ans-final"><span class="lb">최종 답</span><span class="val"><span class="hl">P ⊆ NP, and NP-complete ⊂ NP; if P = NP then P = NP = NP-complete.</span></span></div>
+    </div>
+  </details>
+</section>
+<div class="pnav"><span></span><a href="../problems.html">문제 목록</a><a href="np-02.html">다음 &rarr;</a></div>
+</div>
+</article>
+<script>window.addEventListener("beforeprint",function(){document.querySelectorAll("details").forEach(function(d){d.setAttribute("open","")})});</script>
+</body>
+</html>

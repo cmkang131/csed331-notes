@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SL-5 · 방향 그래프와 DFS — CSED331 알고리즘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/study-note.css">
+</head>
+<body>
+<article class="paper prob-page">
+<div class="phead">
+  <a class="to-home" href="../problems.html">&larr; 문제 목록</a>
+  <span class="phead-c">슬라이드 기반 모의시험 (초안, 110점)</span>
+  <span class="phead-r">CSED331 &middot; 알고리즘</span>
+</div>
+<div class="body notes boxmath">
+<section>
+  <div class="problem">
+    <span class="prob-no">문제 SL-5</span>
+    <p>방향 그래프 G: A→B, A→D, A→F, B→C, B→E, C→A, C→F, D→E, E→F, G→D, G→H, H→G. 노드를 알파벳순으로 방문(이웃도 알파벳순)하는 DFS를 수행한다.</p>
+<ol type="a">
+<li>각 노드의 pre/post 번호(시계는 pre와 post 모두에서 증가)를 구하시오. <span class="prob-src">[3점]</span></li>
+<li>모든 간선을 tree / forward / back / cross로 분류하시오. <span class="prob-src">[3점]</span></li>
+<li>back edge를 삭제해 DAG를 만들고, post 번호 내림차순으로 topological order를 쓰시오. <span class="prob-src">[3점]</span></li>
+<li>'방향 그래프에 cycle이 있다 ⟺ DFS에서 back edge가 있다'를 증명하시오. <span class="prob-src">[3점]</span></li>
+</ol>
+
+    <p class="refline">방향 그래프와 DFS · 12점</p>
+  </div>
+</section>
+<section>
+  <details class="pd"><summary>힌트 보기</summary>
+    <div class="pd-body">
+      <p>DFS의 pre/post 시계와 간선 분류(tree/back/forward/cross). back edge ⟺ cycle.</p>
+    </div>
+  </details>
+  <details class="pd"><summary>정답 보기</summary>
+    <div class="pd-body">
+      <p class="ans-ref">개념은 위 힌트 보기에 있음</p>
+      <span class="sol-tag">풀이</span>
+      <div class="subpart first"><ul><li><span class="part">(a)</span><ol class="steps"><li>노드     A    B   C   F   E   D    G    H pre    1    2   3   4   7   10   13   14 post   12   9   6   5   8   11   16   15</li><li>B에서 C→F→(C 종료)→E 방문, A의 둘째 이웃 D(pre10), D→E는 이미 종료. G는 새 DFS 트리.</li></ol></li></ul></div>
+<div class="subpart"><ul><li><span class="part">(b)</span><ol class="steps"><li>tree: A→B, B→C, C→F, B→E, A→D, G→H. back: C→A, H→G. forward: A→F (F는 A의 자손, 이미 종료, pre(A)<pre(F)). cross: E→F, D→E, G→D.</li></ol></li></ul></div>
+<div class="subpart"><ul><li><span class="part">(c)</span><ol class="steps"><li>back edge C→A, H→G 삭제. post 내림차순: G(16), H(15), A(12), D(11), B(9), E(8), C(6), F(5). 모든 간선이 앞→뒤인지 확인 가능 (예: A→F, E→F, D→E).</li></ol></li></ul></div>
+<div class="subpart"><ul><li><span class="part">(d)</span><ol class="steps"><li>(⇐) back edge u→v: v는 u의 조상이므로 v→…→u 트리 경로 + u→v = cycle. (⇒) cycle C가 있다면 C에서 가장 먼저 발견된 노드 v를 보자.</li><li>C의 나머지 노드는 v가 활성인 동안 v에서 도달 가능하므로 v의 자손이 된다 (white-path). C에서 v로 들어오는 간선 u→v는 자손 u에서 조상 v로 가므로 back edge. ∎</li></ol></li></ul></div>
+
+      
+    </div>
+  </details>
+</section>
+<div class="pnav"><a href="sl-04.html">&larr; 이전</a><a href="../problems.html">문제 목록</a><a href="sl-06.html">다음 &rarr;</a></div>
+</div>
+</article>
+<script>window.addEventListener("beforeprint",function(){document.querySelectorAll("details").forEach(function(d){d.setAttribute("open","")})});</script>
+</body>
+</html>

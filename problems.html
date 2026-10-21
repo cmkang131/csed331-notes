@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>문제별 풀이 94 — CSED331 알고리즘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/home.css">
+</head>
+<body>
+<div class="paper">
+  <div class="course">CSED331 &middot; 알고리즘 &middot; POSTECH</div>
+  <h1>문제별 풀이 — 94문제</h1>
+  <div class="sub">기존 문제·풀이 자료를 문제당 한 페이지로. 먼저 풀어 보고 힌트 → 정답 순서로 연다. <a href="index.html">← 노트 홈</a></div>
+
+<section><h2>복습 체크리스트 — 빈칸 채우기 56 <span style="font-weight:400;font-size:13px;color:#666">슬라이드·요약 기반 초안</span></h2>
+    <div class="card-d" style="margin:14px 0 2px;font-weight:700;color:#1a1a1a">점근 표기 · Efficiency</div>
+    <a class="card" href="problems/rv-101.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">1-1</span></div>
+      <div class="card-d">관계는?</div>
+    </a>
+    <a class="card" href="problems/rv-102.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">1-2</span></div>
+      <div class="card-d">관계는?</div>
+    </a>
+    <a class="card" href="problems/rv-103.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">1-3</span></div>
+      <div class="card-d">관계는? 역전은 언제?</div>
+    </a>
+    <a class="card" href="problems/rv-104.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">1-4</span></div>
+      <div class="card-d">vs</div>
+    </a>
+    <a class="card" href="problems/rv-105.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">1-5</span></div>
+      <div class="card-d">을 성장 순서로</div>
+    </a>
+    <a class="card" href="problems/rv-106.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">1-6</span></div>
+      <div class="card-d">FIB1(n=5)의 호출 수와 덧셈 수</div>
+    </a>
+    <a class="card" href="problems/rv-107.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">1-7</span></div>
+      <div class="card-d">FIB1은 … 이라고 한다. … 도 맞나?</div>
+    </a>
+    <a class="card" href="problems/rv-108.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">1-8</span></div>
+      <div class="card-d">Graham's scan의 시간과 지배하는 단계는?</div>
+    </a>
+    <a class="card" href="problems/rv-109.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">1-9</span></div>
+      <div class="card-d">이면 … =? … , … 이면 … =?</div>
+    </a>
+    <div class="card-d" style="margin:14px 0 2px;font-weight:700;color:#1a1a1a">재귀 · 분할정복 · Master Theorem</div>
+    <a class="card" href="problems/rv-201.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-1</span></div>
+      <div class="card-d">·</div>
+    </a>
+    <a class="card" href="problems/rv-202.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-2</span></div>
+      <div class="card-d">·</div>
+    </a>
+    <a class="card" href="problems/rv-203.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-3</span></div>
+      <div class="card-d">·</div>
+    </a>
+    <a class="card" href="problems/rv-204.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-4</span></div>
+      <div class="card-d">·</div>
+    </a>
+    <a class="card" href="problems/rv-205.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-5</span></div>
+      <div class="card-d">·</div>
+    </a>
+    <a class="card" href="problems/rv-206.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-6</span></div>
+      <div class="card-d">(Hanoi)</div>
+    </a>
+    <a class="card" href="problems/rv-207.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-7</span></div>
+      <div class="card-d">원소 1000개 정렬 배열의 binary search 최악 비교 횟수</div>
+    </a>
+    <a class="card" href="problems/rv-208.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-8</span></div>
+      <div class="card-d">정렬된 6개 배열에 quicksort(맨 끝 원소 pivot). 비교 횟수와</div>
+    </a>
+    <a class="card" href="problems/rv-209.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-9</span></div>
+      <div class="card-d">Karatsuba가 곱셈을 3번만 쓰는 이유와 시간</div>
+    </a>
+    <a class="card" href="problems/rv-210.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-10</span></div>
+      <div class="card-d">Strassen의 점화식과 결과</div>
+    </a>
+    <a class="card" href="problems/rv-211.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-11</span></div>
+      <div class="card-d">selection(S, 4)를 v=5로 한 번 실행</div>
+    </a>
+    <a class="card" href="problems/rv-212.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-12</span></div>
+      <div class="card-d">Median of medians에서 블록 크기를 3으로 하면?</div>
+    </a>
+    <a class="card" href="problems/rv-213.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">2-13</span></div>
+      <div class="card-d">Closest pair 띠(strip)에서 y 순서로 몇 개 뒤까지 비교하나</div>
+    </a>
+    <div class="card-d" style="margin:14px 0 2px;font-weight:700;color:#1a1a1a">그래프 · 탐색 · 최단 경로</div>
+    <a class="card" href="problems/rv-301.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-1</span></div>
+      <div class="card-d">무방향 연결 그래프에 n=7, m=6. tree인가? m=8이면?</div>
+    </a>
+    <a class="card" href="problems/rv-302.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-2</span></div>
+      <div class="card-d">방향 그래프에서 cycle 판정 방법과 시간</div>
+    </a>
+    <a class="card" href="problems/rv-303.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-3</span></div>
+      <div class="card-d">간선 A→B, A→C, B→D, C→D, D→E. topological or</div>
+    </a>
+    <a class="card" href="problems/rv-304.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-4</span></div>
+      <div class="card-d">A→B 4, A→C 2, B→C 3, C→B 1, B→D 2, B→E 3, </div>
+    </a>
+    <a class="card" href="problems/rv-305.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-5</span></div>
+      <div class="card-d">Dijkstra가 음수 간선에서 틀리는 예를 하나 드시오</div>
+    </a>
+    <a class="card" href="problems/rv-306.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-6</span></div>
+      <div class="card-d">Bellman-Ford는 몇 라운드? negative cycle 판별은?</div>
+    </a>
+    <a class="card" href="problems/rv-307.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-7</span></div>
+      <div class="card-d">V=1000, E=1500일 때 Dijkstra에 array와 binary </div>
+    </a>
+    <a class="card" href="problems/rv-308.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-8</span></div>
+      <div class="card-d">DAG에서 longest path를 구하는 방법과 시간</div>
+    </a>
+    <a class="card" href="problems/rv-309.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-9</span></div>
+      <div class="card-d">Floyd-Warshall 점화식과 시간, 공간</div>
+    </a>
+    <a class="card" href="problems/rv-310.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-10</span></div>
+      <div class="card-d">DFS tree의 깊이가 최단 거리인가? 최단 거리가 필요하면?</div>
+    </a>
+    <a class="card" href="problems/rv-311.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-11</span></div>
+      <div class="card-d">BFS에서 같은 층 두 노드를 잇는 간선이 있으면 무엇이 보장되나?</div>
+    </a>
+    <a class="card" href="problems/rv-312.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">3-12</span></div>
+      <div class="card-d">TSP 비트마스크 DP의 부분문제 수와 시간</div>
+    </a>
+    <div class="card-d" style="margin:14px 0 2px;font-weight:700;color:#1a1a1a">그리디 · MST · Union-Find · 스케줄링 · Huffman</div>
+    <a class="card" href="problems/rv-401.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-1</span></div>
+      <div class="card-d">간선 A-B 1, A-C 2, B-C 3, C-D 4, B-D 5, D-E </div>
+    </a>
+    <a class="card" href="problems/rv-402.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-2</span></div>
+      <div class="card-d">위 그래프에서 MST는 유일한가?</div>
+    </a>
+    <a class="card" href="problems/rv-403.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-3</span></div>
+      <div class="card-d">Kruskal과 Prim의 시간</div>
+    </a>
+    <a class="card" href="problems/rv-404.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-4</span></div>
+      <div class="card-d">Cut property를 말하라</div>
+    </a>
+    <a class="card" href="problems/rv-405.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-5</span></div>
+      <div class="card-d">Union by rank의 효과: rank k인 root의 tree 크기와 </div>
+    </a>
+    <a class="card" href="problems/rv-406.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-6</span></div>
+      <div class="card-d">·</div>
+    </a>
+    <a class="card" href="problems/rv-407.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-7</span></div>
+      <div class="card-d">구간 [1,4), [3,5), [0,6), [5,7), [3,9), [5,9</div>
+    </a>
+    <a class="card" href="problems/rv-408.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-8</span></div>
+      <div class="card-d">Earliest start time greedy가 틀리는 예</div>
+    </a>
+    <a class="card" href="problems/rv-409.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-9</span></div>
+      <div class="card-d">위 11개 구간을 최소 강의실로 나누려면 몇 개? (interval part</div>
+    </a>
+    <a class="card" href="problems/rv-410.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-10</span></div>
+      <div class="card-d">빈도 a5 b9 c12 d13 e16 f45의 Huffman 트리와 cost</div>
+    </a>
+    <a class="card" href="problems/rv-411.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-11</span></div>
+      <div class="card-d">Interval scheduling earliest finish의 최적성 증</div>
+    </a>
+    <a class="card" href="problems/rv-412.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">4-12</span></div>
+      <div class="card-d">Selecting breakpoints: 연료 용량 C일 때 greedy 규</div>
+    </a>
+    <div class="card-d" style="margin:14px 0 2px;font-weight:700;color:#1a1a1a">동적 계획법</div>
+    <a class="card" href="problems/rv-501.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">5-1</span></div>
+      <div class="card-d">SNOWY → SUNNY의 edit distance와 마지막 행</div>
+    </a>
+    <a class="card" href="problems/rv-502.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">5-2</span></div>
+      <div class="card-d">Knapsack(반복 불가) W=11, (w,v) = (1,1), (2,6)</div>
+    </a>
+    <a class="card" href="problems/rv-503.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">5-3</span></div>
+      <div class="card-d">LIS: [3, 1, 4, 1, 5, 9, 2, 6]</div>
+    </a>
+    <a class="card" href="problems/rv-504.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">5-4</span></div>
+      <div class="card-d">최대 연속 부분합: [−2, 1, −3, 4, −1, 2, 1, −5, 4]</div>
+    </a>
+    <a class="card" href="problems/rv-505.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">5-5</span></div>
+      <div class="card-d">길이 n 이진 문자열 중 '00'이 없는 것의 수</div>
+    </a>
+    <a class="card" href="problems/rv-506.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">5-6</span></div>
+      <div class="card-d">A(10×30) B(30×5) C(5×60). 최소 곱셈 횟수와 순서</div>
+    </a>
+    <a class="card" href="problems/rv-507.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">5-7</span></div>
+      <div class="card-d">트리의 independent set DP 점화식</div>
+    </a>
+    <a class="card" href="problems/rv-508.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">5-8</span></div>
+      <div class="card-d">Subset sum: S = {3, 5, 7, 8}, target 12 가능</div>
+    </a>
+    <a class="card" href="problems/rv-509.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">5-9</span></div>
+      <div class="card-d">Weighted interval scheduling 점화식</div>
+    </a>
+    <a class="card" href="problems/rv-510.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">5-10</span></div>
+      <div class="card-d">DP의 시간 = ?</div>
+    </a>
+</section>
+<section><h2>HW 변형 문제은행 21 <span style="font-weight:400;font-size:13px;color:#666">HW1–5 원문(PLMS) 구조 변형 · 총 98점 · 시험과 가장 유사</span></h2>
+    <a class="card" href="problems/hw-01.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-1</span>HW1-1 변형 · 점근 표기 증명</div>
+      <div class="card-d">4점</div>
+    </a>
+    <a class="card" href="problems/hw-02.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-2</span>HW1-2 변형 · 성장률 순서</div>
+      <div class="card-d">3점</div>
+    </a>
+    <a class="card" href="problems/hw-03.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-3</span>HW1-3 변형 · 행렬 거듭제곱</div>
+      <div class="card-d">4점</div>
+    </a>
+    <a class="card" href="problems/hw-04.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-4</span>HW1-4 변형 · 알고리즘 시간 분석</div>
+      <div class="card-d">3점</div>
+    </a>
+    <a class="card" href="problems/hw-05.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-5</span>HW2-1 변형 · 분할정복 (significant inversion)</div>
+      <div class="card-d">5점</div>
+    </a>
+    <a class="card" href="problems/hw-06.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-6</span>HW2-2 변형 · local maximum</div>
+      <div class="card-d">5점</div>
+    </a>
+    <a class="card" href="problems/hw-07.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-7</span>HW2-4 변형 · 두 정렬 리스트의 k번째 원소</div>
+      <div class="card-d">5점</div>
+    </a>
+    <a class="card" href="problems/hw-08.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-8</span>HW2-5 변형 · 분할정복 최대 부분합 (길이 ≥2)</div>
+      <div class="card-d">5점</div>
+    </a>
+    <a class="card" href="problems/hw-09.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-9</span>HW3-1 변형 · 삼각형 세기</div>
+      <div class="card-d">4점</div>
+    </a>
+    <a class="card" href="problems/hw-10.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-10</span>HW3-2 변형 · shortest-path tree와 가중치 변경</div>
+      <div class="card-d">4점</div>
+    </a>
+    <a class="card" href="problems/hw-11.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-11</span>HW3-3 변형 · 간선 하나의 가중치를 절반으로</div>
+      <div class="card-d">5점</div>
+    </a>
+    <a class="card" href="problems/hw-12.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-12</span>HW3-4 변형 · DAG 최장 경로의 개수</div>
+      <div class="card-d">5점</div>
+    </a>
+    <a class="card" href="problems/hw-13.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-13</span>HW4-1 변형 · 그리디 색칠</div>
+      <div class="card-d">4점</div>
+    </a>
+    <a class="card" href="problems/hw-14.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-14</span>HW4-2 변형 · 트리의 최대 매칭</div>
+      <div class="card-d">5점</div>
+    </a>
+    <a class="card" href="problems/hw-15.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-15</span>HW4-3 변형 · 4진 Huffman 코드</div>
+      <div class="card-d">5점</div>
+    </a>
+    <a class="card" href="problems/hw-16.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-16</span>HW4-4 변형 · 음수 구간 덮기</div>
+      <div class="card-d">6점</div>
+    </a>
+    <a class="card" href="problems/hw-17.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-17</span>HW4-5 변형 · MST와 second-best MST</div>
+      <div class="card-d">6점</div>
+    </a>
+    <a class="card" href="problems/hw-18.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-18</span>HW5-1 변형 · 동전 DP</div>
+      <div class="card-d">4점</div>
+    </a>
+    <a class="card" href="problems/hw-19.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-19</span>HW5-2 변형 · 최대 합 부분행렬 (행 k개 고정)</div>
+      <div class="card-d">5점</div>
+    </a>
+    <a class="card" href="problems/hw-20.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-20</span>HW5-3 변형 · 로봇 격자</div>
+      <div class="card-d">5점</div>
+    </a>
+    <a class="card" href="problems/hw-21.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">HW-21</span>HW5-4 변형 · 원 위의 현(chord)</div>
+      <div class="card-d">6점</div>
+    </a>
+</section>
+<section><h2>슬라이드 기반 모의시험 9 <span style="font-weight:400;font-size:13px;color:#666">초안 · 총 110점</span></h2>
+    <a class="card" href="problems/sl-01.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">SL-1</span>점근 표기와 증명</div>
+      <div class="card-d">10점</div>
+    </a>
+    <a class="card" href="problems/sl-02.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">SL-2</span>Fibonacci 와 귀납법</div>
+      <div class="card-d">8점</div>
+    </a>
+    <a class="card" href="problems/sl-03.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">SL-3</span>점화식</div>
+      <div class="card-d">12점</div>
+    </a>
+    <a class="card" href="problems/sl-04.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">SL-4</span>분할정복 설계와 증명</div>
+      <div class="card-d">14점</div>
+    </a>
+    <a class="card" href="problems/sl-05.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">SL-5</span>방향 그래프와 DFS</div>
+      <div class="card-d">12점</div>
+    </a>
+    <a class="card" href="problems/sl-06.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">SL-6</span>최단 경로</div>
+      <div class="card-d">14점</div>
+    </a>
+    <a class="card" href="problems/sl-07.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">SL-7</span>MST · Union-Find · 그리디 증명</div>
+      <div class="card-d">14점</div>
+    </a>
+    <a class="card" href="problems/sl-08.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">SL-8</span>스케줄링과 Huffman</div>
+      <div class="card-d">10점</div>
+    </a>
+    <a class="card" href="problems/sl-09.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">SL-9</span>동적 계획법</div>
+      <div class="card-d">16점</div>
+    </a>
+</section>
+<section><h2>NP · 계산 불가능성 8 <span style="font-weight:400;font-size:13px;color:#666">범위 미확정 — 10/21 수업에서 NP를 다뤘으면 포함</span></h2>
+    <a class="card" href="problems/np-01.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">NP-1</span>개념</div>
+      <div class="card-d">모범답안 영어</div>
+    </a>
+    <a class="card" href="problems/np-02.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">NP-2</span>참/거짓 + 한 줄 근거</div>
+      <div class="card-d">모범답안 영어</div>
+    </a>
+    <a class="card" href="problems/np-03.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">NP-3</span>NP 소속 증명</div>
+      <div class="card-d">모범답안 영어</div>
+    </a>
+    <a class="card" href="problems/np-04.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">NP-4</span>Reduction 방향</div>
+      <div class="card-d">모범답안 영어</div>
+    </a>
+    <a class="card" href="problems/np-05.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">NP-5</span>IS ↔ VC</div>
+      <div class="card-d">모범답안 영어</div>
+    </a>
+    <a class="card" href="problems/np-06.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">NP-6</span>VC → Clique</div>
+      <div class="card-d">모범답안 영어</div>
+    </a>
+    <a class="card" href="problems/np-07.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">NP-7</span>3SAT → IS</div>
+      <div class="card-d">모범답안 영어</div>
+    </a>
+    <a class="card" href="problems/np-08.html">
+      <span class="go">→</span>
+      <div class="card-t"><span class="no">NP-8</span>Knapsack 함정</div>
+      <div class="card-d">모범답안 영어</div>
+    </a>
+</section>
+
+  <div class="foot">HW 변형 수치와 C 출력은 스크립트/gcc로 검증됨. 복습 체크리스트 수치는 계산으로 확인함. 기출 원문(PLMS HW)은 비공개라 변형만 수록.</div>
+</div>
+</body>
+</html>
