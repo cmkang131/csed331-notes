@@ -18,13 +18,11 @@
     else { var t = h('div', null, root); t.style.cssText = 'font-weight:600;margin:8px 0 4px'; t.textContent = titleText; }
     var stage = h('div', null, root);
     stage.style.cssText = 'border:1px solid ' + INK + ';background:#fff;padding:10px;overflow-x:auto';
-    var note = h('div', null, root);
-    note.style.cssText = 'font-size:13px;margin:6px 0;min-height:32px;line-height:1.5';
-    var bar = h('div', null, root);
-    bar.style.cssText = 'display:flex;align-items:center;gap:8px;margin-top:4px';
-    var prev = h('button', null, bar); prev.textContent = '◀ 이전';
-    var pos = h('span', null, bar); pos.style.cssText = 'font-size:12px;color:#555';
-    var next = h('button', null, bar); next.textContent = '다음 ▶';
+    var note = h('div', { 'class': 'v6-note' }, root);
+    var bar = h('div', { 'class': 'v6-controls' }, root);
+    var prev = h('button', { 'class': 'v6-btn' }, bar); prev.textContent = '◀ 이전';
+    var pos = h('span', { 'class': 'v6-pos' }, bar);
+    var next = h('button', { 'class': 'v6-btn' }, bar); next.textContent = '다음 ▶';
     var i = 0;
     function show() {
       stage.innerHTML = steps[i].svg;
@@ -336,16 +334,19 @@
   V6.register('recursion-tree', function (root) {
     var steps = [];
     function levelSvg(levels) {
-      var s = svgOpen(360, 40 + levels * 55 + 30);
+      var bw = 58, gap = 12, maxCnt = Math.pow(2, levels - 1);
+      var w = Math.max(440, maxCnt * (bw + gap) + 150);
+      var field = w - 150;
+      var s = svgOpen(w, 46 + levels * 62 + 16);
       for (var L = 0; L < levels; L++) {
-        var cnt = Math.pow(2, L), y = 30 + L * 55, span = 340 / cnt;
+        var cnt = Math.pow(2, L), y = 36 + L * 62, span = field / cnt;
         for (var k = 0; k < cnt; k++) {
-          var x = 10 + span * k + span / 2;
-          s += '<rect x="' + (x - 26) + '" y="' + (y - 14) + '" width="52" height="26" fill="#fff" stroke="' + INK + '" stroke-width="1.2"/>';
-          s += '<text x="' + x + '" y="' + (y + 4) + '" font-size="10" text-anchor="middle" fill="' + INK + '">cn/' + Math.pow(2, L) + '</text>';
-          if (L > 0) { var px = 10 + (340 / (cnt / 2)) * (k >> 1) + (340 / (cnt / 2)) / 2; s += '<line x1="' + px + '" y1="' + (y - 55 + 12) + '" x2="' + x + '" y2="' + (y - 14) + '" stroke="' + GRID + '"/>'; }
+          var x = 12 + span * k + span / 2;
+          s += '<rect x="' + (x - bw / 2) + '" y="' + (y - 15) + '" width="' + bw + '" height="28" fill="#fff" stroke="' + INK + '" stroke-width="1.2"/>';
+          s += '<text x="' + x + '" y="' + (y + 4) + '" font-size="12" text-anchor="middle" fill="' + INK + '">cn/' + Math.pow(2, L) + '</text>';
+          if (L > 0) { var pspan = field / (cnt / 2); var px = 12 + pspan * (k >> 1) + pspan / 2; s += '<line x1="' + px + '" y1="' + (y - 62 + 13) + '" x2="' + x + '" y2="' + (y - 15) + '" stroke="' + GRID + '"/>'; }
         }
-        s += '<text x="352" y="' + (y + 4) + '" font-size="11" text-anchor="end" fill="' + RED + '">= cn</text>';
+        s += '<text x="' + (w - 14) + '" y="' + (y + 4) + '" font-size="12" text-anchor="end" fill="' + RED + '">= cn</text>';
       }
       return s + '</svg>';
     }
