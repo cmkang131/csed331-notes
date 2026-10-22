@@ -705,7 +705,7 @@
       Object.keys(towers).forEach((name, towerIndex) => {
         towers[name].forEach((disk, level) => {
           const dw = minDiskW +
-            (n - disk) / Math.max(1, n - 1) * (maxDiskW - minDiskW);
+            (disk - 1) / Math.max(1, n - 1) * (maxDiskW - minDiskW);
           const x = centers[towerIndex];
           const y = baseline - (level + 1) * diskH;
           const isCurrent = step > 0 && moves[step - 1].disk === disk &&
