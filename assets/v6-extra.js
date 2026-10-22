@@ -52,6 +52,8 @@
   }
 
   /* 1. 삽입 정렬: i를 1..n-1로 키를 정렬된 앞부분에 삽입 */
+
+
   V6.register('sort-insertion', function (root) {
     var a0 = [7, 3, 9, 2, 8, 4], steps = [];
     var a = a0.slice();
@@ -450,5 +452,443 @@
       }
     }
     player(root, '이진 탐색 (Binary Search)', steps);
+  });
+})();
+
+(function () {
+  "use strict";
+
+  if (!window.V6 || typeof window.V6.register !== "function") return;
+  const V6 = window.V6;
+
+  const INK = V6.INK || "#1a1a1a";
+  const RED = V6.RED || "#9e2b25";
+  const GRID = V6.GRID || "#e8e6e0";
+
+  const SUP = {
+    "0": "⁰", "1": "¹", "2": "²", "3": "³",
+    "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷",
+    "8": "⁸", "9": "⁹", "-": "⁻"
+  };
+
+  function sup(n) {
+    return String(n).split("").map(c => SUP[c] || c).join("");
+  }
+
+  function hanoiCount(n) {
+    return Math.pow(2, n) - 1;
+  }
+
+  V6.register("hanoi", function (el, cfg) {
+    let n = Math.max(2, Math.min(6, Number(cfg && cfg.n) || 3));
+    let moves = [];
+    let step = 0;
+    let timer = null;
+
+    el.innerHTML = "";
+
+    const root = document.createElement("div");
+    root.style.cssText =
+      "width:100%;max-width:760px;margin:0 auto;color:" + INK +
+      ";font-family:'Noto Sans KR',sans-serif;font-size:14px;";
+
+    root.innerHTML = `
+      <style>
+        .hanoi-widget * { box-sizing:border-box; }
+        .hanoi-widget .h-title {
+          font-size:17px;font-weight:600;margin:0 0 5px;
+        }
+        .hanoi-widget .h-sub {
+          font-size:12px;color:${INK};opacity:.75;margin-bottom:14px;
+        }
+        .hanoi-widget .h-panel {
+          border:1px solid ${GRID};border-radius:8px;
+          padding:12px;margin-top:10px;min-width:0;
+        }
+        .hanoi-widget .h-label {
+          font-weight:600;margin-bottom:8px;font-size:13px;
+        }
+        .hanoi-widget .h-controls {
+          display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+        }
+        .hanoi-widget .h-controls .v6-btn { font-family:inherit; }
+        .hanoi-widget .h-status {
+          min-height:42px;line-height:1.65;margin-top:9px;
+          overflow-wrap:anywhere;
+        }
+        .hanoi-widget .h-stack {
+          font-family:monospace;font-size:12px;line-height:1.9;
+          overflow-wrap:anywhere;
+        }
+        .hanoi-widget .h-frame {
+          border-left:2px solid ${GRID};padding-left:9px;
+          margin:3px 0;white-space:normal;
+        }
+        .hanoi-widget .h-frame.active {
+          border-left-color:${RED};color:${RED};font-weight:600;
+        }
+        .hanoi-widget .h-muted { opacity:.65;font-size:12px; }
+        .hanoi-widget input[type=range] {
+          accent-color:${RED};width:145px;max-width:100%;
+        }
+        .hanoi-widget .h-count {
+          font-variant-numeric:tabular-nums;
+          font-size:14px;font-weight:600;
+        }
+        .hanoi-widget .h-grid {
+          display:grid;grid-template-columns:minmax(0,1fr);
+          gap:10px;
+        }
+        .hanoi-widget canvas {
+          display:block;width:100%;height:auto;
+        }
+        @media(min-width:600px) {
+          .hanoi-widget .h-grid {
+            grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+          }
+        }
+      </style>
+      <div class="hanoi-widget">
+        <div class="h-title">하노이 탑 · 재귀 호출 추적</div>
+        <div class="h-sub">
+          원판 n개를 A에서 C로 옮긴다. 한 번에 한 원판만 옮기며,
+          큰 원판은 작은 원판 위에 놓을 수 없다.
+        </div>
+
+        <div class="v6-controls h-controls">
+          <label for="h-n">원판 수 n</label>
+          <input id="h-n" type="range" min="2" max="6" step="1">
+          <span class="v6-val" id="h-n-val"></span>
+          <span class="h-muted" id="h-total"></span>
+        </div>
+
+        <div class="h-panel">
+          <canvas id="h-canvas" width="720" height="285"
+            aria-label="하노이 탑의 세 기둥과 원판"></canvas>
+          <div class="h-controls" style="justify-content:space-between;margin-top:9px">
+            <span class="h-count" id="h-count"></span>
+            <span class="h-muted" id="h-phase"></span>
+          </div>
+          <div class="v6-controls h-controls" style="margin-top:12px">
+            <button type="button" class="v6-btn" id="h-prev">이전 수</button>
+            <button type="button" class="v6-btn" id="h-next">다음 수</button>
+            <button type="button" class="v6-btn" id="h-play">자동 재생</button>
+            <button type="button" class="v6-btn" id="h-reset">처음으로</button>
+          </div>
+          <div class="h-status v6-state" id="h-status" aria-live="polite"></div>
+        </div>
+
+        <div class="h-grid">
+          <div class="h-panel">
+            <div class="h-label">현재 재귀 호출 스택</div>
+            <div class="h-muted" style="margin-bottom:8px">
+              가장 바깥 호출부터 현재 이동이 발생한 호출까지
+            </div>
+            <div id="h-stack" class="h-stack"></div>
+          </div>
+          <div class="h-panel">
+            <div class="h-label">재귀 규칙</div>
+            <div style="line-height:1.9">
+              <div>① n−1개를 보조 기둥으로 이동</div>
+              <div>② 가장 큰 원판 1개 이동</div>
+              <div>③ n−1개를 목적 기둥으로 이동</div>
+            </div>
+            <div style="border-top:1px solid ${GRID};margin-top:10px;padding-top:10px">
+              <div id="h-recurrence"></div>
+              <div id="h-proof" class="h-muted" style="margin-top:6px;line-height:1.7"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    el.appendChild(root);
+
+    const $ = id => root.querySelector("#" + id);
+    const canvas = $("h-canvas");
+    const ctx = canvas.getContext("2d");
+    const range = $("h-n");
+
+    function stop() {
+      if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+      }
+      $("h-play").textContent = "자동 재생";
+    }
+
+    function buildMoves(count) {
+      const out = [];
+
+      function solve(k, from, to, aux, stack) {
+        const call = {
+          k, from, to, aux,
+          label: `hanoi(${k}, ${from}→${to})`
+        };
+        const path = stack.concat(call);
+
+        if (k === 0) return;
+
+        solve(k - 1, from, aux, to, path);
+
+        out.push({
+          disk: k,
+          from,
+          to,
+          path: path.map((f, i) => ({
+            ...f,
+            phase: i === path.length - 1
+              ? "가운데 이동"
+              : "하위 호출 진행"
+          }))
+        });
+
+        solve(k - 1, aux, to, from, path);
+      }
+
+      solve(count, "A", "C", "B", []);
+      return out;
+    }
+
+    function stateAt(s) {
+      const towers = { A: [], B: [], C: [] };
+      for (let disk = n; disk >= 1; disk--) towers.A.push(disk);
+
+      for (let i = 0; i < s; i++) {
+        const m = moves[i];
+        const disk = towers[m.from].pop();
+        if (disk !== m.disk) {
+          throw new Error("원판 상태가 올바르지 않습니다.");
+        }
+        towers[m.to].push(disk);
+      }
+      return towers;
+    }
+
+    function draw() {
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, w, h);
+
+      const baseline = h - 31;
+      const centers = [w * 0.19, w * 0.50, w * 0.81];
+      const poleTop = 27;
+      const poleBottom = baseline;
+      const towers = stateAt(step);
+      const diskH = Math.min(25, 154 / n);
+      const maxDiskW = Math.min(174, w * 0.235);
+      const minDiskW = Math.min(52, maxDiskW * 0.32);
+
+      ctx.strokeStyle = GRID;
+      ctx.lineWidth = 2;
+      ctx.lineCap = "round";
+
+      centers.forEach((x, i) => {
+        ctx.beginPath();
+        ctx.moveTo(x, poleTop);
+        ctx.lineTo(x, poleBottom);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(x - maxDiskW * 0.59, baseline);
+        ctx.lineTo(x + maxDiskW * 0.59, baseline);
+        ctx.stroke();
+
+        ctx.fillStyle = INK;
+        ctx.font = "600 14px 'Noto Sans KR', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(["A", "B", "C"][i], x, h - 9);
+      });
+
+      Object.keys(towers).forEach((name, towerIndex) => {
+        towers[name].forEach((disk, level) => {
+          const dw = minDiskW +
+            (n - disk) / Math.max(1, n - 1) * (maxDiskW - minDiskW);
+          const x = centers[towerIndex];
+          const y = baseline - (level + 1) * diskH;
+          const isCurrent = step > 0 && moves[step - 1].disk === disk &&
+            moves[step - 1].to === name;
+
+          ctx.fillStyle = isCurrent ? RED : "#ffffff";
+          ctx.strokeStyle = isCurrent ? RED : INK;
+          ctx.lineWidth = 1.6;
+
+          // 약간 비대칭인 윤곽으로 손으로 그린 느낌을 준다.
+          ctx.beginPath();
+          ctx.moveTo(x - dw / 2 + 3, y + 2);
+          ctx.lineTo(x - dw / 2, y + diskH * 0.28);
+          ctx.lineTo(x - dw / 2 + 2, y + diskH - 2);
+          ctx.lineTo(x + dw / 2 - 3, y + diskH - 1);
+          ctx.lineTo(x + dw / 2, y + diskH * 0.26);
+          ctx.lineTo(x + dw / 2 - 2, y + 2);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.fillStyle = isCurrent ? "#ffffff" : INK;
+          ctx.font = "12px 'Noto Sans KR', sans-serif";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText(String(disk), x, y + diskH / 2);
+          ctx.textBaseline = "alphabetic";
+        });
+      });
+
+      if (step > 0) {
+        const m = moves[step - 1];
+        const fromX = centers[["A", "B", "C"].indexOf(m.from)];
+        const toX = centers[["A", "B", "C"].indexOf(m.to)];
+        ctx.strokeStyle = RED;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(fromX, 14);
+        ctx.lineTo(toX, 14);
+        ctx.stroke();
+
+        ctx.fillStyle = RED;
+        ctx.beginPath();
+        ctx.moveTo(toX, 14);
+        ctx.lineTo(toX + (toX > fromX ? -7 : 7), 10);
+        ctx.lineTo(toX + (toX > fromX ? -7 : 7), 18);
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+
+    function renderStack() {
+      const target = $("h-stack");
+      target.innerHTML = "";
+
+      if (step === 0) {
+        const line = document.createElement("div");
+        line.className = "h-frame active";
+        line.textContent = `hanoi(${n}, A→C) · 시작`;
+        target.appendChild(line);
+
+        const note = document.createElement("div");
+        note.className = "h-muted";
+        note.style.marginTop = "8px";
+        note.textContent = "아직 이동하지 않았습니다. 다음 수를 눌러 호출을 추적하세요.";
+        target.appendChild(note);
+        return;
+      }
+
+      const path = moves[step - 1].path;
+      path.forEach((frame, i) => {
+        const line = document.createElement("div");
+        line.className = "h-frame" +
+          (i === path.length - 1 ? " active" : "");
+        line.style.marginLeft = (i * 10) + "px";
+        line.textContent = frame.label +
+          (i === path.length - 1 ? "  ← 현재 이동" : "");
+        target.appendChild(line);
+      });
+
+      const note = document.createElement("div");
+      note.className = "h-muted";
+      note.style.marginTop = "8px";
+      note.textContent =
+        "현재 이동은 가장 깊은 활성 호출에서 발생합니다. 호출이 반환되면 상위 호출의 다음 단계로 돌아갑니다.";
+      target.appendChild(note);
+    }
+
+    function render() {
+      const total = hanoiCount(n);
+      const m = step > 0 ? moves[step - 1] : null;
+
+      $("h-n-val").textContent = n + "개";
+      $("h-total").textContent = `최소 ${total}회`;
+      $("h-count").textContent =
+        `이동 ${step} / 2${sup(n)}−1 = ${total}`;
+      $("h-phase").textContent =
+        step === 0 ? "시작 상태" :
+        step === total ? "모든 이동 완료" : `이동 ${step}번째`;
+
+      $("h-prev").disabled = step === 0;
+      $("h-next").disabled = step === total;
+
+      if (step === total) {
+        $("h-status").textContent =
+          `완료 — 2${sup(n)}−1 = ${total}회. ` +
+          `hanoi(n) = 2·hanoi(n−1) + 1`;
+      } else if (m) {
+        const frame = m.path[m.path.length - 1];
+        $("h-status").textContent =
+          `원판 ${m.disk}: ${m.from} → ${m.to} ` +
+          `(${frame.label}의 가운데 이동)`;
+      } else {
+        $("h-status").textContent =
+          `시작: ${n}개 원판을 A에서 C로 옮깁니다. ` +
+          "가장 작은 부분문제부터 이동이 발생합니다.";
+      }
+
+      $("h-recurrence").innerHTML =
+        `<strong>H(${n}) = 2 · H(${n - 1}) + 1</strong>`;
+      $("h-proof").textContent =
+        `H(1)=1. 각 단계에서 n−1개를 옮기는 호출 2회와 ` +
+        `가장 큰 원판의 이동 1회가 필요합니다.`;
+
+      renderStack();
+      draw();
+    }
+
+    function reset(newN) {
+      stop();
+      if (newN !== undefined) n = newN;
+      step = 0;
+      moves = buildMoves(n);
+      range.value = n;
+      render();
+    }
+
+    $("h-prev").addEventListener("click", function () {
+      stop();
+      if (step > 0) step--;
+      render();
+    });
+
+    $("h-next").addEventListener("click", function () {
+      stop();
+      if (step < moves.length) step++;
+      render();
+    });
+
+    $("h-reset").addEventListener("click", function () {
+      reset();
+    });
+
+    $("h-play").addEventListener("click", function () {
+      if (timer !== null) {
+        stop();
+        return;
+      }
+
+      if (step >= moves.length) step = 0;
+
+      $("h-play").textContent = "정지";
+      render();
+
+      timer = setInterval(function () {
+        if (step >= moves.length) {
+          stop();
+          render();
+          return;
+        }
+        step++;
+        render();
+        if (step >= moves.length) {
+          stop();
+          render();
+        }
+      }, 700);
+    });
+
+    range.addEventListener("input", function () {
+      reset(Math.max(2, Math.min(6, Number(range.value) || 3)));
+    });
+
+    reset(n);
   });
 })();

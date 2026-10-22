@@ -128,59 +128,7 @@
   <ul>
     <li>작은 경우부터 보면 규칙이 보임: <span class="mjx"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="5.506ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 2433.6 748"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(877.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mn" transform="translate(1933.6,0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></g></g></svg></span>이면 A → C 한 번 (base case). <span class="mjx"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="5.506ex" height="1.692ex" role="img" focusable="false" viewBox="0 -666 2433.6 748"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(877.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mn" transform="translate(1933.6,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></svg></span>면 작은 것 → B, 큰 것 → C, 작은 것 B → C. <span class="mjx"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="5.506ex" height="1.69ex" role="img" focusable="false" viewBox="0 -665 2433.6 747"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mo" transform="translate(877.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></g><g data-mml-node="mn" transform="translate(1933.6,0)"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g></g></g></svg></span>이면 위 2개 옮기기를 아는 블랙박스에 두 번 맡김</li>
   </ul>
-  <figure><svg viewBox="0 0 640 182" xmlns="http://www.w3.org/2000/svg"><style>.nd{fill:#fff;stroke:#1a1a1a;stroke-width:1.4}
-.nd.dup{fill:#f2f2f2;stroke:#9e2b25}
-.nd.ghost{fill:#f4f4f4;stroke:#cfcfcf}
-.nl{font:italic 600 11.5px 'Noto Sans KR',sans-serif;text-anchor:middle;fill:#1a1a1a}
-.nl.dup{fill:#9e2b25}
-.nl.ghost{fill:#b5b5b5}
-.eg{stroke:#888;stroke-width:1.1}
-.eg.dup{stroke:#d9d9d9}
-.sq{fill:none;stroke:#8a8a8a;stroke-width:1.4}
-.sqn{font:13px 'Noto Sans KR',sans-serif;text-anchor:middle;fill:#555}
-.arc{fill:none;stroke:#9e2b25;stroke-width:2.4}
-.cell{fill:#fff;stroke:#888;stroke-width:1.1}
-.cv{font:12.5px 'Noto Sans KR',sans-serif;text-anchor:middle;fill:#1a1a1a}
-.ci{font:9.5px 'Noto Sans KR',sans-serif;text-anchor:middle;fill:#999}
-.tlabel{font:12px 'Noto Sans KR',sans-serif;fill:#555}
-.st{fill:none;stroke:#555555;stroke-width:1.6;marker-end:none}
-.rd{fill:none;stroke:#9e2b25;stroke-width:1.6;stroke-dasharray:4 3}
-.lg{font:11.5px 'Noto Sans KR',sans-serif;fill:#555}
-.hullfill{fill:#f2f2f2;stroke:#1a1a1a;stroke-width:2}
-.grahamfill{fill:none;stroke:#999;stroke-width:1.4;stroke-dasharray:5 4}
-.pt{fill:#1a1a1a}
-.ptb{fill:#1a1a1a}
-.ptr{fill:#9e2b25}
-.ptl{font:italic 13px 'Noto Sans KR',sans-serif;fill:#1a1a1a}
-.note,.figwrap svg .noteb,.figwrap svg .noter{font:12px 'Noto Sans KR',sans-serif;fill:#555;text-anchor:middle}
-.noteb{fill:#1a1a1a;text-anchor:start}
-.noter{fill:#9e2b25;text-anchor:start}
-.dline{stroke:#1a1a1a;stroke-width:1.6}
-.scanline{stroke:#9e2b25;stroke-width:2.4}
-.scanpt{fill:#fff;stroke:#9e2b25;stroke-width:2}
-.scanlbl{font:italic 700 14px 'Noto Sans KR',sans-serif;fill:#9e2b25}
-.axis{stroke:#666;stroke-width:1.2}
-.n0{stroke:#999;stroke-width:1;stroke-dasharray:3 3}
-.axl{font:11px 'Noto Sans KR',sans-serif;fill:#666}
-.figt{font:700 12.5px 'Noto Sans KR',sans-serif;fill:#1a1a1a;text-anchor:middle}
-.cf{fill:none;stroke:#1a1a1a;stroke-width:2}
-.cg{fill:none;stroke:#1a1a1a;stroke-width:1.6}
-.cl{font:italic 12px 'Noto Sans KR',sans-serif;fill:#1a1a1a}
-.clb{font:italic 12px 'Noto Sans KR',sans-serif;fill:#1a1a1a}
-.legendbox{fill:#fafafa;stroke:#ddd;stroke-width:1}
-.bar{fill:#d9d9d9;stroke:#b5b5b5;stroke-width:1}
-.barh{fill:#8a8a8a;stroke:#666666;stroke-width:1}
-.barpick{fill:#f2f2f2;stroke:#1a1a1a;stroke-width:1.6}
-.blob{fill:#f2f2f2;stroke:#d9d9d9;stroke-width:1.2}
-.mste{stroke:#1a1a1a;stroke-width:2.6;fill:none}
-.cutl{stroke:#9e2b25;stroke-width:2;stroke-dasharray:6 4;fill:none}
-.tick{stroke:#1a1a1a;stroke-width:1.4}
-.tickpick{stroke:#1a1a1a;stroke-width:2.2}
-.reach{fill:none;stroke:#555555;stroke-width:1.6;stroke-dasharray:5 3}
-.ew{font:10px 'Noto Sans KR',sans-serif;fill:#666;text-anchor:middle}
-.ewb{font:700 10.5px 'Noto Sans KR',sans-serif;fill:#1a1a1a;text-anchor:middle}
-.barn{font:10.5px 'Noto Sans KR',sans-serif;fill:#444;text-anchor:middle}
-</style><text x="320" y="16" class="figt">Hanoi(n, A → C, spare B) — 재귀 3단계</text><text x="100" y="38" class="note">① n−1개를 A → B</text><line x1="40" y1="108" x2="40" y2="44" class="tick"/><line x1="-6" y1="108" x2="86" y2="108" class="tick"/><line x1="100" y1="108" x2="100" y2="44" class="tick"/><line x1="54" y1="108" x2="146" y2="108" class="tick"/><line x1="160" y1="108" x2="160" y2="44" class="tick"/><line x1="114" y1="108" x2="206" y2="108" class="tick"/><text x="40" y="122" class="ci">A</text><text x="100" y="122" class="ci">B</text><text x="160" y="122" class="ci">C</text><rect x="8.0" y="96" width="64" height="10" rx="2" class="barpick"/><rect x="91.0" y="96" width="18" height="10" rx="2" class="bar"/><rect x="85.0" y="84" width="30" height="10" rx="2" class="bar"/><rect x="78.0" y="72" width="44" height="10" rx="2" class="bar"/><text x="320" y="38" class="note">② 가장 큰 원판 A → C</text><line x1="260" y1="108" x2="260" y2="44" class="tick"/><line x1="214" y1="108" x2="306" y2="108" class="tick"/><line x1="320" y1="108" x2="320" y2="44" class="tick"/><line x1="274" y1="108" x2="366" y2="108" class="tick"/><line x1="380" y1="108" x2="380" y2="44" class="tick"/><line x1="334" y1="108" x2="426" y2="108" class="tick"/><text x="260" y="122" class="ci">A</text><text x="320" y="122" class="ci">B</text><text x="380" y="122" class="ci">C</text><rect x="311.0" y="96" width="18" height="10" rx="2" class="bar"/><rect x="305.0" y="84" width="30" height="10" rx="2" class="bar"/><rect x="298.0" y="72" width="44" height="10" rx="2" class="bar"/><rect x="348.0" y="96" width="64" height="10" rx="2" class="barpick"/><path d="M 300 96 Q 340 60 380 88" class="rd" marker-end="none"/><polygon points="380,88 374,82 382,80" class="ptr"/><text x="540" y="38" class="note">③ n−1개를 B → C</text><line x1="480" y1="108" x2="480" y2="44" class="tick"/><line x1="434" y1="108" x2="526" y2="108" class="tick"/><line x1="540" y1="108" x2="540" y2="44" class="tick"/><line x1="494" y1="108" x2="586" y2="108" class="tick"/><line x1="600" y1="108" x2="600" y2="44" class="tick"/><line x1="554" y1="108" x2="646" y2="108" class="tick"/><text x="480" y="122" class="ci">A</text><text x="540" y="122" class="ci">B</text><text x="600" y="122" class="ci">C</text><rect x="591.0" y="96" width="18" height="10" rx="2" class="bar"/><rect x="585.0" y="84" width="30" height="10" rx="2" class="bar"/><rect x="578.0" y="72" width="44" height="10" rx="2" class="bar"/><rect x="568.0" y="60" width="64" height="10" rx="2" class="bar"/><path d="M 540 72 Q 570 40 600 66" class="rd"/><polygon points="600,66 594,60 602,58" class="ptr"/><text x="320" y="150" class="note">Hanoi(n−1, A, B, C) → 이동 → Hanoi(n−1, B, C, A) — 두 번째 호출은 출발이 B</text><text x="320" y="170" class="note" style="font-weight:700">T(n) = 2T(n−1) + 1 = 2^n − 1</text></svg></figure>
+  <div class="v6-widget" data-widget="hanoi" data-config='{"n":3}'></div>
   <div class="nb">
     <dl class="def">
     <div><dt>함정</dt><dd>블랙박스를 두 번 쓰지만 <b>목적지가 다름</b>. 첫 호출의 도착은 B, 둘째 호출의 출발은 B</dd></div>
