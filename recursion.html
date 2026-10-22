@@ -524,83 +524,87 @@
   <figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-label="Karatsuba 곱셈 재귀 구조">
   <defs>
     <style>
-      text {
-        font-family: "Noto Sans KR", sans-serif;
-        fill: #1a1a1a;
+      text{
+        font-family:"Noto Sans KR",sans-serif;
+        fill:#1a1a1a;
       }
-      .line { stroke: #1a1a1a; stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-      .box { stroke: #1a1a1a; stroke-width: 2.2; fill: none; rx: 10; ry: 10; }
-      .em { fill: #9e2b25; }
-      .em-stroke { stroke: #9e2b25; }
-      .title { font-size: 18px; font-weight: 600; }
-      .label { font-size: 15px; }
-      .small { font-size: 13px; }
-      .formula { font-size: 18px; }
-      .complex { font-size: 19px; font-weight: 600; }
-      .sup { font-size: 70%; baseline-shift: super; }
+      .box{
+        fill:none;
+        stroke:#1a1a1a;
+        stroke-width:2.2;
+        rx:10; ry:10;
+      }
+      .line{
+        fill:none;
+        stroke:#1a1a1a;
+        stroke-width:2;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+      }
+      .title{ font-size:18px; font-weight:600; }
+      .body{ font-size:15px; }
+      .formula{ font-size:18px; }
+      .complexity{ font-size:19px; font-weight:600; }
+      .small{ font-size:13px; }
+      .sup{ font-size:70%; baseline-shift:super; }
+      .sub{ font-size:70%; baseline-shift:sub; }
+      .em{ fill:#9e2b25; }
     </style>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8.2" refY="5" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <marker id="arrow" viewBox="0 0 8 8" markerWidth="7" markerHeight="7" refX="6.5" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,4 L0,8" fill="none" stroke="#1a1a1a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
   </defs>
 
-  <!-- background -->
   <rect x="0" y="0" width="640" height="300" fill="#ffffff"/>
 
+  <!-- decomposition label (moved away from arrows) -->
+  <text class="body" x="320" y="24" text-anchor="middle">
+    x = a·10<tspan class="sup">n/2</tspan> + b,&nbsp;&nbsp; y = c·10<tspan class="sup">n/2</tspan> + d
+  </text>
+
   <!-- top box -->
-  <rect class="box" x="250" y="18" width="140" height="46"/>
-  <text class="title" x="320" y="46" text-anchor="middle">
+  <rect class="box" x="248" y="40" width="144" height="46"/>
+  <text class="title" x="320" y="68" text-anchor="middle">
     <tspan class="em">x·y</tspan>
     <tspan> (n자리)</tspan>
   </text>
 
   <!-- child boxes -->
-  <rect class="box" x="60" y="110" width="140" height="56"/>
-  <rect class="box" x="250" y="110" width="140" height="56"/>
-  <rect class="box" x="440" y="110" width="140" height="56"/>
+  <rect class="box" x="60" y="122" width="150" height="58"/>
+  <rect class="box" x="245" y="122" width="150" height="58"/>
+  <rect class="box" x="430" y="122" width="150" height="58"/>
 
-  <text class="title" x="130" y="136" text-anchor="middle">
-    <tspan>a·c</tspan>
+  <!-- arrows (kept below the label) -->
+  <path class="line" d="M307 86 C286 98, 233 108, 138 120" marker-end="url(#arrow)"/>
+  <path class="line" d="M320 86 L320 118" marker-end="url(#arrow)"/>
+  <path class="line" d="M333 86 C354 98, 407 108, 502 120" marker-end="url(#arrow)"/>
+
+  <!-- child box labels -->
+  <text class="title" x="135" y="146" text-anchor="middle">
+    P<tspan class="sub">1</tspan> = a·c
   </text>
-  <text class="small" x="130" y="154" text-anchor="middle">n/2자리 곱셈</text>
+  <text class="small" x="135" y="165" text-anchor="middle">n/2자리 곱셈</text>
 
-  <text class="title" x="320" y="136" text-anchor="middle">
-    <tspan>b·d</tspan>
+  <text class="title" x="320" y="146" text-anchor="middle">
+    P<tspan class="sub">2</tspan> = b·d
   </text>
-  <text class="small" x="320" y="154" text-anchor="middle">n/2자리 곱셈</text>
+  <text class="small" x="320" y="165" text-anchor="middle">n/2자리 곱셈</text>
 
-  <text class="title" x="510" y="136" text-anchor="middle">
-    <tspan>(a+b)(c+d)</tspan>
+  <text class="title" x="505" y="146" text-anchor="middle">
+    P<tspan class="sub">3</tspan> = (a+b)(c+d)
   </text>
-  <text class="small" x="510" y="154" text-anchor="middle">n/2자리 곱셈</text>
-
-  <!-- arrows -->
-  <path class="line" marker-end="url(#arrow)" d="M302 64 C275 82, 210 92, 145 108"/>
-  <path class="line" marker-end="url(#arrow)" d="M320 64 L320 106"/>
-  <path class="line" marker-end="url(#arrow)" d="M338 64 C365 82, 430 92, 495 108"/>
-
-  <!-- decomposition hint -->
-  <text class="label" x="320" y="92" text-anchor="middle">
-    x = a·10<tspan class="sup">n/2</tspan> + b,&nbsp;&nbsp; y = c·10<tspan class="sup">n/2</tspan> + d
-  </text>
+  <text class="small" x="505" y="165" text-anchor="middle">n/2자리 곱셈</text>
 
   <!-- combination formula -->
-  <text class="formula" x="320" y="214" text-anchor="middle">
+  <text class="formula" x="320" y="222" text-anchor="middle">
     <tspan class="em">xy</tspan>
     <tspan> = ac·10</tspan><tspan class="sup">n</tspan>
-    <tspan> + </tspan>
-    <tspan class="em">((a+b)(c+d) − ac − bd)</tspan>
-    <tspan>·10</tspan><tspan class="sup">n/2</tspan>
+    <tspan> + ((a+b)(c+d) − ac − bd)·10</tspan><tspan class="sup">n/2</tspan>
     <tspan> + bd</tspan>
   </text>
 
-  <!-- subtle underline accents -->
-  <path class="line em-stroke" d="M123 173 Q130 177 137 173"/>
-  <path class="line em-stroke" d="M313 173 Q320 177 327 173"/>
-  <path class="line em-stroke" d="M495 173 Q510 178 525 173"/>
-
-  <!-- bottom complexity line -->
-  <text class="complex" x="320" y="262" text-anchor="middle">
+  <!-- recurrence / complexity -->
+  <text class="complexity" x="320" y="266" text-anchor="middle">
     <tspan>T(n) = 3T(n/2) + O(n)</tspan>
     <tspan> → </tspan>
     <tspan class="em">O(n</tspan><tspan class="em sup">1.585</tspan><tspan class="em">)</tspan>
