@@ -433,59 +433,63 @@ makequeue(V)      V로 큐 생성 (key = dist)
     <li>in-degree 카운터를 갱신하며 제거하면 <span class="mjx"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="12.236ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5408.4 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mo" transform="translate(1152,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mi" transform="translate(1430,0)"><path data-c="1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path></g><g data-mml-node="mo" transform="translate(2199,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mo" transform="translate(2699.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mo" transform="translate(3699.4,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mi" transform="translate(3977.4,0)"><path data-c="1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path></g><g data-mml-node="mo" transform="translate(4741.4,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mo" transform="translate(5019.4,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></span>. DAG 여부 자체는 DFS back edge로 확인</li>
   </ul>
   <h3>DAG에서의 최단 경로</h3>
-  <figure><svg viewBox="0 0 660 258" xmlns="http://www.w3.org/2000/svg"><style>.nd{fill:#fff;stroke:#1a1a1a;stroke-width:1.4}
-.nd.dup{fill:#f2f2f2;stroke:#9e2b25}
-.nd.ghost{fill:#f4f4f4;stroke:#cfcfcf}
-.nl{font:italic 600 11.5px 'Noto Sans KR',sans-serif;text-anchor:middle;fill:#1a1a1a}
-.nl.dup{fill:#9e2b25}
-.nl.ghost{fill:#b5b5b5}
-.eg{stroke:#888;stroke-width:1.1}
-.eg.dup{stroke:#d9d9d9}
-.sq{fill:none;stroke:#8a8a8a;stroke-width:1.4}
-.sqn{font:13px 'Noto Sans KR',sans-serif;text-anchor:middle;fill:#555}
-.arc{fill:none;stroke:#9e2b25;stroke-width:2.4}
-.cell{fill:#fff;stroke:#888;stroke-width:1.1}
-.cv{font:12.5px 'Noto Sans KR',sans-serif;text-anchor:middle;fill:#1a1a1a}
-.ci{font:9.5px 'Noto Sans KR',sans-serif;text-anchor:middle;fill:#999}
-.tlabel{font:12px 'Noto Sans KR',sans-serif;fill:#555}
-.st{fill:none;stroke:#555555;stroke-width:1.6;marker-end:none}
-.rd{fill:none;stroke:#9e2b25;stroke-width:1.6;stroke-dasharray:4 3}
-.lg{font:11.5px 'Noto Sans KR',sans-serif;fill:#555}
-.hullfill{fill:#f2f2f2;stroke:#1a1a1a;stroke-width:2}
-.grahamfill{fill:none;stroke:#999;stroke-width:1.4;stroke-dasharray:5 4}
-.pt{fill:#1a1a1a}
-.ptb{fill:#1a1a1a}
-.ptr{fill:#9e2b25}
-.ptl{font:italic 13px 'Noto Sans KR',sans-serif;fill:#1a1a1a}
-.note,.figwrap svg .noteb,.figwrap svg .noter{font:12px 'Noto Sans KR',sans-serif;fill:#555;text-anchor:middle}
-.noteb{fill:#1a1a1a;text-anchor:start}
-.noter{fill:#9e2b25;text-anchor:start}
-.dline{stroke:#1a1a1a;stroke-width:1.6}
-.scanline{stroke:#9e2b25;stroke-width:2.4}
-.scanpt{fill:#fff;stroke:#9e2b25;stroke-width:2}
-.scanlbl{font:italic 700 14px 'Noto Sans KR',sans-serif;fill:#9e2b25}
-.axis{stroke:#666;stroke-width:1.2}
-.n0{stroke:#999;stroke-width:1;stroke-dasharray:3 3}
-.axl{font:11px 'Noto Sans KR',sans-serif;fill:#666}
-.figt{font:700 12.5px 'Noto Sans KR',sans-serif;fill:#1a1a1a;text-anchor:middle}
-.cf{fill:none;stroke:#1a1a1a;stroke-width:2}
-.cg{fill:none;stroke:#1a1a1a;stroke-width:1.6}
-.cl{font:italic 12px 'Noto Sans KR',sans-serif;fill:#1a1a1a}
-.clb{font:italic 12px 'Noto Sans KR',sans-serif;fill:#1a1a1a}
-.legendbox{fill:#fafafa;stroke:#ddd;stroke-width:1}
-.bar{fill:#d9d9d9;stroke:#b5b5b5;stroke-width:1}
-.barh{fill:#8a8a8a;stroke:#666666;stroke-width:1}
-.barpick{fill:#f2f2f2;stroke:#1a1a1a;stroke-width:1.6}
-.blob{fill:#f2f2f2;stroke:#d9d9d9;stroke-width:1.2}
-.mste{stroke:#1a1a1a;stroke-width:2.6;fill:none}
-.cutl{stroke:#9e2b25;stroke-width:2;stroke-dasharray:6 4;fill:none}
-.tick{stroke:#1a1a1a;stroke-width:1.4}
-.tickpick{stroke:#1a1a1a;stroke-width:2.2}
-.reach{fill:none;stroke:#555555;stroke-width:1.6;stroke-dasharray:5 3}
-.ew{font:10px 'Noto Sans KR',sans-serif;fill:#666;text-anchor:middle}
-.ewb{font:700 10.5px 'Noto Sans KR',sans-serif;fill:#1a1a1a;text-anchor:middle}
-.barn{font:10.5px 'Noto Sans KR',sans-serif;fill:#444;text-anchor:middle}
-</style><text x="330" y="14" class="figt">DAG 최단 경로 — 선형화 순서 A, C, B, E, D (음수 간선 OK) · 아래 = 최종 dist</text><path d="M 76.0 120.0 Q 120.0 95.0 164.0 120.0" fill="none" class="cg"/><polygon points="164.0,120.0 154.19885335302698,119.03174156108533 158.15092861390318,112.07608910194317" class="pt"/><text x="120.0" y="87.0" class="cl">2</text><path d="M 76.0 120.0 Q 180.0 75.0 284.0 120.0" fill="none" class="cg"/><polygon points="284.0,120.0 274.1516205872305,120.09707184009002 277.32851717199486,112.75491084419019" class="pt"/><text x="180.0" y="67.0" class="cl">4</text><path d="M 76.0 120.0 Q 300.0 35.0 524.0 120.0" fill="none" class="cg"/><polygon points="524.0,120.0 514.1663316568512,120.54677867273026 517.004572095451,113.06718034042012" class="pt"/><text x="300.0" y="25.0" class="cl">3</text><path d="M 196.0 120.0 Q 240.0 95.0 284.0 120.0" fill="none" class="cg"/><polygon points="284.0,120.0 274.198853353027,119.03174156108533 278.1509286139032,112.07608910194317" class="pt"/><text x="240.0" y="87.0" class="cl">1</text><path d="M 196.0 120.0 Q 300.0 75.0 404.0 120.0" fill="none" class="cg"/><polygon points="404.0,120.0 394.1516205872305,120.09707184009002 397.32851717199486,112.75491084419019" class="pt"/><text x="300.0" y="67.0" class="cl">5</text><path d="M 196.0 120.0 Q 360.0 50.0 524.0 120.0" fill="none" class="cg"/><polygon points="524.0,120.0 514.1522215975335,120.14580993078823 517.2927431837415,112.78801650024386" class="pt"/><text x="360.0" y="40.0" class="cl r">−4</text><path d="M 316.0 120.0 Q 360.0 95.0 404.0 120.0" fill="none" class="cg"/><polygon points="404.0,120.0 394.198853353027,119.03174156108533 398.1509286139032,112.07608910194317" class="pt"/><text x="360.0" y="87.0" class="cl">3</text><path d="M 316.0 120.0 Q 420.0 85.0 524.0 120.0" fill="none" class="cg"/><polygon points="524.0,120.0 514.1942460142882,120.92042858044321 516.7459292075962,113.338284234614" class="pt"/><text x="420.0" y="77.0" class="cl">2</text><circle cx="60" cy="120" r="15" class="nd"/><text x="60" y="124.5" class="nl">A</text><text x="60" y="148" class="ci">dist 0</text><circle cx="180" cy="120" r="15" class="nd"/><text x="180" y="124.5" class="nl">C</text><text x="180" y="148" class="ci">dist 2</text><circle cx="300" cy="120" r="15" class="nd"/><text x="300" y="124.5" class="nl">B</text><text x="300" y="148" class="ci">dist 3</text><circle cx="420" cy="120" r="15" class="nd"/><text x="420" y="124.5" class="nl">E</text><text x="420" y="148" class="ci">dist 6</text><circle cx="540" cy="120" r="15" class="nd"/><text x="540" y="124.5" class="nl">D</text><text x="540" y="148" class="ci">dist −2</text><text x="330" y="200" class="note">노드를 처리할 때 들어오는 간선은 이미 전부 반영됨 → dist가 final · O(|V|+|E|)</text><text x="330" y="222" class="note">들어오는 간선만 보면 점화식: dist(D) = min{dist(B) + 2, dist(C) − 4, dist(A) + 3} → = dynamic programming</text><text x="330" y="244" class="note">부등호를 뒤집으면 longest path도 같은 선형 시간</text></svg></figure>
+  <figure><svg class="nf-graph-2-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 390" role="img" aria-label="DAG 최단 경로 선형화"><rect width="920" height="390" fill="#fff"/>
+  <defs>
+    <marker id="g25arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0 0 L7 3 L0 6 Z" fill="#1a1a1a"/>
+    </marker>
+  </defs>
+  <rect width="920" height="390" fill="#fff"/>
+  <text x="460" y="24" font-size="17" font-weight="bold" text-anchor="middle" fill="#1a1a1a" paint-order="stroke" stroke="#fff" stroke-width="4">DAG 최단 경로 — 선형화 순서 A, C, B, E, D (음수 간선 OK)</text>
+  <g fill="none" stroke="#1a1a1a" stroke-width="1.5" marker-end="url(#g25arrow)">
+    <path d="M100 202 Q185 160 270 202"/>
+    <path d="M100 202 Q270 140 440 202"/>
+    <path d="M100 202 Q355 120 780 202"/>
+    <path d="M270 202 Q355 180 440 202"/>
+    <path d="M270 202 Q440 100 610 202"/>
+    <path d="M270 202 Q525 80 780 202"/>
+    <path d="M440 202 Q525 180 610 202"/>
+    <path d="M440 202 Q610 60 780 202"/>
+  </g>
+  <g font-size="14" text-anchor="middle" fill="#1a1a1a" paint-order="stroke" stroke="#fff" stroke-width="4">
+    <text x="185" y="148">2</text>
+    <text x="270" y="124">4</text>
+    <text x="440" y="102" fill="#9e2b25">3</text>
+    <text x="355" y="166">1</text>
+    <text x="440" y="84">5</text>
+    <text x="525" y="64" fill="#9e2b25">−4</text>
+    <text x="525" y="166">3</text>
+    <text x="610" y="44">2</text>
+  </g>
+  <g fill="#fff" stroke="#1a1a1a" stroke-width="1.5">
+    <circle cx="100" cy="220" r="19"/>
+    <circle cx="270" cy="220" r="19"/>
+    <circle cx="440" cy="220" r="19"/>
+    <circle cx="610" cy="220" r="19"/>
+    <circle cx="780" cy="220" r="19"/>
+  </g>
+  <g font-size="16" font-style="italic" text-anchor="middle" fill="#1a1a1a" paint-order="stroke" stroke="#fff" stroke-width="4">
+    <text x="100" y="226">A</text>
+    <text x="270" y="226">C</text>
+    <text x="440" y="226">B</text>
+    <text x="610" y="226">E</text>
+    <text x="780" y="226">D</text>
+  </g>
+  <g font-size="13" text-anchor="middle" fill="#1a1a1a" paint-order="stroke" stroke="#fff" stroke-width="4">
+    <text x="100" y="255">dist 0</text>
+    <text x="270" y="255">dist 2</text>
+    <text x="440" y="255">dist 3</text>
+    <text x="610" y="255">dist 6</text>
+    <text x="780" y="255">dist −2</text>
+  </g>
+  <line x1="36" y1="276" x2="884" y2="276" stroke="#e8e6e0" stroke-width="1"/>
+  <g font-size="14" fill="#1a1a1a" paint-order="stroke" stroke="#fff" stroke-width="4">
+    <text x="36" y="299">노드를 처리할 때 들어오는 간선은 이미 전부 반영됨 → dist가 final · O(|V|+|E|)</text>
+    <text x="36" y="324">들어오는 간선만 보면 점화식: dist(D) = min{dist(B) + 2, dist(C) − 4, dist(A) + 3}</text>
+    <text x="36" y="347">→ dynamic programming</text>
+    <text x="36" y="372">부등호를 뒤집으면 longest path도 같은 선형 시간</text>
+  </g>
+</svg></figure>
   <ul>
     <li>선형화 순서대로 노드를 보며 나가는 간선을 update. 노드를 처리할 때 들어오는 간선은 모두 앞 노드에서 와서 이미 반영됨 → <b>dist가 final</b>. priority queue 불필요, <b>음수 간선 OK</b></li>
     <li>시간 <span class="mjx"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="12.236ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5408.4 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D442" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path></g><g data-mml-node="mo" transform="translate(763,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mo" transform="translate(1152,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mi" transform="translate(1430,0)"><path data-c="1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path></g><g data-mml-node="mo" transform="translate(2199,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mo" transform="translate(2699.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path></g><g data-mml-node="mo" transform="translate(3699.4,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mi" transform="translate(3977.4,0)"><path data-c="1D438" d="M492 213Q472 213 472 226Q472 230 477 250T482 285Q482 316 461 323T364 330H312Q311 328 277 192T243 52Q243 48 254 48T334 46Q428 46 458 48T518 61Q567 77 599 117T670 248Q680 270 683 272Q690 274 698 274Q718 274 718 261Q613 7 608 2Q605 0 322 0H133Q31 0 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H757Q764 676 764 669Q764 664 751 557T737 447Q735 440 717 440H705Q698 445 698 453L701 476Q704 500 704 528Q704 558 697 578T678 609T643 625T596 632T532 634H485Q397 633 392 631Q388 629 386 622Q385 619 355 499T324 377Q347 376 372 376H398Q464 376 489 391T534 472Q538 488 540 490T557 493Q562 493 565 493T570 492T572 491T574 487T577 483L544 351Q511 218 508 216Q505 213 492 213Z"></path></g><g data-mml-node="mo" transform="translate(4741.4,0) translate(0 -0.5)"><path data-c="7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></g><g data-mml-node="mo" transform="translate(5019.4,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g></g></g></svg></span>.</li>
