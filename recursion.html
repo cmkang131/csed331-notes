@@ -23,7 +23,7 @@
   <h1 class="pagetitle">재귀 (recursion)와 분할 정복</h1>
   <p class="psub">2026-09-09 (수) · 09-14 (월) · 슬라이드 Recursion (p.1–27, 녹취 없음, 교수 marked PDF)</p>
 
-  <h2><a id="sec-1"></a>Reduction과 재귀</h2>
+  <h2 id="divide-conquer"><a id="sec-1"></a>Reduction과 재귀</h2>
   <div class="bx">
     <p class="lead"><span class="lt">reduction</span> = 문제 A를 풀 때 문제 B를 푸는 알고리즘을 <b>부품(블랙박스)</b>으로 쓰는 것. B는 빠르게 푼다고 가정하고 그걸 가져다 A를 품.</p>
       <dl class="def">
@@ -383,7 +383,7 @@
     <tr><td>실전</td><td>이론상 최적</td><td>정렬 라이브러리가 변형을 많이 씀</td></tr>
   </table></div>
 
-  <h2><a id="sec-6"></a>점화식과 master theorem</h2>
+  <h2 id="recurrences-master"><a id="sec-6"></a>점화식과 master theorem</h2>
   <p>분할정복 점화식을 읽는 도구. 세 글자만 읽으면 됨:</p>
     <dl class="def">
   <div><dt><span class="mjx"><svg style="vertical-align: -0.023ex;" xmlns="http://www.w3.org/2000/svg" width="1.197ex" height="1.02ex" role="img" focusable="false" viewBox="0 -441 529 451"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g></g></g></svg></span></dt><dd>재귀 호출 수 = 가지 수(branching factor)</dd></div>
