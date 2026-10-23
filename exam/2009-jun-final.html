@@ -38,6 +38,32 @@ sub,sup{font-size:.72em}
 <h1>16 June 2009 Final</h1>
 <p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
 
-<div class="qblock"><div class="qhead">Q1</div><p class="qp">(20pts) Suppose someone presents you with a solution to a max-flow problem on some network. Give a linear time algorithm to determine whether the solution does indeed give a maximum flow.</p></div><div class="qblock"><div class="qhead">Q2</div><p class="qp">(10pts) Euclidean TSP is the following problem: given a set of n points in the plane, find a shortest tour that starts at a point, visits every point exactly once, and returns to the starting point, where the pairwise distance of the points is their Euclidean distance. Give an efficient 2-approximation algorithm for Euclidean TSP problem, and show that it always returns a 2-approximation tour.</p></div><div class="qblock"><div class="qhead">Q3</div><p class="qp">(20pts) A vertex cover of an undirected graph is a subset of the vertices which touches every edge. Let G = (V, E) is a bipartite graph. Show that the problem of finding the minimum vertex cover in G reduces to the maximum-flow problem, and thereby to linear programming. (Hint: Relate the minimum vertex cover problem to the minimum cut in an appropriate network.)</p></div><div class="qblock"><div class="qhead">Q4</div><p class="qp">(10pts) Let G = (V, E) be an undirected graph with n nodes. Show that a set of nodes S is a vertex cover of G if and only if the remaining nodes, V ∖ S, are an independent set of G.</p></div>
+<div class="qblock"><div class="qhead">Q1</div><p class="qp">(20pts) Suppose someone presents you with a solution to a max-flow problem on some network. Give a linear time algorithm to determine whether the solution does indeed give a maximum flow.</p><details class="dx"><summary>한국어 풀이 · 선형 검증 알고리즘</summary><div class="dx-body">
+<p>제시된 유량 f가 최대 유량인지 확인하려면 먼저 유량 자체가 유효한지 검사하고, 그다음 잔여 그래프에 증가 경로가 있는지 확인한다.</p>
+<ol class="steps">
+<li><strong>유효성 검사:</strong> 모든 간선 e에 대해 0 ≤ f(e) ≤ c(e)인지 확인하고, 모든 s,t 이외 정점에서 유입 유량 합과 유출 유량 합이 같은지 확인한다. 하나라도 실패하면 제시된 해는 유효한 유량이 아니므로 최대 유량이 아니다.</li>
+<li><strong>잔여 그래프:</strong> 각 원래 간선의 정방향 잔여 용량은 c(e)−f(e), 역방향 잔여 용량은 f(e)로 만든다. 잔여 용량이 양수인 방향만 잔여 간선으로 둔다.</li>
+<li><strong>탐색:</strong> 잔여 그래프에서 s부터 BFS/DFS를 한다. t가 도달 가능하면 증가 경로가 있으므로 f는 최대가 아니다. t가 도달 불가능하면 최대라고 반환한다.</li>
+</ol>
+<p><strong>정당성.</strong> 유효한 유량에 대해 잔여 s-t 경로가 있으면 그 경로를 따라 양의 양만큼 유량을 증가시킬 수 있으므로 현재 유량은 최대가 아니다. 반대로 잔여 경로가 없으면 최대 유량-최소 컷 정리에 따라 f는 최대 유량이다.</p>
+<p><strong>시간·공간.</strong> 용량·보존 조건 확인과 잔여 그래프 구성, BFS/DFS가 각각 O(|V|+|E|) 이내이므로 총 시간은 O(|V|+|E|), 잔여 그래프와 탐색 상태 공간은 O(|V|+|E|)이다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q2</div><p class="qp">(10pts) Euclidean TSP is the following problem: given a set of n points in the plane, find a shortest tour that starts at a point, visits every point exactly once, and returns to the starting point, where the pairwise distance of the points is their Euclidean distance. Give an efficient 2-approximation algorithm for Euclidean TSP problem, and show that it always returns a 2-approximation tour.</p><details class="dx"><summary>한국어 풀이 · 2-근사 증명</summary><div class="dx-body">
+<p><strong>알고리즘.</strong> 입력 점들의 완전 유클리드 그래프에서 최소 스패닝 트리 T를 구한다. T의 모든 간선을 두 번씩 사용한 오일러 순회를 만든 뒤, 순회에서 이미 방문한 정점은 지름길(shortcut)로 건너뛰어 각 점을 한 번씩 방문하고 출발점으로 돌아오는 투어 C를 만든다.</p>
+<p><strong>근사 보장.</strong> 최적 TSP 투어에서 간선 하나를 제거하면 모든 정점을 잇는 스패닝 트리가 되며 그 비용은 OPT 이하이다. MST는 가장 싼 스패닝 트리이므로 cost(T) ≤ OPT이다. 각 트리 간선을 두 번 쓰는 오일러 순회의 길이는 2·cost(T) ≤ 2·OPT이다. 유클리드 거리는 삼각부등식을 만족하므로 방문한 정점을 건너뛰는 지름길은 길이를 늘리지 않는다. 따라서</p>
+<div class="formula">cost(C) ≤ 2 · cost(T) ≤ 2 · OPT.</div>
+<p>C는 모든 점을 정확히 한 번 방문한 뒤 출발점으로 돌아오는 투어이므로 2-근사 알고리즘이다.</p>
+<p><strong>시간·공간.</strong> 완전 그래프의 간선 비용을 필요할 때 계산하는 dense Prim 알고리즘으로 MST를 O(n²) 시간, O(n) 보조 공간에 구할 수 있다. 트리 순회와 지름길 구성은 O(n) 시간이다. 따라서 전체는 O(n²) 시간, O(n) 보조 공간이다. 모든 쌍 거리를 명시적으로 저장하면 공간은 O(n²)이다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q3</div><p class="qp">(20pts) A vertex cover of an undirected graph is a subset of the vertices which touches every edge. Let G = (V, E) is a bipartite graph. Show that the problem of finding the minimum vertex cover in G reduces to the maximum-flow problem, and thereby to linear programming. (Hint: Relate the minimum vertex cover problem to the minimum cut in an appropriate network.)</p><details class="dx"><summary>한국어 풀이 · 최소 컷으로의 환원</summary><div class="dx-body">
+<p>이분 그래프 G=(L∪R,E)에서 다음 유량 네트워크를 만든다. 소스 s에서 각 u∈L로 용량 1의 간선, 각 v∈R에서 싱크 t로 용량 1의 간선을 만들고, 각 원래 간선 (u,v)∈E에 대해 u→v 용량 |V|+1의 간선을 둔다. |V|+1은 무한 용량을 대신하는 유한한 충분히 큰 값이다.</p>
+<p>최소 컷의 용량은 |L| 이하인 컷(예: S={s})보다 클 수 없으므로 최소 컷은 용량 |V|+1인 간선을 자르지 않는다. 최소 컷 (S,T), s∈S, t∈T에 대해</p>
+<div class="formula">C = (L ∩ T) ∪ (R ∩ S)</div>
+<p>를 출력한다. 큰 용량 간선이 컷을 가로지르지 않으므로 어떤 원래 간선 (u,v)에서도 u∈S이고 v∈T일 수 없다. 따라서 각 원래 간선은 u∈L∩T 또는 v∈R∩S 중 하나로 덮이며 C는 버텍스 커버다. 컷 용량은 정확히 |L∩T|+|R∩S|=|C|이다.</p>
+<p><strong>반대 방향도 성립.</strong> 임의의 버텍스 커버 C가 주어지면 S={s}∪(L\C)∪(R∩C), T={t}∪(L∩C)∪(R\C)로 둔다. C가 모든 원래 간선을 덮으므로 큰 용량 간선은 컷을 가로지르지 않고, 컷 용량은 |C|이다. 그러므로 최소 컷 값은 최소 버텍스 커버 크기와 같다.</p>
+<p>최대 유량을 구한 뒤 잔여 그래프에서 s로부터 도달 가능한 정점 집합 S를 구하면 최소 컷을 얻고, 위 식으로 최소 버텍스 커버를 복원한다. 네트워크 구성은 O(|V|+|E|)이고, 이 환원과 최대 유량-최소 컷 정리는 최소 버텍스 커버를 최대 유량으로 다항 시간 환원한다. 또한 최대 유량 자체는 선형계획법(LP)으로 쓸 수 있다. 간선 유량 f(e)와 유량값 F를 두고, s,t 이외 정점의 유량 보존식, 모든 간선의 0≤f(e)≤c(e), 그리고 F=(s에서 나가는 총 유량)−(s로 들어오는 총 유량)을 제약으로 두고 F를 최대화한다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q4</div><p class="qp">(10pts) Let G = (V, E) be an undirected graph with n nodes. Show that a set of nodes S is a vertex cover of G if and only if the remaining nodes, V ∖ S, are an independent set of G.</p><details class="dx"><summary>한국어 풀이 · 양방향 증명</summary><div class="dx-body">
+<p><strong>(⇒)</strong> S가 버텍스 커버라고 하자. V\S 안의 두 정점 u,v를 잇는 간선이 있다고 가정하면, 그 간선의 양 끝이 모두 S 밖에 있으므로 S가 해당 간선을 덮지 못한다. 이는 버텍스 커버 정의에 모순이다. 따라서 V\S는 독립집합이다.</p>
+<p><strong>(⇐)</strong> V\S가 독립집합이라고 하자. 임의의 간선 (u,v)의 양 끝이 모두 V\S에 있으면 독립집합 정의에 어긋난다. 그러므로 적어도 한 끝점은 S에 있고, 모든 간선이 S와 접하므로 S는 버텍스 커버다.</p>
+<p>따라서 S가 버텍스 커버일 필요충분조건은 V\S가 독립집합인 것이다. 이 증명은 유한 무방향 그래프의 정의만 사용한다.</p>
+</div></details></div>
 <div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
 </div></body></html>

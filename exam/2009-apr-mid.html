@@ -38,6 +38,100 @@ sub,sup{font-size:.72em}
 <h1>21 April 2009 Midterm</h1>
 <p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
 
-<div class="qblock"><div class="qhead">Q1</div><p class="qp">Given an array A consisting of n integers A[1], A[2], …, A[n], you&#x27;d like to output a two-dimensional n-by-n array B in which</p><div class="formula">B[i,j] = A[i] + A[i+1] + … + A[j] if i &lt; j, ; 0 otherwise.</div><p class="qp">Here&#x27;s a simple algorithm to solve this problem.</p><p class="qp">Algorithm Add-ups ( A: input array, B: output array. ) 1. for i = 1, 2, …, n 2.  for j = i+1, i+2, …, n 3.  Add up array entries A[i] through A[j] 4.  Store the result in B[i, j]</p><p class="qp">- (a) (5pts) Give asymptotic upper bound(O(·)) and lower bound(Ω(·)) on the running time of Algorithm Add-ups on an input of size n. - (b) (5pts) Give a different algorithm to solve this problem, with an asymptotically better running time.</p></div><div class="qblock"><div class="qhead">Q2</div><p class="qp">Consider the problem of computing N! = 1 · 2 · 3 … N. - (a) (5pts) If N is an n-bit number, how many bits long is N!, approximately (in Θ(·) form)? - (b) (5pts) Give an algorithm to compute N! and analyze its running time, assuming that it takes O(log n) time for multiplying two n-bit numbers. (인쇄 원문이 O(log n) — 그대로 옮김)</p><div class="note">주석: (b)의 O(log n) 곱셈 가정은 원문 그대로 [sic].</div></div><div class="qblock"><div class="qhead">Q3</div><p class="qp">(10pts) Mergesort divides the input into two pieces of equal size; solves the two subproblems on these pieces separately by recursion; and then combines the two results into an overall solution. Thus the worst case running time, denoted by T(n), on input instances of size n satisfies the following recurrence relation.</p><p class="qp">For some constant c,</p><div class="formula">T(n) ≤ 2T(n/2) + cn</div><p class="qp">where n &gt; 2, and T(2) ≤ c.</p><p class="qp">Show that T(n) is bounded by O(n log n), when n &gt; 1, using the mathematical induction argument. (For simplicity, assume that n is a power of 2.)</p></div><div class="qblock"><div class="qhead">Q4</div><p class="qp">(10pts) We are given a sequence of n distinct numbers a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub>. We define a significant inversion to be a pair i &lt; j such that a<sub>i</sub> &gt; 2a<sub>j</sub>. Give an O(n log n) time algorithm to count the number of significant inversions.</p></div><div class="qblock"><div class="qhead">Q5</div><p class="qp">(10pts) Design a linear-time algorithm which, given an undirected graph G and a particular edge e in it, determines whether G has a cycle containing e.</p></div><div class="qblock"><div class="qhead">Q6</div><p class="qp">(10pts) Explain why the following statement is true.</p><p class="qp">&gt; Let G be an arbitrary connected, undirected graph with a distinct cost c(e) on every edge e. Suppose e^ is the cheapest edge in G; that is, c(e<sup>)</sup> &lt; c(e) for every edge e ≠ e^. Then there is a minimum spanning tree T of G that contains the edge e^.</p></div><div class="qblock"><div class="qhead">Q7</div><p class="qp">(10pts) Suppose you are the CSE director of 해맞이한마당 at Postech (May 14–15, 2009.) Along the road (M meters long) from the 78계단 to 학생식당입구, the possible sites for CSE stalls(노점) are given by numbers x<sub>1</sub>, x<sub>2</sub>, …, x<sub>n</sub> ∈ [0, M]. If you place a CSE stall at location x<sub>i</sub>, you&#x27;re expected to make profit r<sub>i</sub> &gt; 0.</p><p class="qp">Regulations imposed by SU require that no two of the stalls be within less than or equal to 10 meters of each other. Design an algorithm that finds a subset of sites so as to maximize CSE total profit, and analyze its running time. (Assume that sites are already sorted along the road.)</p></div>
+<div class="qblock"><div class="qhead">Q1</div><p class="qp">Given an array A consisting of n integers A[1], A[2], …, A[n], you&#x27;d like to output a two-dimensional n-by-n array B in which</p><div class="formula">B[i,j] = A[i] + A[i+1] + … + A[j] if i &lt; j, ; 0 otherwise.</div><p class="qp">Here&#x27;s a simple algorithm to solve this problem.</p><p class="qp">Algorithm Add-ups ( A: input array, B: output array. ) 1. for i = 1, 2, …, n 2.  for j = i+1, i+2, …, n 3.  Add up array entries A[i] through A[j] 4.  Store the result in B[i, j]</p><p class="qp">- (a) (5pts) Give asymptotic upper bound(O(·)) and lower bound(Ω(·)) on the running time of Algorithm Add-ups on an input of size n. - (b) (5pts) Give a different algorithm to solve this problem, with an asymptotically better running time.</p><details class="dx"><summary>한국어 풀이 · 복잡도 검증</summary><div class="dx-body">
+<p><strong>(a) 직접 합산 알고리즘의 시간 복잡도</strong></p>
+<p>각 쌍 <em>(i,j)</em> (단, <em>i &lt; j</em>)에 대해 <em>A[i]</em>부터 <em>A[j]</em>까지 합을 새로 계산한다. 이때 필요한 연산 수는 <em>Θ(j − i + 1)</em>이다. 모든 쌍의 비용을 더하면</p>
+<div class="formula">∑<sub>1 ≤ i &lt; j ≤ n</sub> Θ(j − i + 1) = ∑<sub>d=1</sub><sup>n−1</sup> Θ((n−d)(d+1)) = Θ(n<sup>3</sup>).</div>
+<p>따라서 상한은 <strong>O(n³)</strong>, 하한은 <strong>Ω(n³)</strong>이며, 합쳐서 <strong>Θ(n³)</strong>이다. 여기서는 정수 덧셈을 상수 시간으로 본다. 원소를 직접 더하는 비용이 지배적이므로, 나머지 칸을 0으로 초기화하는 Θ(n²) 비용을 별도로 세더라도 결론은 바뀌지 않는다.</p>
+<p><strong>(b) 더 빠른 알고리즘: 누적 합</strong></p>
+<pre class="code">P[0] = 0
+for j = 1, ..., n:
+    P[j] = P[j-1] + A[j]
+for i = 1, ..., n:
+    for j = 1, ..., n:
+        if i &lt; j:
+            B[i,j] = P[j] - P[i-1]
+        else:
+            B[i,j] = 0</pre>
+<p><strong>정당성.</strong> 누적 합 정의로부터 <em>P[j] − P[i−1] = A[i] + ··· + A[j]</em>이므로 모든 <em>i &lt; j</em>에서 요구한 값을 저장한다. 나머지 칸도 정의대로 0을 저장한다.</p>
+<p><strong>시간·공간.</strong> 누적 합 계산은 O(n), n²개 칸 작성은 Θ(n²)이므로 전체 시간은 Θ(n²)이다. 출력 배열 자체가 n²칸이므로 출력 칸을 모두 작성해야 하는 모델에서 Ω(n²)이며, 이 알고리즘은 출력 크기 기준으로 점근적으로 최적이다. 누적 합 보조 배열은 O(n) 공간이고, 출력 B의 Θ(n²) 공간은 별도다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q2</div><p class="qp">Consider the problem of computing N! = 1 · 2 · 3 … N. - (a) (5pts) If N is an n-bit number, how many bits long is N!, approximately (in Θ(·) form)? - (b) (5pts) Give an algorithm to compute N! and analyze its running time, assuming that it takes O(log n) time for multiplying two n-bit numbers. (인쇄 원문이 O(log n) — 그대로 옮김)</p><div class="note">주석: (b)의 O(log n) 곱셈 가정은 원문 그대로 [sic].</div><details class="dx"><summary>한국어 풀이 · 복잡도 검증</summary><div class="dx-body">
+<p><strong>(a) N!의 비트 길이</strong></p>
+<p>N이 n비트 정수이면 2<sup>n−1</sup> ≤ N &lt; 2<sup>n</sup>이므로 N = Θ(2<sup>n</sup>)이고 log₂N = Θ(n)이다. 스털링 근사에 의해</p>
+<div class="formula">log₂(N!) = Θ(N log N) = Θ(n · 2<sup>n</sup>).</div>
+<p>따라서 N!의 비트 길이는 <strong>Θ(n2<sup>n</sup>)</strong>이다.</p>
+<p><strong>(b) 순차 곱셈과 문제에 인쇄된 가정</strong></p>
+<pre class="code">p = 1
+for i = 2, ..., N:
+    p = p * i
+output p</pre>
+<p>i번째 반복 뒤의 p는 i!이므로 마지막에 N!을 얻는다. 모든 중간 결과의 비트 길이는 N!의 비트 길이 L = Θ(n2<sup>n</sup>) 이하이다. 문제의 인쇄된 가정 [sic], 즉 m비트 피연산자의 곱셈 시간이 O(log m)이라는 가정을 그대로 적용하면, 한 곱셈의 상한은 O(log L) = O(n)이다. 곱셈은 N−1 = Θ(2<sup>n</sup>)회이므로 이 가정 아래 산술 연산 시간은 <strong>O(n2<sup>n</sup>)</strong>이다.</p>
+<p>N! 자체가 Θ(n2<sup>n</sup>)비트이므로, 결과를 비트열로 실제 기록하는 비용을 따로 세는 모델에서도 출력 비용은 Θ(n2<sup>n</sup>)이다. 인쇄된 곱셈 가정은 그대로 사용했으며, 이를 현실의 곱셈 알고리즘에 관한 주장으로 바꾸거나 별도의 곱셈 하한을 주장하지 않는다.</p>
+<p><strong>복잡도 해석 주의.</strong> 문제에서 준 것은 곱셈 시간의 O 상한이므로, 그 가정만으로 산술 연산 시간 자체가 Θ(n2<sup>n</sup>)라고 단정하지 않는다. 여기서 보장되는 산술 연산 상한은 O(n2<sup>n</sup>)이다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q3</div><p class="qp">(10pts) Mergesort divides the input into two pieces of equal size; solves the two subproblems on these pieces separately by recursion; and then combines the two results into an overall solution. Thus the worst case running time, denoted by T(n), on input instances of size n satisfies the following recurrence relation.</p><p class="qp">For some constant c,</p><div class="formula">T(n) ≤ 2T(n/2) + cn</div><p class="qp">where n &gt; 2, and T(2) ≤ c.</p><p class="qp">Show that T(n) is bounded by O(n log n), when n &gt; 1, using the mathematical induction argument. (For simplicity, assume that n is a power of 2.)</p><details class="dx"><summary>한국어 풀이 · 귀납 증명</summary><div class="dx-body">
+<p>n이 2의 거듭제곱인 n ≥ 2에 대해 <strong>T(n) ≤ cn log₂n</strong>임을 강한 귀납이 아니라 보통의 수학적 귀납법으로 보인다.</p>
+<p><strong>기저 n = 2.</strong> 주어진 T(2) ≤ c이고 c ≥ 0이므로 T(2) ≤ c ≤ 2c = c · 2 · log₂2이다.</p>
+<p><strong>귀납 가정.</strong> n/2에 대해 T(n/2) ≤ c(n/2)log₂(n/2)라고 가정한다.</p>
+<p><strong>귀납 단계.</strong> 주어진 점화식에 귀납 가정을 대입하면</p>
+<div class="formula">T(n) ≤ 2T(n/2) + cn ≤ cn log₂(n/2) + cn = cn(log₂n − 1) + cn = cn log₂n.</div>
+<p>따라서 모든 2의 거듭제곱 n ≥ 2에 대해 T(n) ≤ cn log₂n이고, 결론적으로 <strong>T(n) = O(n log n)</strong>이다. 이는 주어진 점화식의 상한을 귀납으로 증명한 것이며, 별도의 하한이나 Θ 표기는 주장하지 않는다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q4</div><p class="qp">(10pts) We are given a sequence of n distinct numbers a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub>. We define a significant inversion to be a pair i &lt; j such that a<sub>i</sub> &gt; 2a<sub>j</sub>. Give an O(n log n) time algorithm to count the number of significant inversions.</p><details class="dx"><summary>한국어 풀이 · 알고리즘과 증명</summary><div class="dx-body">
+<p>병합 정렬처럼 재귀적으로 왼쪽·오른쪽 절반을 각각 정렬하며 유의미 역전(significant inversion)을 센다. 두 절반을 정렬한 뒤, 왼쪽 값마다 오른쪽에서 조건 <em>A[i] &gt; 2A[j]</em>를 만족하는 원소 수를 두 포인터로 센 다음 병합한다.</p>
+<pre class="code">Count(A, l, r):
+    if l &gt;= r: return 0
+    mid = floor((l+r)/2)
+    count = Count(A, l, mid) + Count(A, mid+1, r)
+    j = mid + 1
+    for i = l, ..., mid:              // 왼쪽 절반은 오름차순
+        while j &lt;= r and A[i] &gt; 2*A[j]:
+            j = j + 1
+        count = count + (j - (mid+1))
+    merge A[l..mid] and A[mid+1..r] into sorted A[l..r]
+    return count</pre>
+<p><strong>정당성.</strong> 모든 쌍 i &lt; j는 왼쪽 절반 내부, 오른쪽 절반 내부, 또는 왼쪽 절반과 오른쪽 절반을 가로지르는 쌍 중 정확히 하나다. 재귀 호출은 처음 두 종류를 센다. 교차 쌍에서는 양쪽이 정렬되어 있다. 왼쪽 A[i]가 증가할수록 조건 A[i] &gt; 2A[j]를 만족하는 오른쪽 원소 집합은 줄어들지 않으므로 포인터 j를 뒤로 이동할 필요가 없다. while 종료 시 오른쪽 절반에서 조건을 만족하는 원소는 정확히 mid+1부터 j−1까지이므로 j−(mid+1)개를 더하면 교차 쌍을 정확히 센다. 엄격한 부등식 `&gt;`를 사용하므로 등호인 경우는 세지 않는다.</p>
+<p><strong>시간·공간.</strong> 한 병합 단계의 포인터 이동과 병합은 O(n)이고 T(n) = 2T(n/2) + O(n)이므로 시간은 O(n log n)이다. 임시 배열 O(n), 재귀 스택 O(log n)의 보조 공간을 사용한다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q5</div><p class="qp">(10pts) Design a linear-time algorithm which, given an undirected graph G and a particular edge e in it, determines whether G has a cycle containing e.</p><details class="dx"><summary>한국어 풀이 · 정당성 검증</summary><div class="dx-body">
+<p>주어진 간선을 e = (u,v)라 하자. e를 순회에서 제외하고 G−e에서 u부터 BFS 또는 DFS를 수행해 v에 도달하는지 검사한다. 구현에서는 그래프를 복사하지 않고 탐색 중 간선 e만 건너뛰어도 된다.</p>
+<pre class="code">HasCycleContainingEdge(G, e=(u,v)):
+    run BFS/DFS from u, ignoring edge e
+    return (v was visited)</pre>
+<p><strong>정당성.</strong> e를 포함하는 사이클에서 e를 제거하면 G−e 안에 u와 v를 잇는 경로가 남는다. 반대로 G−e에 u-v 경로가 있으면 그 경로에 e를 더해 e를 포함하는 사이클을 만들 수 있다. 따라서 알고리즘은 정확히 원하는 경우에 true를 반환한다.</p>
+<p><strong>시간·공간.</strong> 인접 리스트에서 BFS/DFS는 O(|V|+|E|) 시간, 방문 배열과 큐/스택은 O(|V|) 공간을 사용한다. 간선 하나를 무시하는 처리는 이 점근 복잡도를 바꾸지 않는다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q6</div><p class="qp">(10pts) Explain why the following statement is true.</p><p class="qp">&gt; Let G be an arbitrary connected, undirected graph with a distinct cost c(e) on every edge e. Suppose e^ is the cheapest edge in G; that is, c(e<sup>)</sup> &lt; c(e) for every edge e ≠ e^. Then there is a minimum spanning tree T of G that contains the edge e^.</p><details class="dx"><summary>한국어 풀이 · 교환 논증</summary><div class="dx-body">
+<p>가장 싼 간선을 e* = (u,v)라 하자. e*를 포함하지 않는 MST T가 있다고 가정한다. T에 e*를 추가하면 유일한 사이클 C가 생긴다. C에서 e*가 아닌 간선 e′ 하나를 제거하면 다시 스패닝 트리를 얻는다.</p>
+<p>e*는 그래프 전체에서 유일하게 가장 싼 간선이므로 c(e′) &gt; c(e*)이다. 따라서 새 트리의 총 비용은 T의 비용에서 c(e′)를 빼고 c(e*)를 더한 값으로, T보다 엄격히 작다. 이는 T가 최소 스패닝 트리라는 가정에 모순이다.</p>
+<p>그러므로 모든 MST는 e*를 포함하며, 특히 e*를 포함하는 MST가 존재한다. 주어진 간선 비용이 모두 서로 다르면 MST 자체도 유일하지만, 문제의 결론에는 그 추가 사실이 필요하지 않다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q7</div><p class="qp">(10pts) Suppose you are the CSE director of 해맞이한마당 at Postech (May 14–15, 2009.) Along the road (M meters long) from the 78계단 to 학생식당입구, the possible sites for CSE stalls(노점) are given by numbers x<sub>1</sub>, x<sub>2</sub>, …, x<sub>n</sub> ∈ [0, M]. If you place a CSE stall at location x<sub>i</sub>, you&#x27;re expected to make profit r<sub>i</sub> &gt; 0.</p><p class="qp">Regulations imposed by SU require that no two of the stalls be within less than or equal to 10 meters of each other. Design an algorithm that finds a subset of sites so as to maximize CSE total profit, and analyze its running time. (Assume that sites are already sorted along the road.)</p><details class="dx"><summary>한국어 풀이 · 선형 전처리와 DP</summary><div class="dx-body">
+<p>규정은 두 노점의 거리가 <strong>엄격히 10m 초과</strong>여야 한다는 뜻이다. 위치가 정렬되어 있으므로 i번째 위치와 함께 선택할 수 있는 이전 위치의 최대 인덱스를</p>
+<div class="formula">p(i) = max({j : 1 ≤ j &lt; i, x<sub>i</sub> − x<sub>j</sub> &gt; 10} ∪ {0})</div>
+<p>로 정의한다. 즉 조건은 x<sub>j</sub> &lt; x<sub>i</sub>−10이다. 경계에서 거리가 정확히 10인 위치는 허용되지 않는다.</p>
+<p><strong>p(i)를 O(n)에 계산.</strong> p(i)는 i가 커질수록 감소하지 않는다. 이전 포인터 p를 유지하면서 다음 위치가 현재 x<sub>i</sub>와 10m 초과 떨어져 있는 동안만 전진시킨다.</p>
+<pre class="code">p = 0
+for i = 1, ..., n:
+    while p+1 &lt; i and x[i] - x[p+1] &gt; 10:
+        p = p + 1
+    pred[i] = p</pre>
+<p><strong>DP.</strong> F[i]를 처음 i개 위치에서 얻을 수 있는 최대 수익이라 하자. i번째 위치를 선택하지 않으면 F[i−1], 선택하면 그와 충돌하지 않는 앞부분에서 최적 수익 F[p(i)]에 r<sub>i</sub>를 더한다.</p>
+<div class="formula">F[0] = 0, &nbsp; F[i] = max(F[i−1], r<sub>i</sub> + F[p(i)]).</div>
+<pre class="code">F[0] = 0
+for i = 1, ..., n:
+    take[i] = (r[i] + F[pred[i]] &gt; F[i-1])
+    if take[i]: F[i] = r[i] + F[pred[i]]
+    else:       F[i] = F[i-1]
+
+// 선택 위치 복원: i=n부터 시작
+chosen = []
+i = n
+while i &gt; 0:
+    if take[i]:
+        append i to chosen
+        i = pred[i]
+    else:
+        i = i - 1
+reverse(chosen)</pre>
+<p>동률이면 위 코드처럼 선택하지 않는 쪽을 기록해도 최적값과 복원 정확성은 유지된다.</p>
+<p><strong>정당성.</strong> 최적해는 i를 포함하거나 포함하지 않는다. 포함하지 않으면 처음 i−1개에서 F[i−1] 이하를 얻고, 포함하면 모든 다른 선택 위치는 인덱스가 p(i) 이하이므로 최대 수익은 r<sub>i</sub>+F[p(i)]이다. 두 경우의 최댓값이 점화식이다. 귀납적으로 F[n]은 최적 수익이고, 저장한 결정을 따라가면 그 수익을 내는 위치 집합이 복원된다.</p>
+<p><strong>시간·공간.</strong> 두 포인터 전처리 O(n), DP O(n), 복원 O(n)이므로 총 시간 O(n), pred/F/take 배열을 포함한 공간 O(n)이다.</p>
+</div></details></div>
 <div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
 </div></body></html>

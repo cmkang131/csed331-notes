@@ -38,6 +38,85 @@ sub,sup{font-size:.72em}
 <h1>20 December 2007 Midterm (printed title)</h1>
 <p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
 <p class="enote">· 파일명은 Final이지만 인쇄 제목은 Midterm이다. 인쇄 제목을 그대로 썼다.</p>
-<div class="qblock"><div class="qhead">Q1</div><p class="qp">(10pts) You are given an infinite array A[·] in which the first n cells contain integers in sorted order and the rest of the cells are filled with ∞. But you are not given the value of n. Assume that the implementation of the array data type in your programming language returns the error message ∞ whenever elements A[i] with i &gt; n are accessed. Describe an algorithm that takes an integer x as input and finds a position in the array containing x, if such a position exists, in O(log n) time.</p></div><div class="qblock"><div class="qhead">Q2</div><p class="qp">(10pts) A contiguous subsequence of a list S is a subsequence made up of consecutive elements of S. For instance, if S is</p><div class="formula">5, 15, -30, 10, -5, 40, 10,</div><p class="qp">then 15, -30, 10 is a contiguous subsequence but 5, 15, 40 is not. Give a linear-time algorithm for the following task:</p><p class="qp">Input: A list of numbers, a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub>. Output: The contiguous subsequence of maximum sum (consisting of at least one element).</p></div><div class="qblock"><div class="qhead">Q3</div><p class="qp">(10pts) Let us define a multiplication operation on three symbols a, b, c according to the following table; thus ab = b, ba = c, and so on. Notice that the multiplication operation defined by the table is neither associative nor commutative.</p><p class="qp">Find an efficient algorithm that examines a string of these symbols, say bbbbac, and decides whether or not it is possible to parenthesize the string in such a way that the value of the resulting expression is a. For example, on input bbbbac your algorithm should return yes because ((b(bb))(ba))c = a.</p><p class="qp">Multiplication table (rows = left operand, columns = right operand):</p><div class="formula">| | a | b | c |</div><div class="formula">|---|---|---|---|</div><div class="formula">| a | b | b | a |</div><div class="formula">| b | c | b | a |</div><div class="formula">| c | a | c | c |</div></div><div class="qblock"><div class="qhead">Q4</div><p class="qp">(10pts) An edge of a network is called a bottleneck edge if increasing its capacity results in an increase in the maximum flow. Give an efficient algorithm to identify all bottleneck edges in a network. (Hint: Examine the residual graph returned by Ford-Fulkerson algorithm.)</p></div><div class="qblock"><div class="qhead">Q5</div><p class="qp">In 3Sat the input is a set of clauses, each with three or fewer literals, for example</p><div class="formula">(x̄ ∨ y ∨ z̄)(x ∨ ȳ ∨ z)(x ∨ y ∨ z̄)(x̄ ∨ ȳ),</div><p class="qp">and the aim is to find a satisfying truth assignment. In Independent Set the input is a graph and a number g, and the problem is to find a set of g pairwise non-adjacent vertices. - (a) (5pts) Explain a polynomial time reduction that maps an instance S of 3Sat to an instance I of Independent Set. - (b) (5pts) From the construction above, prove the following statement.</p><p class="qp">&gt; There is an independent set of g vertices for S if and only if there is a satisfying assignment for I. (원문 그대로 — S 와 I 의 역할이 문장에서 뒤바뀐 것으로 보이나 추정 수정하지 않음 [sic])</p></div><div class="qblock"><div class="qhead">Q6</div><p class="qp">(10pts) In the Euclidean Minimum Steiner Tree problem, the input consists of a complete graph G = (V, E) in the plane with Euclidean distance d<sub>uw</sub> between all pairs of nodes, and a distinguished set of terminal nodes V&#x27; ⊆ V. The goal is to find a minimum-cost tree that includes the vertices V&#x27;. This tree may or may not include nodes in V ∖ V&#x27;.</p><p class="qp">Consider the algorithm that ignores the non-terminal nodes and simply returns the minimum spanning tree on V&#x27;. Show that this algorithm returns a Steiner tree whose cost(size) is at most twice the size of the minimum Steiner tree.</p></div>
+<div class="qblock"><div class="qhead">Q1</div><p class="qp">(10pts) You are given an infinite array A[·] in which the first n cells contain integers in sorted order and the rest of the cells are filled with ∞. But you are not given the value of n. Assume that the implementation of the array data type in your programming language returns the error message ∞ whenever elements A[i] with i &gt; n are accessed. Describe an algorithm that takes an integer x as input and finds a position in the array containing x, if such a position exists, in O(log n) time.</p>
+<details class="dx"><summary>한국어 풀이 (독립 검증)</summary><div class="dx-body">
+<p><strong>알고리즘.</strong> 1부터 지수를 두 배씩 늘려 <code>x</code>의 위치를 포함할 수 있는 구간을 찾는다. 배열 접근 오류로 반환되는 <code>∞</code>는 모든 정수보다 큰 센티널로 취급한다.</p>
+<pre class="code">i ← 1
+while A[i] ≠ ∞ and A[i] &lt; x:
+    i ← 2i
+if i = 1:
+    lo ← 1
+else:
+    lo ← i/2 + 1
+hi ← i
+while lo ≤ hi:
+    mid ← floor((lo+hi)/2)
+    if A[mid] = x: return mid
+    if A[mid] = ∞ or A[mid] &gt; x:
+        hi ← mid-1
+    else:
+        lo ← mid+1
+return NOT_FOUND</pre>
+<p><strong>정당성.</strong> 지수 탐색이 멈추면 <code>A[i]≥x</code>이거나 <code>A[i]=∞</code>다. <code>i&gt;1</code>이면 직전 검사에서 <code>A[i/2]&lt;x</code>였으므로 x가 존재한다면 위치는 <code>i/2</code>보다 크고 i 이하이다. <code>i=1</code>이면 후보는 1뿐이다. 정렬성 때문에 이 구간에서 이진 탐색하면 x가 있으면 찾고, 없으면 종료 후 NOT_FOUND를 반환한다. x가 모든 배열 값보다 커도 첫 <code>i&gt;n</code>인 거듭제곱 인덱스에서 <code>∞</code>를 읽어 반드시 멈춘다.</p>
+<p><strong>복잡도.</strong> x가 p번 위치에 있거나 처음 <code>A[i]≥x</code>가 되는 인덱스가 i이면 지수 탐색은 <code>O(log i)</code>, 이진 탐색도 구간 길이가 <code>O(i)</code>이므로 <code>O(log i)</code>다. x가 배열에 없고 모든 값보다 큰 경우에도 처음 <code>i&gt;n</code>인 거듭제곱은 <code>i≤2n</code>이므로 전체 시간은 <code>O(log n)</code>이다. <code>A[1]&gt;x</code>인 경우는 상수 시간이다. 보조 공간은 <code>O(1)</code>. 통상적인 <code>n≥1</code>을 가정한다.</p>
+</div></details>
+</div><div class="qblock"><div class="qhead">Q2</div><p class="qp">(10pts) A contiguous subsequence of a list S is a subsequence made up of consecutive elements of S. For instance, if S is</p><div class="formula">5, 15, -30, 10, -5, 40, 10,</div><p class="qp">then 15, -30, 10 is a contiguous subsequence but 5, 15, 40 is not. Give a linear-time algorithm for the following task:</p><p class="qp">Input: A list of numbers, a<sub>1</sub>, a<sub>2</sub>, …, a<sub>n</sub>. Output: The contiguous subsequence of maximum sum (consisting of at least one element).</p>
+<details class="dx"><summary>한국어 풀이 (독립 검증)</summary><div class="dx-body">
+<p><strong>Kadane 알고리즘에 시작·끝 인덱스를 함께 저장한다.</strong> <code>curSum</code>은 i에서 끝나는 최대합 연속 부분수열의 합이고 <code>curL</code>은 그 시작 인덱스다. <code>bestL,bestR</code>는 지금까지 최대합 구간이다.</p>
+<pre class="code">curSum ← bestSum ← a[1]
+curL ← bestL ← bestR ← 1
+for i ← 2 to n:
+    if a[i] &gt; curSum + a[i]:
+        curSum ← a[i]
+        curL ← i
+    else:
+        curSum ← curSum + a[i]
+    if curSum &gt; bestSum:
+        bestSum ← curSum
+        bestL ← curL
+        bestR ← i
+return (a[bestL..bestR], bestSum)</pre>
+<p><strong>정당성.</strong> i에서 끝나는 최적 구간은 (1) 원소 <code>a[i]</code> 하나로 새로 시작하거나 (2) i−1에서 끝나는 최적 구간 뒤에 <code>a[i]</code>를 붙이는 경우 중 하나다. 따라서 두 후보의 최대만 유지하면 모든 끝점 i에 대한 최적값을 얻는다. 그중 최댓값과 인덱스를 갱신하므로 반환한 <code>a[bestL..bestR]</code>는 합이 최대인 비어 있지 않은 연속 부분수열이다. 모든 원소가 음수여도 초기값을 <code>a[1]</code>로 두므로 빈 구간을 반환하지 않는다.</p>
+<p><strong>복잡도.</strong> 시간 <code>O(n)</code>, 보조 공간 <code>O(1)</code>. 구간을 별도 배열로 복사해 출력하면 출력 복사 비용은 최대 <code>O(n)</code>이다.</p>
+</div></details>
+</div><div class="qblock"><div class="qhead">Q3</div><p class="qp">(10pts) Let us define a multiplication operation on three symbols a, b, c according to the following table; thus ab = b, ba = c, and so on. Notice that the multiplication operation defined by the table is neither associative nor commutative.</p><p class="qp">Find an efficient algorithm that examines a string of these symbols, say bbbbac, and decides whether or not it is possible to parenthesize the string in such a way that the value of the resulting expression is a. For example, on input bbbbac your algorithm should return yes because ((b(bb))(ba))c = a.</p><p class="qp">Multiplication table (rows = left operand, columns = right operand):</p><div class="formula">| | a | b | c |</div><div class="formula">|---|---|---|---|</div><div class="formula">| a | b | b | a |</div><div class="formula">| b | c | b | a |</div><div class="formula">| c | a | c | c |</div>
+<details class="dx"><summary>한국어 풀이 (독립 검증)</summary><div class="dx-body">
+<p><strong>구간 DP.</strong> <code>T[i,j]</code>를 부분문자열 <code>s[i..j]</code>를 순서를 바꾸지 않고 완전히 괄호 쳤을 때 가능한 결과 기호들의 집합으로 둔다. 곱셈은 비결합적·비가환적이므로 모든 분할점과 좌·우 피연산자 순서를 그대로 고려한다.</p>
+<pre class="code">for i ← 1 to n:
+    T[i,i] ← {s[i]}
+for len ← 2 to n:
+    for i ← 1 to n-len+1:
+        j ← i+len-1
+        T[i,j] ← ∅
+        for k ← i to j-1:
+            for a in T[i,k]:
+                for b in T[k+1,j]:
+                    T[i,j] ← T[i,j] ∪ {a*b}  // 주어진 표 사용
+return (a ∈ T[1,n])</pre>
+<p><strong>정당성.</strong> 길이 1 구간의 값은 그 문자 하나뿐이다. 길이가 2 이상인 모든 완전 괄호식은 마지막 곱셈에서 유일한 분할점 k를 갖고, 왼쪽·오른쪽 부분식은 각각 <code>T[i,k]</code>, <code>T[k+1,j]</code>에 속한다. 알고리즘은 모든 분할점과 가능한 좌·우 값 조합을 열거해 가능한 결과를 빠짐없이 넣고, 불가능한 결과는 넣지 않는다. 따라서 <code>T[1,n]</code>에 a가 있을 때 그리고 그때에만 답은 yes다. 예시 문자열 <code>bbbbac</code>에서는 a가 가능한 결과 집합에 포함된다.</p>
+<p><strong>복잡도.</strong> 구간은 <code>O(n²)</code>개, 각 구간의 분할점은 <code>O(n)</code>개이며 각 집합은 {a,b,c}의 부분집합이라 크기가 최대 3이다. 시간 <code>O(n³)</code>, 공간 <code>O(n²)</code>.</p>
+</div></details>
+</div><div class="qblock"><div class="qhead">Q4</div><p class="qp">(10pts) An edge of a network is called a bottleneck edge if increasing its capacity results in an increase in the maximum flow. Give an efficient algorithm to identify all bottleneck edges in a network. (Hint: Examine the residual graph returned by Ford-Fulkerson algorithm.)</p>
+<details class="dx"><summary>한국어 풀이 (독립 검증)</summary><div class="dx-body">
+<p><strong>알고리즘.</strong> 먼저 최대 유량 <code>f</code>와 잔여 그래프 <code>G_f</code>를 계산한다. 잔여 그래프에서 s로부터 도달 가능한 정점 집합을 <code>S</code>라 하고, 역방향 탐색으로 t에 도달할 수 있는 정점 집합 <code>T={v : v에서 t로 잔여 경로가 있음}</code>를 구한다. 원래 네트워크의 각 방향 간선 <code>(u,v)</code>에 대해 <code>u∈S</code>이고 <code>v∈T</code>이면 병목 간선으로 출력한다. 이 조건이면 해당 간선은 포화되어 있다. 구현에서 <code>f(u,v)=c(u,v)</code>를 추가로 확인해도 결과는 같다.</p>
+<p><strong>정당성.</strong> 최대 유량의 잔여 그래프에서 s-side가 S인 컷은 최소 컷이고, 모든 최소 컷의 source-side는 S를 포함한다. 마찬가지로 <code>V\T</code>는 최소 컷의 source-side가 될 수 있다. 따라서 <code>u∈S</code>, <code>v∈T</code>이면 모든 최소 컷이 u를 source-side, v를 sink-side에 두므로 간선 (u,v)는 모든 최소 컷을 가로지른다. 그 용량을 늘리면 최소 컷 용량과 최대 유량값이 증가한다. 반대로 u가 S에 없으면 S 컷, 또는 v가 T에 없으면 <code>V\T</code> 컷 중 하나가 해당 간선을 가로지르지 않는 최소 컷이므로 용량을 늘려도 그 컷의 용량은 그대로이고 최대 유량은 증가하지 않는다.</p>
+<p><strong>복잡도.</strong> 최대 유량 계산 뒤 정방향·역방향 BFS/DFS 각 1회와 간선 스캔으로 추가 시간 <code>O(|V|+|E|)</code>, 공간 <code>O(|V|+|E|)</code>다. 전체 시간은 선택한 최대 유량 알고리즘의 시간에 이 선형 후처리를 더한 값이다.</p>
+</div></details>
+</div><div class="qblock"><div class="qhead">Q5</div><p class="qp">In 3Sat the input is a set of clauses, each with three or fewer literals, for example</p><div class="formula">(x̄ ∨ y ∨ z̄)(x ∨ ȳ ∨ z)(x ∨ y ∨ z̄)(x̄ ∨ ȳ),</div><p class="qp">and the aim is to find a satisfying truth assignment. In Independent Set the input is a graph and a number g, and the problem is to find a set of g pairwise non-adjacent vertices. - (a) (5pts) Explain a polynomial time reduction that maps an instance S of 3Sat to an instance I of Independent Set. - (b) (5pts) From the construction above, prove the following statement.</p><p class="qp">&gt; There is an independent set of g vertices for S if and only if there is a satisfying assignment for I. (원문 그대로 — S 와 I 의 역할이 문장에서 뒤바뀐 것으로 보이나 추정 수정하지 않음 [sic])</p>
+<details class="dx"><summary>한국어 풀이 (독립 검증)</summary><div class="dx-body">
+<p><strong>(a) 감소 구성.</strong> 3SAT 식 S에 m개의 절이 있다고 하자. 각 절의 <em>각 리터럴 발생(occurrence)</em>마다 정점을 하나 만든다. 각 절 안의 정점들은 모두 서로 연결해 크기 최대 3인 clique를 만든다. 서로 다른 절에 있는 리터럴이 <code>x</code>와 <code>¬x</code>처럼 서로 모순이면 그 두 정점 사이에도 간선을 둔다. Independent Set의 목표 크기는 <code>g=m</code>이다. 정점 수는 리터럴 발생 수, 간선 수는 그 제곱 이하이므로 다항 시간 구성이다.</p>
+<p><strong>(b) 올바른 동치.</strong> 원문 문장에는 S와 I의 역할이 뒤바뀐 것으로 보이는 [sic]가 있다. 감소가 증명하는 올바른 관계는 <strong>S가 만족 가능함 ⇔ 구성된 그래프 I에 크기 m인 독립집합이 존재함</strong>이다.</p>
+<p><strong>(⇒)</strong> 만족 배정이 있으면 각 절에서 참인 리터럴 발생 하나를 고른다. 절 내부에서는 하나만 골랐고, 서로 모순되는 리터럴 두 개가 동시에 참일 수 없으므로 선택된 정점 사이에는 간선이 없다. 따라서 크기 m의 독립집합이다.</p>
+<p><strong>(⇐)</strong> 각 절 clique에서는 독립집합이 최대 하나만 고를 수 있다. 절이 m개이고 독립집합 크기가 m이므로 각 절에서 정확히 하나씩 선택했다. 선택된 리터럴들 사이에는 모순 쌍이 없으므로, 선택된 리터럴을 참으로 만드는 일관된 배정을 만들 수 있다(나머지 변수는 임의 배정). 각 절에 참인 선택 리터럴이 있으므로 S는 만족 가능하다.</p>
+<p><strong>복잡도.</strong> 그래프 구성은 다항 시간이고, 이는 3SAT에서 Independent Set으로의 다항 시간 감소다.</p>
+</div></details>
+</div><div class="qblock"><div class="qhead">Q6</div><p class="qp">(10pts) In the Euclidean Minimum Steiner Tree problem, the input consists of a complete graph G = (V, E) in the plane with Euclidean distance d<sub>uw</sub> between all pairs of nodes, and a distinguished set of terminal nodes V&#x27; ⊆ V. The goal is to find a minimum-cost tree that includes the vertices V&#x27;. This tree may or may not include nodes in V ∖ V&#x27;.</p><p class="qp">Consider the algorithm that ignores the non-terminal nodes and simply returns the minimum spanning tree on V&#x27;. Show that this algorithm returns a Steiner tree whose cost(size) is at most twice the size of the minimum Steiner tree.</p>
+<details class="dx"><summary>한국어 풀이 (독립 검증)</summary><div class="dx-body">
+<p><strong>알고리즘.</strong> 터미널 수를 <code>t=|V′|</code>라 하고, 비터미널을 무시한 완전 유클리드 그래프 위에서 터미널들의 MST <code>T_MST</code>를 반환한다. 이 트리는 모든 터미널을 연결하므로 유효한 Steiner tree 해다.</p>
+<p><strong>2-근사 증명.</strong> 최적 Steiner tree를 <code>T*</code>라 하자. 각 간선을 두 번씩 지나는 깊이 우선 순회를 하면 모든 터미널을 방문하는 닫힌 워크의 길이는 <code>2·cost(T*)</code>다. 이 워크에서 터미널을 방문한 순서만 남기고 비터미널 방문을 유클리드 삼각부등식으로 지름길 처리하면, 모든 터미널을 방문하는 순회(터미널 투어) C를 얻고 <code>cost(C)≤2·cost(T*)</code>다. C에서 간선 하나를 제거하면 터미널을 연결하는 스패닝 트리가 되며 비용은 C보다 크지 않다. MST는 모든 터미널 스패닝 트리 중 최소 비용이므로
+</p><div class="formula">cost(T<sub>MST</sub>) ≤ cost(C) ≤ 2·cost(T*).</div>
+<p>따라서 반환 트리 비용은 최적 Steiner tree 비용의 두 배 이하이다. 터미널이 하나뿐이면 MST 비용은 0이라 자명하다. <strong>복잡도.</strong> 완전 그래프에서 배열 기반 Prim은 <code>O(t²)</code> 시간, <code>O(t)</code> 보조 공간(거리 행렬을 미리 저장하면 공간 <code>O(t²)</code>)이다.</p>
+</div></details>
+</div>
 <div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
 </div></body></html>

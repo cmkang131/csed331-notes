@@ -38,6 +38,54 @@ sub,sup{font-size:.72em}
 <h1>Fall 2020 Final</h1>
 <p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
 
-<div class="qblock"><div class="qhead">Q1</div><p class="qp">(10 points) Write the dual to the following linear program.</p><div class="formula">max x + y</div><div class="formula">subject to 2x + y ≤ 3</div><div class="formula">x + 3y ≤ 5</div><div class="note">주석: 원문에 x,y ≥ 0 조건이 인쇄되어 있지 않다. 풀이에서는 이를 가정한다고 명시.</div></div><div class="qblock"><div class="qhead">Q2</div><div class="formula">(10 points) Suppose someone presents you with a solution to a max-flow problem on some network.</div><div class="formula">Give a linear-time algorithm to determine whether the solution does indeed give a maximum flow.</div></div><div class="qblock"><div class="qhead">Q3</div><div class="formula">(10 points) Show that there is no value t for which there exists a polynomial-time t-approximation</div><div class="formula">algorithm for TSP, unless P=NP.</div></div><div class="qblock"><div class="qhead">Q4</div><div class="formula">(30 points) Let P be a set of 2n points lying on a unit circle, such that n points are colored red and n</div><div class="formula">points are colored blue. A non-crossing alternating path on P is a sequence p1 , . . . , pℓ of points from</div><div class="formula">P so that (i) all points are pairwise distinct; (ii) any two consecutive points pi , pi+1 have different</div><div class="formula">colors; and (iii) any two segments pi pi+1 and pj pj+1 have disjoint relative interiors, for i ≠ j. Design</div><div class="formula">an efficient algorithm for computing the longest non-crossing alternating path on P .</div><div class="note">주석: 텍스트 추출층의 깨진 글리프만 원문 PDF 대조 후 복원했다(pℓ, ≠).</div></div><div class="qblock"><div class="qhead">Q5</div><div class="formula">(30 points) For a undirected simple graph G = (V, E), a set S of vertices of V is called a star of G</div><div class="formula">if there is a vertex v ∈ S such that vu ∈ E for all u ∈ S ∖ {v} and uu′ ∉ E for every pair (u, u′) of</div><div class="formula">vertices of S. Show that the following problem is NP-hard: Given an undirected graph G = (V, E)</div><div class="formula">and an integer g, check if there is a star S of G with |S| = g.</div><div class="note">주석: 텍스트 추출층의 깨진 글리프만 원문 PDF 대조 후 복원했다(uu′, ∉, u′).</div></div>
+<div class="qblock"><div class="qhead">Q1</div><p class="qp">(10 points) Write the dual to the following linear program.</p><div class="formula">max x + y</div><div class="formula">subject to 2x + y ≤ 3</div><div class="formula">x + 3y ≤ 5</div><div class="note">주석: 원문에 x,y ≥ 0 조건이 인쇄되어 있지 않다. 풀이에서는 이를 가정한다고 명시.</div><details class="dx"><summary>한국어 풀이 (접기/펼치기)</summary><div class="dx-body"><p><b>먼저 변수 영역을 분리해야 한다.</b> 원문에는 x, y의 부호 조건이 없다. 따라서 문자 그대로라면 x, y는 자유변수이고, 통상적인 의도처럼 x, y ≥ 0이라고 추가 가정하면 듀얼 제약의 형태가 달라진다.</p>
+<p><b>1. 원문 그대로: x, y 자유변수</b></p>
+<p>최대화 문제의 제약이 Ax ≤ b이고 원변수가 자유변수이면, 듀얼 변수는 비음수이고 Aᵀu = c가 등식으로 성립한다. 제약 두 개에 각각 u, v를 대응시키면</p>
+<div class="formula">minimize 3u + 5v<br>subject to 2u + v = 1, &nbsp; u + 3v = 1, &nbsp; u, v ≥ 0.</div>
+<p>등식을 풀면 u = 2/5, v = 1/5이고 목적값은 11/5이다. 실제 원문 프라이멀도 (x,y) = (4/5, 7/5)에서 두 제약이 등식으로 성립하고 x+y = 11/5이므로 값이 일치한다.</p>
+<p><b>2. 의도적으로 x, y ≥ 0을 가정하는 경우</b></p>
+<div class="formula">minimize 3u + 5v<br>subject to 2u + v ≥ 1, &nbsp; u + 3v ≥ 1, &nbsp; u, v ≥ 0.</div>
+<p>이것이 교과서에서 흔히 기대하는 듀얼이다. 따라서 채점 답안에는 원문에 부호 조건이 빠져 있음을 밝히고, 어느 해석을 쓰는지 명시해야 한다. 이 문항의 핵심은 두 원변수의 영역에 따라 등식과 ≥ 제약이 달라진다는 점이다.</p></div></details></div><div class="qblock"><div class="qhead">Q2</div><div class="formula">(10 points) Suppose someone presents you with a solution to a max-flow problem on some network.</div><div class="formula">Give a linear-time algorithm to determine whether the solution does indeed give a maximum flow.</div><details class="dx"><summary>한국어 풀이 (접기/펼치기)</summary><div class="dx-body"><p><b>알고리즘</b></p>
+<ol class="steps">
+<li>제시된 각 간선 유량 f(e)에 대해 0 ≤ f(e) ≤ c(e)인지 확인한다.</li>
+<li>각 정점의 순유출량을 계산한다. s와 t를 제외한 모든 정점에서 순유출량이 0이어야 한다. 이는 유량 보존 조건이다.</li>
+<li>잔여 그래프 G<sub>f</sub>를 만든다. 원래 간선 e=(u,v)에 대해 f(e)&lt;c(e)이면 잔여 용량 c(e)−f(e)의 u→v 간선을 넣고, f(e)&gt;0이면 잔여 용량 f(e)의 v→u 역방향 간선을 넣는다.</li>
+<li>G<sub>f</sub>에서 s부터 BFS 또는 DFS를 한다. t에 도달 가능하면 증가 경로가 있으므로 제시된 유량은 최대가 아니다. 도달할 수 없으면 최대 유량이다.</li>
+</ol>
+<p><b>정당성.</b> 1–2단계는 입력이 실제 실행 가능한 s-t 유량인지 확인한다. 실행 가능한 유량에 대해 잔여 그래프에 s-t 증가 경로가 존재하면 그 경로를 따라 양의 잔여 용량만큼 유량을 늘릴 수 있으므로 현재 유량은 최대가 아니다. 반대로 증가 경로가 없으면 최대 유량-최소 컷 정리에 의해 현재 유량은 최대다.</p>
+<p><b>시간·공간 복잡도.</b> 간선별 용량·유량 확인, 정점별 순유출량 계산, 잔여 그래프 구성 및 BFS/DFS가 각각 O(|V|+|E|) 이하이므로 총 시간 O(|V|+|E|), 공간 O(|V|+|E|)이다. 여기서 선형 시간은 정점과 간선 수의 합에 대한 것이다.</p></div></details></div><div class="qblock"><div class="qhead">Q3</div><div class="formula">(10 points) Show that there is no value t for which there exists a polynomial-time t-approximation</div><div class="formula">algorithm for TSP, unless P=NP.</div><details class="dx"><summary>한국어 풀이 (접기/펼치기)</summary><div class="dx-body"><p><b>가정.</b> TSP는 일반적인 완전 가중 그래프 위의 최소화 TSP이고, t ≥ 1은 입력 크기와 무관한 고정 상수 근사비라고 해석한다. metric TSP라는 추가 조건은 원문에 없다.</p>
+<p>해밀턴 사이클(HC) 문제의 무방향 그래프 G=(V,E), |V|=n에서 감소한다. 완전 그래프 K<sub>n</sub>을 만들고, G에 원래 있던 간선에는 가중치 1, 없던 간선에는 M=⌈t⌉n+1을 준다. 구성은 다항 시간이고 M의 인코딩 길이도 다항식이다.</p>
+<ol class="steps">
+<li>G에 해밀턴 사이클이 있으면 완전 그래프의 최적 TSP 투어 비용은 n이다. t-근사 알고리즘이 반환하는 투어 비용은 ≤ tn ≤ ⌈t⌉n이다.</li>
+<li>G에 해밀턴 사이클이 없으면 모든 투어는 G에 없던 간선을 적어도 하나 사용한다. 따라서 투어 비용은 적어도 M=⌈t⌉n+1이다.</li>
+<li>알고리즘이 반환한 투어 비용이 ⌈t⌉n 이하인지 검사하면 HC의 yes/no를 다항 시간에 판별할 수 있다.</li>
+</ol>
+<p>따라서 고정된 상수 t에 대한 다항 시간 t-근사 알고리즘이 존재하면 HC를 다항 시간에 풀 수 있어 P=NP가 된다. 그러므로 P≠NP라면 일반 TSP에는 어떤 고정 상수 근사비도 다항 시간에 달성할 수 없다.</p>
+<p><b>복잡도·주의.</b> 감소 자체는 O(n²) 간선을 구성하는 다항 시간이다. 이 증명은 metric TSP에는 적용되지 않는다. metric 조건에서는 큰 가중치 M을 주는 방식이 삼각부등식을 깨뜨릴 수 있기 때문이다.</p></div></details></div><div class="qblock"><div class="qhead">Q4</div><div class="formula">(30 points) Let P be a set of 2n points lying on a unit circle, such that n points are colored red and n</div><div class="formula">points are colored blue. A non-crossing alternating path on P is a sequence p1 , . . . , pℓ of points from</div><div class="formula">P so that (i) all points are pairwise distinct; (ii) any two consecutive points pi , pi+1 have different</div><div class="formula">colors; and (iii) any two segments pi pi+1 and pj pj+1 have disjoint relative interiors, for i ≠ j. Design</div><div class="formula">an efficient algorithm for computing the longest non-crossing alternating path on P .</div><div class="note">주석: 텍스트 추출층의 깨진 글리프만 원문 PDF 대조 후 복원했다(pℓ, ≠).</div><details class="dx"><summary>한국어 풀이 (접기/펼치기)</summary><div class="dx-body"><p><b>정확한 동적 계획법(DP).</b> N=2n이라 하고, 원 위의 점들을 원주 순서대로 p₁,…,p<sub>N</sub>이라 둔다. 원형 경계를 끊는 위치에 따라 가능한 모든 경로 순서를 포착하기 위해 배열을 두 번 이어 붙인다. 즉 p<sub>i+N</sub>=p<sub>i</sub>로 둔다. 길이가 N 이하인 모든 구간 [i,j]만 계산한다.</p>
+<p><b>핵심 성질(양 끝 제거 성질).</b> 비교차 경로의 첫 두 선택 정점 사이에 경로에 포함된 정점이 원주상 양쪽 호에 모두 존재한다면, 나머지 경로는 그 둘을 잇는 선분을 가로질러야 하므로 비교차 조건에 어긋난다. 따라서 첫 정점과 다음 정점은 현재 선택된 정점 집합의 원주 순서에서 이웃이다. 이를 경로의 각 접미 경로에 반복 적용하면, 적절한 원형 절단을 택했을 때 경로는 남은 선택 정점의 왼쪽 끝 또는 오른쪽 끝을 하나씩 고르는 순서로 표현된다. 입력 점 중 경로에 쓰지 않는 점은 구간 끝에서 건너뛸 수 있다.</p>
+<p>c∈{R,B}에 대해 F<sub>c</sub>(i,j)는 색 c인 직전 정점 뒤에 붙일 수 있는, 구간 [i,j]의 최대 추가 정점 수로 정의한다. H(i,j)는 직전 정점이 없는 경우의 최대 길이다. 빈 구간의 값은 0이다.</p>
+<div class="formula">F<sub>c</sub>(i,j) = max { F<sub>c</sub>(i+1,j), F<sub>c</sub>(i,j−1),<br>
+1 + F<sub>color(i)</sub>(i+1,j)  (color(i) ≠ c),<br>
+1 + F<sub>color(j)</sub>(i,j−1)  (color(j) ≠ c) }<br><br>
+H(i,j) = max { H(i+1,j), H(i,j−1),<br>
+1 + F<sub>color(i)</sub>(i+1,j), 1 + F<sub>color(j)</sub>(i,j−1) }.</div>
+<p>첫 두 항은 해당 구간 끝점을 사용하지 않는 선택이다. 나머지 항은 그 끝점을 다음 정점으로 선택하고, 색이 직전 정점과 다를 때만 허용한다. 구간 길이 순으로 계산하면 모든 참조 상태는 이미 계산되어 있다.</p>
+<pre class="code">N = 2n
+P2 = P concatenated with P
+for length = 1,...,N:
+    for each interval [i,j] of this length in P2:
+        compute F_R(i,j), F_B(i,j), H(i,j)
+        using the recurrences above
+answer = max H(i, i+N-1), for i = 1,...,N
+store maximizing choices to reconstruct the path</pre>
+<p><b>정당성.</b> 양 끝 제거 성질에 의해 모든 유효한 비교차 교대 경로는 어떤 회전 구간에서 이 DP의 선택 순서로 나타난다. 반대로 DP는 매 단계 구간의 끝 정점만 선택하고 나머지 선택 정점은 그 선분의 한쪽에 남기므로, 새 선분은 이미 선택한 선분이나 이후 선분을 가로지르지 않는다. 색 조건은 전이에서 직접 강제된다. 따라서 DP가 모든 유효 경로를 포착하고 유효하지 않은 경로를 만들지 않으므로, 최댓값이 정확히 최장 경로의 정점 수다.</p>
+<p><b>복잡도.</b> 두 배 배열에서 길이 N 이하인 구간은 O(N²)개이고 각 구간의 세 상태는 O(1)개 전이만 비교한다. 시간 O(N²)=O(n²), 공간 O(N²)=O(n²)이다. 최적 경로를 출력하려면 최대값을 낸 전이를 저장해 역추적한다. 이 풀이에서는 모든 입력에서 길이 2n 경로가 존재한다고 가정하지 않는다.</p></div></details></div><div class="qblock"><div class="qhead">Q5</div><div class="formula">(30 points) For a undirected simple graph G = (V, E), a set S of vertices of V is called a star of G</div><div class="formula">if there is a vertex v ∈ S such that vu ∈ E for all u ∈ S ∖ {v} and uu′ ∉ E for every pair (u, u′) of</div><div class="formula">vertices of S. Show that the following problem is NP-hard: Given an undirected graph G = (V, E)</div><div class="formula">and an integer g, check if there is a star S of G with |S| = g.</div><div class="note">주석: 텍스트 추출층의 깨진 글리프만 원문 PDF 대조 후 복원했다(uu′, ∉, u′).</div><details class="dx"><summary>한국어 풀이 (접기/펼치기)</summary><div class="dx-body"><p><b>문자 그대로의 인쇄 정의.</b> 정의는 중심 v가 S의 다른 모든 정점과 인접해야 한다고 요구하는 동시에, S의 모든 정점 쌍 사이에 간선이 없어야 한다고 읽힌다. 쌍에 중심과 잎의 쌍도 포함되면 |S|≥2일 때 두 조건이 모순이다. 따라서 문자 그대로의 문제는 g=1인 경우(정점이 하나 이상 있을 때) 외에는 자명하게 판정 가능하며, 의도된 NP-hardness 주장을 이 정의로 증명할 수 없다.</p>
+<p><b>의도된 해석: induced star.</b> 중심은 모든 잎과 인접하고, 잎끼리는 서로 비인접하다고 해석한다. Independent Set에서 다항 시간 감소를 한다. NP-hardness는 k≥2인 입력에 대해서만 설명하면 충분하다. IS의 k≤1인 trivial cases는 별도로 즉시 판정해 고정된 yes/no 인스턴스로 바꿀 수 있으므로 NP-hardness에 영향을 주지 않는다.</p>
+<ol class="steps">
+<li>입력 (G,k)에 새 정점 z를 추가하고 z를 기존 모든 정점과 연결해 G′를 만든다. 목표 크기를 g=k+1로 둔다.</li>
+<li>G에 크기 k 독립집합 I가 있으면 I∪{z}는 중심 z, 잎 I인 크기 k+1의 induced star다.</li>
+<li>반대로 G′에 크기 k+1의 induced star S가 있으면 그 중심을 v라 하자. 정의상 S∖{v}의 k개 잎은 서로 비인접하다. v=z라면 이 잎들은 모두 원래 G의 정점이므로 크기 k 독립집합이다. v≠z라고 하자. k≥2이므로 잎이 적어도 두 개 있다. z가 잎이면 다른 잎과 인접해 잎끼리 비인접하다는 조건에 어긋나므로 z는 잎일 수 없다. 따라서 S∖{v}는 모두 G의 정점이고, G의 크기 k 독립집합이다.</li>
+</ol>
+<p>구성 크기는 |V|+1이고 다항 시간이다. 그러므로 의도된 induced-star 문제는 Independent Set에서 다항 시간 감소를 받아 NP-hard다. 원문 정의의 모순과 의도된 해석의 증명은 구분해야 한다.</p></div></details></div>
 <div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
 </div></body></html>

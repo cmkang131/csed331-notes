@@ -38,6 +38,55 @@ sub,sup{font-size:.72em}
 <h1>12 June 2012 Final</h1>
 <p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
 
-<div class="qblock"><div class="qhead">Q1</div><p class="qp">(20pts) As you learned from classes, the order of multiplications in A<sub>1</sub> × A<sub>2</sub> × … × A<sub>n</sub> makes a big difference in the final running time, where the A<sub>i</sub>&#x27;s are matrices with dimensions m<sub>0</sub> × m<sub>1</sub>, m<sub>1</sub> × m<sub>2</sub>, …, m<sub>n-1</sub> × m<sub>0</sub>, respectively. Design an algorithm (recurrence relation) that determines the optimal order of minimum total cost. (주: 마지막 차수가 인쇄상 m<sub>n-1</sub> × m<sub>0</sub> 로 읽힘 — m<sub>n</sub> 의 오타일 가능성이 있으나 추정 수정하지 않음 [sic])</p><div class="note">주석: m_{n-1} × m_0 는 인쇄 원문 그대로 [sic] — m_n의 오타일 가능성이 있으나 추정 수정하지 않았다.</div></div><div class="qblock"><div class="qhead">Q2</div><p class="qp">(20pts) Decide whether you think the following statement is true or false. If it is true, give a short explanation. If it is false, give a counterexample.</p><p class="qp">&gt; Let G be an arbitrary flow network, with a source s and a sink t, and a positive integer capacity c<sub>e</sub> on every edge e. Let (A, B) be a minimum s-t cut with respect to these capacities {c<sub>e</sub> : e ∈ E}. Now suppose we add 1 to every capacity. Then (A, B) is still a minimum s-t cut with respect to these new capacities {1 + c<sub>e</sub> : e ∈ E}.</p></div><div class="qblock"><div class="qhead">Q3</div><p class="qp">(20pts) Show that Vertex-Cover ≡<sub>p</sub> Independent-Set.</p></div><div class="qblock"><div class="qhead">Q4</div><p class="qp">(20pts) Assuming that Circuit-SAT is NP-complete, we are going to show that 3SAT is also NP-complete. For the instance of Circuit-SAT in the following figure, construct an instance of 3SAT, which shows Circuit-SAT ≤<sub>p</sub> 3SAT.</p><p class="qp">Figure — 인쇄된 회로: 루트 게이트 ∧ (AND), 왼쪽 자식 ∨ (OR, 입력 리프 2개), 오른쪽 자식 ¬ (NOT, 입력 리프 1개) 형태의 작은 회로 DAG. 게이트 옆 라벨(u, w)과 리프 라벨(x, y, z) 및 물음표는 손글씨 주석으로 보이며, 리프 변수명이 인쇄인지 손글씨인지 스캔만으로 확정 불가. 그 외 손글씨 메모: &quot;reduction&quot;, &quot;boolean formular&quot; 등.</p><div class="note">주석: 회로도 판독: 루트 AND, OR 입력 2개, NOT 입력 1개. 변수 라벨 일부가 불명확해 추정하지 않았다.</div></div>
+<div class="qblock"><div class="qhead">Q1</div><p class="qp">(20pts) As you learned from classes, the order of multiplications in A<sub>1</sub> × A<sub>2</sub> × … × A<sub>n</sub> makes a big difference in the final running time, where the A<sub>i</sub>&#x27;s are matrices with dimensions m<sub>0</sub> × m<sub>1</sub>, m<sub>1</sub> × m<sub>2</sub>, …, m<sub>n-1</sub> × m<sub>0</sub>, respectively. Design an algorithm (recurrence relation) that determines the optimal order of minimum total cost. (주: 마지막 차수가 인쇄상 m<sub>n-1</sub> × m<sub>0</sub> 로 읽힘 — m<sub>n</sub> 의 오타일 가능성이 있으나 추정 수정하지 않음 [sic])</p><div class="note">주석: m_{n-1} × m_0 는 인쇄 원문 그대로 [sic] — m_n의 오타일 가능성이 있으나 추정 수정하지 않았다.</div><details class="dx"><summary>한국어 풀이 · 구간 DP</summary><div class="dx-body">
+<p>인쇄된 마지막 차원 m<sub>0</sub>를 임의로 고치지 않는다. 표기를 통일하기 위해 <strong>m<sub>n</sub> := m<sub>0</sub></strong>라고 정의한다. 그러면 인쇄된 차원 목록은 A<sub>i</sub>가 m<sub>i−1</sub>×m<sub>i</sub> 행렬인 표준 구간 DP 표기로 그대로 표현된다.</p>
+<p>C[i,j]를 A<sub>i</sub>···A<sub>j</sub>를 계산하는 최소 스칼라 곱셈 횟수로 정의한다. 단일 행렬은 추가 곱셈이 없으므로 C[i,i]=0이다. i&lt;j이면 최종 곱셈 직전에 곱을 (A<sub>i</sub>···A<sub>k</sub>)(A<sub>k+1</sub>···A<sub>j</sub>)로 나누는 어떤 k가 존재한다.</p>
+<div class="formula">C[i,j] = min<sub>i ≤ k &lt; j</sub> { C[i,k] + C[k+1,j] + m<sub>i−1</sub>m<sub>k</sub>m<sub>j</sub> }.</div>
+<p>마지막 항은 크기 m<sub>i−1</sub>×m<sub>k</sub>인 왼쪽 결과와 m<sub>k</sub>×m<sub>j</sub>인 오른쪽 결과를 곱하는 비용이다.</p>
+<pre class="code">for i = 1, ..., n: C[i,i] = 0
+for len = 2, ..., n:
+    for i = 1, ..., n-len+1:
+        j = i+len-1
+        C[i,j] = infinity
+        for k = i, ..., j-1:
+            cost = C[i,k] + C[k+1,j] + m[i-1]*m[k]*m[j]
+            if cost &lt; C[i,j]:
+                C[i,j] = cost
+                split[i,j] = k</pre>
+<p><strong>정당성.</strong> 최적 괄호화의 마지막 곱셈은 어떤 k에서 두 연속 부분행렬을 곱한다. 두 부분의 괄호화가 각각 최적이 아니라면 그 부분을 더 싼 괄호화로 바꿔 전체 비용을 낮출 수 있어 모순이다. 따라서 모든 k의 후보 비용을 비교하는 점화식이 최적값을 준다. split[i,j]를 저장하고 재귀적으로 따라가면 최적 괄호화를 복원할 수 있다.</p>
+<p><strong>시간·공간.</strong> 구간 상태가 O(n²)개이고 각 상태에서 최대 O(n)개의 k를 시험하므로 시간 O(n³), C와 split 테이블의 공간 O(n²)이다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q2</div><p class="qp">(20pts) Decide whether you think the following statement is true or false. If it is true, give a short explanation. If it is false, give a counterexample.</p><p class="qp">&gt; Let G be an arbitrary flow network, with a source s and a sink t, and a positive integer capacity c<sub>e</sub> on every edge e. Let (A, B) be a minimum s-t cut with respect to these capacities {c<sub>e</sub> : e ∈ E}. Now suppose we add 1 to every capacity. Then (A, B) is still a minimum s-t cut with respect to these new capacities {1 + c<sub>e</sub> : e ∈ E}.</p><details class="dx"><summary>한국어 풀이 · 반례와 컷 검산</summary><div class="dx-body">
+<p>명제는 <strong>거짓</strong>이다. 다음 방향 간선과 용량을 사용한다: s→a:4, s→b:4, a→t:1, a→b:1, a→c:1, b→t:100, c→t:100.</p>
+<p>컷 (S, V\S)에서 s∈S, t∉S라 하자. 가능한 S는 {s}에 a,b,c 중 임의의 부분집합을 더한 8가지다. 원래 컷 용량을 모두 열거하면 다음과 같다.</p>
+<table class="t"><thead><tr><th>S</th><th>원래 컷 용량</th></tr></thead><tbody>
+<tr><td>{s}</td><td>8</td></tr><tr><td>{s,a}</td><td>7</td></tr><tr><td>{s,b}</td><td>104</td></tr><tr><td>{s,c}</td><td>108</td></tr><tr><td>{s,a,b}</td><td>102</td></tr><tr><td>{s,a,c}</td><td>106</td></tr><tr><td>{s,b,c}</td><td>204</td></tr><tr><td>{s,a,b,c}</td><td>201</td></tr>
+</tbody></table>
+<p>따라서 원래 최소 컷은 S={s,a}이고 값은 7이다. 모든 컷 용량에 대해 실제로 S={s,a}가 최소임을 위 8가지의 완전 열거로 확인할 수 있다.</p>
+<p>각 간선 용량에 1을 더하면 한 컷의 값은 그 컷을 가로지르는 간선 수만큼 증가한다. S={s}는 두 간선을 가로지르므로 새 용량은 8+2=10이다. S={s,a}는 s→b, a→t, a→b, a→c의 네 간선을 가로지르므로 새 용량은 7+4=11이다. 따라서 새 네트워크에서는 기존 컷 값 11보다 작은 컷 값 10이 존재하므로, 기존 최소 컷은 더 이상 최소 컷이 아니다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q3</div><p class="qp">(20pts) Show that Vertex-Cover ≡<sub>p</sub> Independent-Set.</p><details class="dx"><summary>한국어 풀이 · 다항 시간 환원</summary><div class="dx-body">
+<p>모든 그래프 G=(V,E)와 정점 집합 S에 대해 S가 버텍스 커버인 것과 V\S가 독립집합인 것은 동치다. 버텍스 커버 밖의 간선이 있다면 양 끝점이 V\S에 있어 독립집합 조건을 어긴다. 반대로 V\S가 독립집합이면 모든 간선의 양 끝점이 동시에 V\S에 있을 수 없으므로 적어도 한 끝점이 S에 있고 S는 버텍스 커버다.</p>
+<p>표준 결정 문제를 사용하자. Vertex-Cover는 크기 ≤ k인 버텍스 커버의 존재를, Independent-Set은 크기 ≥ g인 독립집합의 존재를 묻는다. n=|V|일 때</p>
+<div class="formula">(G,k) ∈ Vertex-Cover ⇔ (G,n−k) ∈ Independent-Set,</div>
+<div class="formula">(G,g) ∈ Independent-Set ⇔ (G,n−g) ∈ Vertex-Cover.</div>
+<p>두 환원 모두 그래프 G를 그대로 두고 정수 매개변수만 바꾼다. 입력의 매개변수가 통상 범위 0…n 밖이면 그 경우를 먼저 상수 크기의 예/아니오 인스턴스로 처리할 수 있다. 그래프 입력을 복사하는 데 O(|V|+|E|) 시간이 필요하므로 변환 시간은 상수 시간이 아니라 <strong>선형 시간</strong>이다. 두 방향 모두 다항 시간 환원이므로 Vertex-Cover ≡<sub>p</sub> Independent-Set이다.</p>
+</div></details></div><div class="qblock"><div class="qhead">Q4</div><p class="qp">(20pts) Assuming that Circuit-SAT is NP-complete, we are going to show that 3SAT is also NP-complete. For the instance of Circuit-SAT in the following figure, construct an instance of 3SAT, which shows Circuit-SAT ≤<sub>p</sub> 3SAT.</p><p class="qp">Figure — 인쇄된 회로: 루트 게이트 ∧ (AND), 왼쪽 자식 ∨ (OR, 입력 리프 2개), 오른쪽 자식 ¬ (NOT, 입력 리프 1개) 형태의 작은 회로 DAG. 게이트 옆 라벨(u, w)과 리프 라벨(x, y, z) 및 물음표는 손글씨 주석으로 보이며, 리프 변수명이 인쇄인지 손글씨인지 스캔만으로 확정 불가. 그 외 손글씨 메모: &quot;reduction&quot;, &quot;boolean formular&quot; 등.</p><div class="note">주석: 회로도 판독: 루트 AND, OR 입력 2개, NOT 입력 1개. 변수 라벨 일부가 불명확해 추정하지 않았다.</div><details class="dx"><summary>한국어 풀이 · 게이트별 3-CNF 구성</summary><div class="dx-body">
+<p>회로 구조를 그대로 사용한다. 풀이에서 기호를 정해 OR 게이트의 입력을 x,y, 출력 변수를 u라 두고, NOT 게이트의 입력을 z, 출력 변수를 w라 둔다. AND 루트의 입력은 u,w이고 출력 변수를 r이라 둔다. 회로도에서 일부 라벨이 불명확하므로 이 기호들은 풀이용 이름이며, 구조를 바꾸거나 스캔의 라벨을 추정하지 않는다. 회로가 참을 출력하도록 루트 단일절 (r)을 추가한다.</p>
+<p><strong>OR 게이트 u ↔ (x ∨ y):</strong></p>
+<div class="formula">(u ∨ ¬x) ∧ (u ∨ ¬y) ∧ (¬u ∨ x ∨ y)</div>
+<p><strong>NOT 게이트 w ↔ ¬z:</strong></p>
+<div class="formula">(z ∨ w) ∧ (¬z ∨ ¬w)</div>
+<p><strong>AND 루트 r ↔ (u ∧ w):</strong></p>
+<div class="formula">(¬r ∨ u) ∧ (¬r ∨ w) ∧ (r ∨ ¬u ∨ ¬w)</div>
+<p><strong>루트가 참이어야 한다:</strong></p>
+<div class="formula">(r)</div>
+<p>따라서 이 회로에 대응하는 전체 공식은 위 OR 3절, NOT 2절, AND 3절, 루트 단일절을 모두 AND한 공식이며 총 9개 절이다.</p>
+<p><strong>진리표 검산.</strong> 각 절 묶음이 게이트의 입출력 관계를 정확히 강제하는지 확인한다.</p>
+<table class="t"><thead><tr><th>x</th><th>y</th><th>OR 출력 u</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td></tr></tbody></table>
+<table class="t"><thead><tr><th>z</th><th>NOT 출력 w</th></tr></thead><tbody><tr><td>0</td><td>1</td></tr><tr><td>1</td><td>0</td></tr></tbody></table>
+<table class="t"><thead><tr><th>u</th><th>w</th><th>AND 출력 r</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td>1</td></tr></tbody></table>
+<p>각 표는 해당 입력값에 대해 게이트 절 묶음이 허용하는 유일한 출력값을 적은 진리표다. 표에 적힌 출력이 아닌 값을 대입하면 OR의 첫 두 절 또는 세 번째 절, NOT의 두 절 중 하나, 혹은 AND의 첫 두 절 또는 세 번째 절 중 적어도 하나가 거짓이 된다. 따라서 각 절 묶음은 해당 게이트의 진리표와 동치다. 마지막 (r)은 회로 출력이 참이어야 한다는 조건이다.</p>
+<p><strong>절 길이 관례.</strong> 위 공식은 각 절의 리터럴 수가 1, 2 또는 3개인 ‘최대 3개’ 형태의 3-CNF다. 3SAT를 ‘절마다 정확히 3개의 리터럴 출현’으로 정의하고 반복 리터럴을 허용하는 관례라면, 2리터럴 절 (a∨b)는 (a∨b∨b)로, 단일절 (r)은 (r∨r∨r)로 바꾸면 만족 가능성이 보존된다. 이 회로에서는 여섯 2리터럴 절 각각에 마지막 리터럴을 반복하고 루트 절에 r을 세 번 쓰면 된다. ‘서로 다른 변수 3개’를 요구하는 별도 관례는 이 단순 패딩과는 다르다.</p>
+<p><strong>환원 정당성·복잡도.</strong> 각 게이트 변수는 입력 와이어 값과 정확히 일치하도록 강제되고 r=1을 요구하므로, 원 회로가 어떤 입력에서 참을 출력할 때 그리고 그때에만 생성 공식이 만족 가능하다. 일반 회로에서는 게이트마다 상수 개의 변수/절만 추가하므로 변환 크기와 시간은 회로 크기에 대해 O(|회로|)이다. 따라서 Circuit-SAT ≤<sub>p</sub> 3SAT이며, Circuit-SAT가 NP-완전이고 3SAT가 NP에 속하므로 3SAT도 NP-완전이다.</p>
+</div></details></div>
 <div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
 </div></body></html>
