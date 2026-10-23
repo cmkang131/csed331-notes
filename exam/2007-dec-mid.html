@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>20 December 2007 Midterm (printed title) · CSED331 기출</title><style>
+:root{--ink:#1a1a1a;--red:#9e2b25}
+*{box-sizing:border-box}a{color:var(--ink)}a:visited{color:var(--ink)}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.75 "Noto Sans KR",system-ui,sans-serif}
+.paper{max-width:860px;margin:0 auto;padding:24px 28px 80px}
+.phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding-bottom:8px;margin-bottom:22px;font-size:14px}
+.phead a{color:var(--ink)}
+h1{font-size:26px;margin:.2em 0 .4em}h2{font-size:19px;border-bottom:1px solid var(--ink);padding-bottom:4px;margin:30px 0 10px}
+.problem{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
+.prob-no{font-weight:700;font-size:15px;color:var(--red)}.ref{font-size:13px;color:#555;margin-bottom:6px}
+details.dx{border:1px solid var(--ink);margin:10px 0}
+details.dx>summary{cursor:pointer;padding:8px 14px;font-weight:700;list-style:none}
+details.dx>summary::-webkit-details-marker{display:none}
+details.dx[open]>summary{border-bottom:1px solid var(--ink)}
+.dx-body{padding:6px 18px 10px}
+ol.steps{padding-left:22px}ol.steps li{margin:.5em 0}
+.mjx-display{margin:9px 0;overflow-x:auto;padding:7px 14px;border:1px solid var(--ink)}
+.mjx-display svg{display:block;margin:0 auto}
+.mjx svg{display:inline-block;vertical-align:middle;overflow:visible}
+pre.code{border:1px solid var(--ink);padding:10px 14px;overflow-x:auto;font:13.5px/1.6 ui-monospace,Menlo,Consolas,monospace;background:#fff;margin:8px 0}
+.sec{margin-top:18px;border-top:1px solid var(--ink);padding-top:8px;font-size:14px}
+.sec a{color:var(--ink)}
+.pnav{display:flex;justify-content:space-between;margin-top:26px;border-top:1.5px solid var(--ink);padding-top:10px;font-size:14px}
+.pnav a{color:var(--ink)}
+table.t{border-collapse:collapse;width:100%;margin:8px 0}table.t td,table.t th{border:1px solid var(--ink);padding:6px 10px;text-align:left;font-size:14.5px}
+b{color:var(--ink)}
+</style><style>
+.stmt{white-space:pre-wrap;font:15.5px/1.7 "Noto Sans KR",system-ui,sans-serif;margin:6px 0 0}
+.note{border-left:3px solid var(--red);padding:4px 12px;margin:8px 0 0;font-size:13.5px;color:#444;background:#fafafa}
+.qblock{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
+.qhead{font-weight:700;font-size:15px;color:var(--red);margin-bottom:4px}
+.enote{font-size:13px;color:#555;margin:0 0 14px}
+</style></head><body><div class="paper">
+<div class="phead"><a href="index.html">← 기출 목록</a><span>연도별 기출 전문</span><span>CSED331 · 알고리즘</span></div>
+<h1>20 December 2007 Midterm (printed title)</h1>
+<p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
+<p class="enote">· 파일명은 Final이지만 인쇄 제목은 Midterm이다. 인쇄 제목을 그대로 썼다.</p>
+<div class="qblock"><div class="qhead">Q1</div><div class="stmt">(10pts) You are given an infinite array $A[\cdot]$ in which the first $n$ cells contain integers in sorted order and the rest of the cells are filled with $\infty$. But you are not given the value of $n$. Assume that the implementation of the array data type in your programming language returns the error message $\infty$ whenever elements $A[i]$ with $i &gt; n$ are accessed. Describe an algorithm that takes an integer $x$ as input and finds a position in the array containing $x$, if such a position exists, in $O(\log n)$ time.</div></div><div class="qblock"><div class="qhead">Q2</div><div class="stmt">(10pts) A contiguous subsequence of a list $S$ is a subsequence made up of consecutive elements of $S$. For instance, if $S$ is
+$$5, 15, -30, 10, -5, 40, 10,$$
+then $15, -30, 10$ is a contiguous subsequence but $5, 15, 40$ is not. Give a linear-time algorithm for the following task:
+
+Input: A list of numbers, $a_1, a_2, \dots, a_n$.
+Output: The contiguous subsequence of maximum sum (consisting of at least one element).</div></div><div class="qblock"><div class="qhead">Q3</div><div class="stmt">(10pts) Let us define a multiplication operation on three symbols $a, b, c$ according to the following table; thus $ab = b, ba = c$, and so on. Notice that the multiplication operation defined by the table is neither associative nor commutative.
+
+Find an efficient algorithm that examines a string of these symbols, say $bbbbac$, and decides whether or not it is possible to parenthesize the string in such a way that the value of the resulting expression is $a$. For example, on input $bbbbac$ your algorithm should return *yes* because $((b(bb))(ba))c = a$.
+
+Multiplication table (rows = left operand, columns = right operand):
+
+|   | a | b | c |
+|---|---|---|---|
+| **a** | b | b | a |
+| **b** | c | b | a |
+| **c** | a | c | c |</div></div><div class="qblock"><div class="qhead">Q4</div><div class="stmt">(10pts) An edge of a network is called a *bottleneck edge* if increasing its capacity results in an increase in the maximum flow. Give an efficient algorithm to identify all bottleneck edges in a network. (*Hint:* Examine the residual graph returned by Ford-Fulkerson algorithm.)</div></div><div class="qblock"><div class="qhead">Q5</div><div class="stmt">In 3Sat the input is a set of clauses, each with three or fewer literals, for example
+$$(\bar{x} \lor y \lor \bar{z})(x \lor \bar{y} \lor z)(x \lor y \lor \bar{z})(\bar{x} \lor \bar{y}),$$
+and the aim is to find a satisfying truth assignment. In Independent Set the input is a graph and a number $g$, and the problem is to find a set of $g$ pairwise non-adjacent vertices.
+- **(a) (5pts)** Explain a polynomial time reduction that maps an instance $S$ of 3Sat to an instance $I$ of Independent Set.
+- **(b) (5pts)** From the construction above, prove the following statement.
+
+&gt; There is an independent set of $g$ vertices for $S$ *if and only if* there is a satisfying assignment for $I$.  *(원문 그대로 — $S$ 와 $I$ 의 역할이 문장에서 뒤바뀐 것으로 보이나 추정 수정하지 않음 [sic])*</div></div><div class="qblock"><div class="qhead">Q6</div><div class="stmt">(10pts) In the Euclidean Minimum Steiner Tree problem, the input consists of a complete graph $G = (V, E)$ in the plane with Euclidean distance $d_{uw}$ between all pairs of nodes, and a distinguished set of *terminal nodes* $V&#x27; \subseteq V$. The goal is to find a minimum-cost tree that includes the vertices $V&#x27;$. This tree may or may not include nodes in $V \setminus V&#x27;$.
+
+Consider the algorithm that ignores the non-terminal nodes and simply returns the minimum spanning tree on $V&#x27;$. Show that this algorithm returns a Steiner tree whose cost(size) is at most twice the size of the minimum Steiner tree.</div></div>
+<div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
+</div></body></html>

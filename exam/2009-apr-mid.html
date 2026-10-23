@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>21 April 2009 Midterm · CSED331 기출</title><style>
+:root{--ink:#1a1a1a;--red:#9e2b25}
+*{box-sizing:border-box}a{color:var(--ink)}a:visited{color:var(--ink)}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.75 "Noto Sans KR",system-ui,sans-serif}
+.paper{max-width:860px;margin:0 auto;padding:24px 28px 80px}
+.phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding-bottom:8px;margin-bottom:22px;font-size:14px}
+.phead a{color:var(--ink)}
+h1{font-size:26px;margin:.2em 0 .4em}h2{font-size:19px;border-bottom:1px solid var(--ink);padding-bottom:4px;margin:30px 0 10px}
+.problem{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
+.prob-no{font-weight:700;font-size:15px;color:var(--red)}.ref{font-size:13px;color:#555;margin-bottom:6px}
+details.dx{border:1px solid var(--ink);margin:10px 0}
+details.dx>summary{cursor:pointer;padding:8px 14px;font-weight:700;list-style:none}
+details.dx>summary::-webkit-details-marker{display:none}
+details.dx[open]>summary{border-bottom:1px solid var(--ink)}
+.dx-body{padding:6px 18px 10px}
+ol.steps{padding-left:22px}ol.steps li{margin:.5em 0}
+.mjx-display{margin:9px 0;overflow-x:auto;padding:7px 14px;border:1px solid var(--ink)}
+.mjx-display svg{display:block;margin:0 auto}
+.mjx svg{display:inline-block;vertical-align:middle;overflow:visible}
+pre.code{border:1px solid var(--ink);padding:10px 14px;overflow-x:auto;font:13.5px/1.6 ui-monospace,Menlo,Consolas,monospace;background:#fff;margin:8px 0}
+.sec{margin-top:18px;border-top:1px solid var(--ink);padding-top:8px;font-size:14px}
+.sec a{color:var(--ink)}
+.pnav{display:flex;justify-content:space-between;margin-top:26px;border-top:1.5px solid var(--ink);padding-top:10px;font-size:14px}
+.pnav a{color:var(--ink)}
+table.t{border-collapse:collapse;width:100%;margin:8px 0}table.t td,table.t th{border:1px solid var(--ink);padding:6px 10px;text-align:left;font-size:14.5px}
+b{color:var(--ink)}
+</style><style>
+.stmt{white-space:pre-wrap;font:15.5px/1.7 "Noto Sans KR",system-ui,sans-serif;margin:6px 0 0}
+.note{border-left:3px solid var(--red);padding:4px 12px;margin:8px 0 0;font-size:13.5px;color:#444;background:#fafafa}
+.qblock{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
+.qhead{font-weight:700;font-size:15px;color:var(--red);margin-bottom:4px}
+.enote{font-size:13px;color:#555;margin:0 0 14px}
+</style></head><body><div class="paper">
+<div class="phead"><a href="index.html">← 기출 목록</a><span>연도별 기출 전문</span><span>CSED331 · 알고리즘</span></div>
+<h1>21 April 2009 Midterm</h1>
+<p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
+
+<div class="qblock"><div class="qhead">Q1</div><div class="stmt">Given an array $A$ consisting of $n$ integers $A[1], A[2], \dots, A[n]$, you&#x27;d like to output a two-dimensional $n$-by-$n$ array $B$ in which
+$$B[i,j] = \begin{cases} A[i] + A[i+1] + \cdots + A[j] &amp; \text{if } i &lt; j, \\ 0 &amp; \text{otherwise.} \end{cases}$$
+Here&#x27;s a simple algorithm to solve this problem.
+
+**Algorithm** *Add-ups*
+(* $A$: input array, $B$: output array. *)
+1. **for** $i = 1, 2, \dots, n$
+2. $\quad$ **for** $j = i+1, i+2, \dots, n$
+3. $\quad\quad$ Add up array entries $A[i]$ through $A[j]$
+4. $\quad\quad$ Store the result in $B[i, j]$
+
+- **(a) (5pts)** Give asymptotic upper bound($O(\cdot)$) and lower bound($\Omega(\cdot)$) on the running time of Algorithm *Add-ups* on an input of size $n$.
+- **(b) (5pts)** Give a different algorithm to solve this problem, with an asymptotically better running time.</div></div><div class="qblock"><div class="qhead">Q2</div><div class="stmt">Consider the problem of computing $N! = 1 \cdot 2 \cdot 3 \cdots N$.
+- **(a) (5pts)** If $N$ is an $n$-bit number, how many bits long is $N!$, approximately (in $\Theta(\cdot)$ form)?
+- **(b) (5pts)** Give an algorithm to compute $N!$ and analyze its running time, assuming that it takes $O(\log n)$ time for multiplying two $n$-bit numbers.  *(인쇄 원문이 $O(\log n)$ — 그대로 옮김)*</div><div class="note">주석: (b)의 O(log n) 곱셈 가정은 원문 그대로 [sic].</div></div><div class="qblock"><div class="qhead">Q3</div><div class="stmt">(10pts) Mergesort divides the input into two pieces of equal size; solves the two subproblems on these pieces separately by recursion; and then combines the two results into an overall solution. Thus the worst case running time, denoted by $T(n)$, on input instances of size $n$ satisfies the following recurrence relation.
+
+For some constant $c$,
+$$T(n) \le 2T(n/2) + cn$$
+where $n &gt; 2$, and $T(2) \le c$.
+
+Show that $T(n)$ is bounded by $O(n \log n)$, when $n &gt; 1$, using the mathematical induction argument. (For simplicity, assume that $n$ is a power of 2.)</div></div><div class="qblock"><div class="qhead">Q4</div><div class="stmt">(10pts) We are given a sequence of $n$ distinct numbers $a_1, a_2, \dots, a_n$. We define a significant inversion to be a pair $i &lt; j$ such that $a_i &gt; 2a_j$. Give an $O(n \log n)$ time algorithm to count the number of significant inversions.</div></div><div class="qblock"><div class="qhead">Q5</div><div class="stmt">(10pts) Design a linear-time algorithm which, given an undirected graph $G$ and a particular edge $e$ in it, determines whether $G$ has a cycle containing $e$.</div></div><div class="qblock"><div class="qhead">Q6</div><div class="stmt">(10pts) Explain why the following statement is true.
+
+&gt; Let $G$ be an arbitrary connected, undirected graph with a distinct cost $c(e)$ on every edge $e$. Suppose $e^*$ is the cheapest edge in $G$; that is, $c(e^*) &lt; c(e)$ for every edge $e \ne e^*$. Then there is a minimum spanning tree $T$ of $G$ that contains the edge $e^*$.</div></div><div class="qblock"><div class="qhead">Q7</div><div class="stmt">(10pts) Suppose you are the CSE director of 해맞이한마당 at Postech (May 14–15, 2009.) Along the road ($M$ meters long) from the 78계단 to 학생식당입구, the possible sites for CSE stalls(노점) are given by numbers $x_1, x_2, \dots, x_n \in [0, M]$. If you place a CSE stall at location $x_i$, you&#x27;re expected to make profit $r_i &gt; 0$.
+
+Regulations imposed by SU require that no two of the stalls be within less than or equal to 10 meters of each other. Design an algorithm that finds a subset of sites so as to maximize CSE total profit, and analyze its running time. (Assume that sites are already sorted along the road.)</div></div>
+<div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
+</div></body></html>

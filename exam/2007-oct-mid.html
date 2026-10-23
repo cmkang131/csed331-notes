@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>23 October 2007 Midterm · CSED331 기출</title><style>
+:root{--ink:#1a1a1a;--red:#9e2b25}
+*{box-sizing:border-box}a{color:var(--ink)}a:visited{color:var(--ink)}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.75 "Noto Sans KR",system-ui,sans-serif}
+.paper{max-width:860px;margin:0 auto;padding:24px 28px 80px}
+.phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding-bottom:8px;margin-bottom:22px;font-size:14px}
+.phead a{color:var(--ink)}
+h1{font-size:26px;margin:.2em 0 .4em}h2{font-size:19px;border-bottom:1px solid var(--ink);padding-bottom:4px;margin:30px 0 10px}
+.problem{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
+.prob-no{font-weight:700;font-size:15px;color:var(--red)}.ref{font-size:13px;color:#555;margin-bottom:6px}
+details.dx{border:1px solid var(--ink);margin:10px 0}
+details.dx>summary{cursor:pointer;padding:8px 14px;font-weight:700;list-style:none}
+details.dx>summary::-webkit-details-marker{display:none}
+details.dx[open]>summary{border-bottom:1px solid var(--ink)}
+.dx-body{padding:6px 18px 10px}
+ol.steps{padding-left:22px}ol.steps li{margin:.5em 0}
+.mjx-display{margin:9px 0;overflow-x:auto;padding:7px 14px;border:1px solid var(--ink)}
+.mjx-display svg{display:block;margin:0 auto}
+.mjx svg{display:inline-block;vertical-align:middle;overflow:visible}
+pre.code{border:1px solid var(--ink);padding:10px 14px;overflow-x:auto;font:13.5px/1.6 ui-monospace,Menlo,Consolas,monospace;background:#fff;margin:8px 0}
+.sec{margin-top:18px;border-top:1px solid var(--ink);padding-top:8px;font-size:14px}
+.sec a{color:var(--ink)}
+.pnav{display:flex;justify-content:space-between;margin-top:26px;border-top:1.5px solid var(--ink);padding-top:10px;font-size:14px}
+.pnav a{color:var(--ink)}
+table.t{border-collapse:collapse;width:100%;margin:8px 0}table.t td,table.t th{border:1px solid var(--ink);padding:6px 10px;text-align:left;font-size:14.5px}
+b{color:var(--ink)}
+</style><style>
+.stmt{white-space:pre-wrap;font:15.5px/1.7 "Noto Sans KR",system-ui,sans-serif;margin:6px 0 0}
+.note{border-left:3px solid var(--red);padding:4px 12px;margin:8px 0 0;font-size:13.5px;color:#444;background:#fafafa}
+.qblock{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
+.qhead{font-weight:700;font-size:15px;color:var(--red);margin-bottom:4px}
+.enote{font-size:13px;color:#555;margin:0 0 14px}
+</style></head><body><div class="paper">
+<div class="phead"><a href="index.html">← 기출 목록</a><span>연도별 기출 전문</span><span>CSED331 · 알고리즘</span></div>
+<h1>23 October 2007 Midterm</h1>
+<p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
+
+<div class="qblock"><div class="qhead">Q1</div><div class="stmt">(10pts) Fibonacci numbers $F_0, F_1, F_2, \dots$ are defined by the rule
+$$F_0 = 0,\ F_1 = 1,\ F_n = F_{n-1} + F_{n-2}$$
+Use induction to prove that $F_n \ge 2^{0.5n}$ for $n \ge 6$.</div></div><div class="qblock"><div class="qhead">Q2</div><div class="stmt">(10pts) Given a connected, undirected graph $G$ (with $n$ nodes and $m$ edges), design a $O(n+m)$ time algorithm that finds an edge, if there exist, you can remove from $G$ while still leaving $G$ connected?</div></div><div class="qblock"><div class="qhead">Q3</div><div class="stmt">(10pts) Suppose Dijkstra&#x27;s shortest path algorithm is run on the following graph in Figure 1, starting at node $A$. Draw a table showing the intermediate distance values of all the nodes at each iteration of the algorithm, and show the final shortest path tree.
+
+**Figure 1 (caption: &quot;Final shortest path tree.&quot;)** — 8 nodes A, B, C, D, E, F, G, H. 레이아웃: 상단 A(좌)·G(우), 중단 B(좌)·E·F(중)·D(우)·H(맨우), 하단 C. 판독된 간선·가중치 (인쇄분):
+A–B: 1, A–E: 4, A–F: 8, A–G: 6(상단 곡선), B–F: 6, E–F: 5, B–C: 2, F–G: 8, C–G: 3, D–G: 1, G–H: 1, C–D: 1, D–H: 4.
+- 주의: 스캔에는 화살표 끝(arrowheads)과 노드 위 동그라미가 보이나 이는 손글씨 주석(학생이 그은 SPT 흔적)으로 보임. 간선 방향 여부는 인쇄 원본만으로 확정 불가 → 그래프는 무방향으로 인쇄된 것으로 판독하되, 확정 못함을 표기. B–E 간선은 없음(그 위치 선은 A–E 선).</div><div class="note">주석: Figure 1 판독: 간선·가중치 13개 확정(B–E 간선 없음). 화살표·동그라미는 손글씨 주석으로 보이며, 간선 방향은 인쇄 원본만으로는 확정 불가 — 무방향으로 보인다.</div></div><div class="qblock"><div class="qhead">Q4</div><div class="stmt">We have three water containers whose sizes are 10 liters, 7 liters, and 4 liters, respectively. The 7-liter and 4-liter containers start out full of water, but the 10-liter container is initially empty. We are allowed one type of operation: pouring the contents of one container into another, stopping only when the source container is empty or the destination container is full. We want to know if there is a sequence of pourings that leaves exactly 2 liters in the 7- or 4-liter container.
+- **(a) (5pts)** Model this as a graph problem: give a precise definition of the graph involved and state the specific question about this graph that needs to be answered.
+- **(b) (5pts)** What algorithm should be applied to solve the problem?</div></div><div class="qblock"><div class="qhead">Q5</div><div class="stmt">Let $G = (V, E)$ be a connected, undirected graph. Prove or disprove the following statements.
+- **(a) (5pts)** If all its edge weights are distinct, then it has a unique minimum spanning tree.
+- **(b) (5pts)** If edge weights are not necessarily distinct, then any edge of minimum weight must be part of some MST.
+- **(c) (5pts)** If the lightest edge in $G$ is unique, then it must be part of every MST.
+- **(d) (5pts)** If $G$ has a cycle with a unique lightest edge $e$, then $e$ must be part of every MST.</div></div>
+<div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
+</div></body></html>

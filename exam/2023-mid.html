@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fall 2023 Midterm · CSED331 기출</title><style>
+:root{--ink:#1a1a1a;--red:#9e2b25}
+*{box-sizing:border-box}a{color:var(--ink)}a:visited{color:var(--ink)}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.75 "Noto Sans KR",system-ui,sans-serif}
+.paper{max-width:860px;margin:0 auto;padding:24px 28px 80px}
+.phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding-bottom:8px;margin-bottom:22px;font-size:14px}
+.phead a{color:var(--ink)}
+h1{font-size:26px;margin:.2em 0 .4em}h2{font-size:19px;border-bottom:1px solid var(--ink);padding-bottom:4px;margin:30px 0 10px}
+.problem{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
+.prob-no{font-weight:700;font-size:15px;color:var(--red)}.ref{font-size:13px;color:#555;margin-bottom:6px}
+details.dx{border:1px solid var(--ink);margin:10px 0}
+details.dx>summary{cursor:pointer;padding:8px 14px;font-weight:700;list-style:none}
+details.dx>summary::-webkit-details-marker{display:none}
+details.dx[open]>summary{border-bottom:1px solid var(--ink)}
+.dx-body{padding:6px 18px 10px}
+ol.steps{padding-left:22px}ol.steps li{margin:.5em 0}
+.mjx-display{margin:9px 0;overflow-x:auto;padding:7px 14px;border:1px solid var(--ink)}
+.mjx-display svg{display:block;margin:0 auto}
+.mjx svg{display:inline-block;vertical-align:middle;overflow:visible}
+pre.code{border:1px solid var(--ink);padding:10px 14px;overflow-x:auto;font:13.5px/1.6 ui-monospace,Menlo,Consolas,monospace;background:#fff;margin:8px 0}
+.sec{margin-top:18px;border-top:1px solid var(--ink);padding-top:8px;font-size:14px}
+.sec a{color:var(--ink)}
+.pnav{display:flex;justify-content:space-between;margin-top:26px;border-top:1.5px solid var(--ink);padding-top:10px;font-size:14px}
+.pnav a{color:var(--ink)}
+table.t{border-collapse:collapse;width:100%;margin:8px 0}table.t td,table.t th{border:1px solid var(--ink);padding:6px 10px;text-align:left;font-size:14.5px}
+b{color:var(--ink)}
+</style><style>
+.stmt{white-space:pre-wrap;font:15.5px/1.7 "Noto Sans KR",system-ui,sans-serif;margin:6px 0 0}
+.note{border-left:3px solid var(--red);padding:4px 12px;margin:8px 0 0;font-size:13.5px;color:#444;background:#fafafa}
+.qblock{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
+.qhead{font-weight:700;font-size:15px;color:var(--red);margin-bottom:4px}
+.enote{font-size:13px;color:#555;margin:0 0 14px}
+</style></head><body><div class="paper">
+<div class="phead"><a href="index.html">← 기출 목록</a><span>연도별 기출 전문</span><span>CSED331 · 알고리즘</span></div>
+<h1>Fall 2023 Midterm</h1>
+<p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
+
+<div class="qblock"><div class="qhead">Q1</div><div class="stmt">Describe a linear-time deterministic algorithm for the following task: Given a set L of n
+       integers and an index k, find the kth smallest element in L. Here, L is not necessarily
+       sorted. (You don’t need to analyze the correctness of your algorithm, but you have to
+       analyze the running time of your algorithm.) Design a linear-time algorithm for checking
+       if it contains a cycle or not. Then prove the correctness of your algorithm.
+
+         • + 5 pts: the description of an algorithm for computing an approximate median is
+           given
+         • + 5 pts: the description of the overall divide-and-conquer algorithm is given using
+           the median algorithm as a subroutine
+         • + 10 pts: time complexity analysis
+         • No point is given if the running time of your algorithm is superlinear.</div><div class="note">주석: 원문에 다른 문제의 문장이 그대로 붙어 있다(&#x27;Design a linear-time algorithm for checking if it contains a cycle or not. ...&#x27;). 인쇄 원문 그대로 [sic].</div></div><div class="qblock"><div class="qhead">Q2</div><div class="stmt">Design an algorithm for checking if a directed graph has a cycle.
+         • + 10 pts: the description of a correct algorithm is given. (Return true iff DFS yields
+           a back edge.)
+         • + 10 pts: A proof of the fact that there is a back edge iff a graph has a cycle is
+           given. (If you prove if part only, you get 10 points, but if you prove only-if part
+           only, you get 5.)
+         • - 5 pts: small mistakes. A typical mistake: you cannot assume that the root node
+           of the DFS tree (or the starting vertex of DFS) is one of the vertices in a cycle.
+         • A typical incorrect answer: during a DFS search, return true when it visits the same
+           vertex twice. This is not correct as the input graph is a directed graph. In this case,
+           you get zero.</div></div><div class="qblock"><div class="qhead">Q3</div><div class="stmt">Let G = (V, E) be an undirected graph with edge weight w : E → R+ . For any two
+       vertices x, y of G, its widest path is defined as a path π between x and y that maximizes
+       the weight of the minimum-weight edge in π. Given two vertices x and y of G, design
+       an efficient algorithm for computing a widest path between x and y in G. Then state
+       the running time of your algorithm. (You don’t need to prove the correctness of your
+       algorithm.)
+
+         • + 20 pts: O(|E| log |E|)-time algorithm. You can achieve this by modifying Dijk-
+           stra’s algorithm. A main difference is that, for an edge u, v, we update dist(u)=
+           max{ dist(u), min{ dist(v), wuv }}. Also, we use a max heap instead of a min heap.
+           If your update procedure is not correct, you get +10 (out of 20). An alternative
+           algorithm is as follows. Compute a maximum spanning tree using a modification of
+           Kruskal’s algorithm, and then return an arbitrary path in the maximum spanning
+           tree.
+         • + 10 pts: O(|E| · |V |) or O(|E|2 )-time algorithm
+         • +5 pts: exponential-time algorithm.
+         • 0 pts: if your algorithm is not correct.</div></div><div class="qblock"><div class="qhead">Q4</div><div class="stmt">Prove that if G has a cycle with a unique heaviest edge e, then e cannot be part of any
+   MST.
+     • -10 points: in the case that you do not specify e′ ; you should give a clear definition
+       of e′ . If you choose e′ arbitrary, T ′ = T + e′ − e is not necessarily a tree.</div></div><div class="qblock"><div class="qhead">Q5</div><div class="stmt">Mark True or False for the following statements. No justification is needed.
+   (1) In the union-find data structure with path compression, every tree representing a
+       connected component always have depth at most O(log∗ n).
+   (2) In the union-find data structure with path compression, a single find operation takes
+       O(log n) time.
+   (3) The Huffman tree is a balanced binary tree.
+   (4) Huffman encoding guarantees that a symbol with smallest frequency always gets a
+       shortest code-word.
+   (5) Let L0 , L1 , . . . be the layers of the vertices of G constructed by the breadth-first
+       search algorithm. Let (x, y) be an edge of G such that x ∈ Li and y ∈ Lj with two
+       indices i and j. Then |i − j| ≤ 1.
+   (6) A directed graph admits a topological ordering only when it is acyclic.
+     • Correct answer: FTFFTT
+     • +3 points for each subproblem, and additional 2 points are given if all answers are
+       correct.</div></div>
+<div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
+</div></body></html>
