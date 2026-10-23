@@ -26,37 +26,18 @@ pre.code{border:1px solid var(--ink);padding:10px 14px;overflow-x:auto;font:13.5
 table.t{border-collapse:collapse;width:100%;margin:8px 0}table.t td,table.t th{border:1px solid var(--ink);padding:6px 10px;text-align:left;font-size:14.5px}
 b{color:var(--ink)}
 </style><style>
-.stmt{white-space:pre-wrap;font:15.5px/1.7 "Noto Sans KR",system-ui,sans-serif;margin:6px 0 0}
-.note{border-left:3px solid var(--red);padding:4px 12px;margin:8px 0 0;font-size:13.5px;color:#444;background:#fafafa}
 .qblock{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
-.qhead{font-weight:700;font-size:15px;color:var(--red);margin-bottom:4px}
+.qhead{font-weight:700;font-size:15px;color:var(--red);margin-bottom:6px}
+.qp{margin:.45em 0}
+.formula{border:1px solid var(--ink);padding:7px 14px;margin:9px 0;overflow-x:auto;font-size:15px}
+.note{border-left:3px solid var(--red);padding:4px 12px;margin:10px 0 0;font-size:13.5px;color:#444;background:#fafafa}
 .enote{font-size:13px;color:#555;margin:0 0 14px}
+sub,sup{font-size:.72em}
 </style></head><body><div class="paper">
 <div class="phead"><a href="index.html">← 기출 목록</a><span>연도별 기출 전문</span><span>CSED331 · 알고리즘</span></div>
 <h1>Fall 2023 Final</h1>
 <p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
 
-<div class="qblock"><div class="qhead">Q1</div><div class="stmt">(10 points) Given two strings x = x1 x2 . . . xn and y = y1 y2 . . . ym , we wish to find the
-      length of their longest common substring, that is, the largest k for which there are indices
-      i and j with xi xi+1 . . . xi+k−1 = yj yj+1 . . . yj+k−1 . Design an O(mn)-time algorithm for
-      this problem, and provide a complete pseudocode of your algorithm. You don’t need to
-      analyze your algorithm.</div></div><div class="qblock"><div class="qhead">Q2</div><div class="stmt">(10 points) Given integers n and k, along with p1 , . . . , pn ∈ [0, 1], you want to determine
-      the probability of obtaining exactly k heads when n biased coins are tossed independently
-      at random, where pi is the probability that the ith coin comes up heads. Give an O(n2 )-
-      time algorithm for this task. Assume you can multiply and add two numbers in [0, 1] in
-      O(1) time. Give a complete pseudocode of your algorithm. You don’t need to analyze
-      the running time of your algorithm.</div></div><div class="qblock"><div class="qhead">Q3</div><div class="stmt">(10 points) Consider the following variation of the maximum flow problem: Each vertex
-      also has a capacity on the maximum flow that can enter it. Show that this problem can
-      be solved efficiently. You don’t need to analyze your algorithm.</div></div><div class="qblock"><div class="qhead">Q4</div><div class="stmt">(10 points) Suppose someone presents you with a solution to a max-flow problem on some
-      network. Give a linear time algorithm to determine whether the solution does indeed
-      give a maximum flow. You don’t need to analyze your algorithm.</div></div><div class="qblock"><div class="qhead">Q5</div><div class="stmt">(10 points) Prove the following: For any value α, no polynomial-time α-approximation
-      algorithm for the traveling salesman problem exists unless P = NP. You may use the
-      fact that Hamiltonian Cycle is NP-complete.</div></div><div class="qblock"><div class="qhead">Q6</div><div class="stmt">(10 points) Show that the following problem (called Maximum Common Induced
-      Subgraph) is NP-hard: Given two graphs G1 = (V1 , E1 ) and G2 = (V2 , E2 ) and a
-      budget b, the goal is to compute two sets of nodes V1′ ⊆ V1 and V2′ ⊆ V2 whose deletion
-      leaves at least b nodes in each graph, and makes the two graphs identical.</div></div><div class="qblock"><div class="qhead">Q7</div><div class="stmt">(10 points) The Vertex Cover problem is defined as follows. Given a graph G = (V, E)
-      and an integer k, find a set X of k vertices such that, for any edge uv ∈ E, either u or v
-      is contained in X. Give any exact algorithm for this problem running in time f (k) · nO(1)
-      for some function f . You don’t need to analyze your algorithm.</div></div>
+<div class="qblock"><div class="qhead">Q1</div><div class="formula">(10 points) Given two strings x = x1 x2 . . . xn and y = y1 y2 . . . ym , we wish to find the</div><div class="formula">length of their longest common substring, that is, the largest k for which there are indices</div><div class="formula">i and j with xi xi+1 . . . xi+k−1 = yj yj+1 . . . yj+k−1 . Design an O(mn)-time algorithm for</div><div class="formula">this problem, and provide a complete pseudocode of your algorithm. You don’t need to</div><div class="formula">analyze your algorithm.</div></div><div class="qblock"><div class="qhead">Q2</div><div class="formula">(10 points) Given integers n and k, along with p1 , . . . , pn ∈ [0, 1], you want to determine</div><div class="formula">the probability of obtaining exactly k heads when n biased coins are tossed independently</div><div class="formula">at random, where pi is the probability that the ith coin comes up heads. Give an O(n2 )-</div><div class="formula">time algorithm for this task. Assume you can multiply and add two numbers in [0, 1] in</div><div class="formula">O(1) time. Give a complete pseudocode of your algorithm. You don’t need to analyze</div><div class="formula">the running time of your algorithm.</div></div><div class="qblock"><div class="qhead">Q3</div><div class="formula">(10 points) Consider the following variation of the maximum flow problem: Each vertex</div><div class="formula">also has a capacity on the maximum flow that can enter it. Show that this problem can</div><div class="formula">be solved efficiently. You don’t need to analyze your algorithm.</div></div><div class="qblock"><div class="qhead">Q4</div><div class="formula">(10 points) Suppose someone presents you with a solution to a max-flow problem on some</div><div class="formula">network. Give a linear time algorithm to determine whether the solution does indeed</div><div class="formula">give a maximum flow. You don’t need to analyze your algorithm.</div></div><div class="qblock"><div class="qhead">Q5</div><div class="formula">(10 points) Prove the following: For any value α, no polynomial-time α-approximation</div><div class="formula">algorithm for the traveling salesman problem exists unless P = NP. You may use the</div><div class="formula">fact that Hamiltonian Cycle is NP-complete.</div></div><div class="qblock"><div class="qhead">Q6</div><div class="formula">(10 points) Show that the following problem (called Maximum Common Induced</div><div class="formula">Subgraph) is NP-hard: Given two graphs G1 = (V1 , E1 ) and G2 = (V2 , E2 ) and a</div><div class="formula">budget b, the goal is to compute two sets of nodes V1′ ⊆ V1 and V2′ ⊆ V2 whose deletion</div><div class="formula">leaves at least b nodes in each graph, and makes the two graphs identical.</div></div><div class="qblock"><div class="qhead">Q7</div><div class="formula">(10 points) The Vertex Cover problem is defined as follows. Given a graph G = (V, E)</div><div class="formula">and an integer k, find a set X of k vertices such that, for any edge uv ∈ E, either u or v</div><div class="formula">is contained in X. Give any exact algorithm for this problem running in time f (k) · nO(1)</div><div class="formula">for some function f . You don’t need to analyze your algorithm.</div></div>
 <div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
 </div></body></html>

@@ -26,29 +26,18 @@ pre.code{border:1px solid var(--ink);padding:10px 14px;overflow-x:auto;font:13.5
 table.t{border-collapse:collapse;width:100%;margin:8px 0}table.t td,table.t th{border:1px solid var(--ink);padding:6px 10px;text-align:left;font-size:14.5px}
 b{color:var(--ink)}
 </style><style>
-.stmt{white-space:pre-wrap;font:15.5px/1.7 "Noto Sans KR",system-ui,sans-serif;margin:6px 0 0}
-.note{border-left:3px solid var(--red);padding:4px 12px;margin:8px 0 0;font-size:13.5px;color:#444;background:#fafafa}
 .qblock{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
-.qhead{font-weight:700;font-size:15px;color:var(--red);margin-bottom:4px}
+.qhead{font-weight:700;font-size:15px;color:var(--red);margin-bottom:6px}
+.qp{margin:.45em 0}
+.formula{border:1px solid var(--ink);padding:7px 14px;margin:9px 0;overflow-x:auto;font-size:15px}
+.note{border-left:3px solid var(--red);padding:4px 12px;margin:10px 0 0;font-size:13.5px;color:#444;background:#fafafa}
 .enote{font-size:13px;color:#555;margin:0 0 14px}
+sub,sup{font-size:.72em}
 </style></head><body><div class="paper">
 <div class="phead"><a href="index.html">← 기출 목록</a><span>연도별 기출 전문</span><span>CSED331 · 알고리즘</span></div>
 <h1>Fall 2021 Final</h1>
 <p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
 
-<div class="qblock"><div class="qhead">Q1</div><div class="stmt">(20 points) Let G be a directed graph, and s and t be two vertices of G. Prove the max-flow min-cut
-   theorem: The size of the maximum s-t flow in G equals the capacity of the smallest (s, t)-cut of G.</div></div><div class="qblock"><div class="qhead">Q2</div><div class="stmt">(20 points) Given an undirected graph G = (V, E), we want to find a spanning tree of G in which each
-   non-leaf node has exactly two children, if it exists. Clearly, this problem is in NP. Then show that this
-   problem is NP-complete.</div></div><div class="qblock"><div class="qhead">Q3</div><div class="stmt">(20 points) Give a polynomial-time 2-approximation algorithm for the vertex cover problem. Then
-   analyze your algorithm.</div></div><div class="qblock"><div class="qhead">Q4</div><div class="stmt">(20 points) Let G = (V, E) be an undirected simple graph. Design an efficient algorithm for finding a
-   maximum-cardinality subset U of V such that for every vertex u of U , there are at least five vertices
-   of U adjacent to u, and there are at least five vertices of U which are not adjacent to U . Then analyze
-   the correctness and time complexity of your algorithm.</div><div class="note">주석: &#x27;not adjacent to U&#x27;는 인쇄 원문 그대로 [sic] — &#x27;u&#x27;의 오타로 읽는 해석과 분리해 둔다.</div></div><div class="qblock"><div class="qhead">Q5</div><div class="stmt">(20 points) Let T1 and T2 be two trees with specified roots, say v1 and v2 . A connected subgraph H of
-   T1 is isomorphic to T2 if there is an injective function f : V (H) → V (T2 ) with f (vH ) = v2 such that u
-   and v are adjacent in H iff f (u) and f (v) are adjacent in T2 for any two vertices u and v of H, where
-   vH denote the vertex of H with smallest depth, and V (H) and V (T2 ) are the vertex sets of H and T2 ,
-   respectively.
-   Design an efficient algorithm for checking if there is a connected subgraph of T1 isomorphic to T2 .
-   Then analyze the running time of your algorithm.</div><div class="note">주석: isomorphic 정의는 원문 그대로다. H의 선택이 문자 그대로면 자명하다는 해석 문제는 원문과 분리해 표시한다.</div></div>
+<div class="qblock"><div class="qhead">Q1</div><div class="formula">(20 points) Let G be a directed graph, and s and t be two vertices of G. Prove the max-flow min-cut</div><div class="formula">theorem: The size of the maximum s-t flow in G equals the capacity of the smallest (s, t)-cut of G.</div></div><div class="qblock"><div class="qhead">Q2</div><div class="formula">(20 points) Given an undirected graph G = (V, E), we want to find a spanning tree of G in which each</div><div class="formula">non-leaf node has exactly two children, if it exists. Clearly, this problem is in NP. Then show that this</div><div class="formula">problem is NP-complete.</div></div><div class="qblock"><div class="qhead">Q3</div><div class="formula">(20 points) Give a polynomial-time 2-approximation algorithm for the vertex cover problem. Then</div><div class="formula">analyze your algorithm.</div></div><div class="qblock"><div class="qhead">Q4</div><div class="formula">(20 points) Let G = (V, E) be an undirected simple graph. Design an efficient algorithm for finding a</div><div class="formula">maximum-cardinality subset U of V such that for every vertex u of U , there are at least five vertices</div><div class="formula">of U adjacent to u, and there are at least five vertices of U which are not adjacent to U . Then analyze</div><div class="formula">the correctness and time complexity of your algorithm.</div><div class="note">주석: &#x27;not adjacent to U&#x27;는 인쇄 원문 그대로 [sic] — &#x27;u&#x27;의 오타로 읽는 해석과 분리해 둔다.</div></div><div class="qblock"><div class="qhead">Q5</div><div class="formula">(20 points) Let T1 and T2 be two trees with specified roots, say v1 and v2 . A connected subgraph H of</div><div class="formula">T1 is isomorphic to T2 if there is an injective function f : V (H) → V (T2 ) with f (vH ) = v2 such that u</div><div class="formula">and v are adjacent in H iff f (u) and f (v) are adjacent in T2 for any two vertices u and v of H, where</div><div class="formula">vH denote the vertex of H with smallest depth, and V (H) and V (T2 ) are the vertex sets of H and T2 ,</div><div class="formula">respectively.</div><div class="formula">Design an efficient algorithm for checking if there is a connected subgraph of T1 isomorphic to T2 .</div><div class="formula">Then analyze the running time of your algorithm.</div><div class="note">주석: isomorphic 정의는 원문 그대로다. H의 선택이 문자 그대로면 자명하다는 해석 문제는 원문과 분리해 표시한다.</div></div>
 <div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
 </div></body></html>

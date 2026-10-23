@@ -26,29 +26,18 @@ pre.code{border:1px solid var(--ink);padding:10px 14px;overflow-x:auto;font:13.5
 table.t{border-collapse:collapse;width:100%;margin:8px 0}table.t td,table.t th{border:1px solid var(--ink);padding:6px 10px;text-align:left;font-size:14.5px}
 b{color:var(--ink)}
 </style><style>
-.stmt{white-space:pre-wrap;font:15.5px/1.7 "Noto Sans KR",system-ui,sans-serif;margin:6px 0 0}
-.note{border-left:3px solid var(--red);padding:4px 12px;margin:8px 0 0;font-size:13.5px;color:#444;background:#fafafa}
 .qblock{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
-.qhead{font-weight:700;font-size:15px;color:var(--red);margin-bottom:4px}
+.qhead{font-weight:700;font-size:15px;color:var(--red);margin-bottom:6px}
+.qp{margin:.45em 0}
+.formula{border:1px solid var(--ink);padding:7px 14px;margin:9px 0;overflow-x:auto;font-size:15px}
+.note{border-left:3px solid var(--red);padding:4px 12px;margin:10px 0 0;font-size:13.5px;color:#444;background:#fafafa}
 .enote{font-size:13px;color:#555;margin:0 0 14px}
+sub,sup{font-size:.72em}
 </style></head><body><div class="paper">
 <div class="phead"><a href="index.html">← 기출 목록</a><span>연도별 기출 전문</span><span>CSED331 · 알고리즘</span></div>
 <h1>Fall 2020 Final</h1>
 <p>문제 본문은 원문 영어 그대로 옮긴 것이다. 모호한 스캔·오타는 고치지 않고 주석으로 표시했다. 출처: Drive 즐겨찾기 '4분반 / 알고리즘(오은진) / 기출' PDF와 SHA-256 대조 완료.</p>
 
-<div class="qblock"><div class="qhead">Q1</div><div class="stmt">(10 points) Write the dual to the following linear program.
-
-                                                  max x + y
-                                             subject to 2x + y ≤ 3
-                                                         x + 3y ≤ 5</div><div class="note">주석: 원문에 x,y ≥ 0 조건이 인쇄되어 있지 않다. 풀이에서는 이를 가정한다고 명시.</div></div><div class="qblock"><div class="qhead">Q2</div><div class="stmt">(10 points) Suppose someone presents you with a solution to a max-flow problem on some network.
-   Give a linear-time algorithm to determine whether the solution does indeed give a maximum flow.</div></div><div class="qblock"><div class="qhead">Q3</div><div class="stmt">(10 points) Show that there is no value t for which there exists a polynomial-time t-approximation
-   algorithm for TSP, unless P=NP.</div></div><div class="qblock"><div class="qhead">Q4</div><div class="stmt">(30 points) Let P be a set of 2n points lying on a unit circle, such that n points are colored red and n
-   points are colored blue. A non-crossing alternating path on P is a sequence p1 , . . . , pℓ of points from
-   P so that (i) all points are pairwise distinct; (ii) any two consecutive points pi , pi+1 have different
-   colors; and (iii) any two segments pi pi+1 and pj pj+1 have disjoint relative interiors, for i ≠ j. Design
-   an efficient algorithm for computing the longest non-crossing alternating path on P .</div><div class="note">주석: 텍스트 추출층의 깨진 글리프만 원문 PDF 대조 후 복원했다(pℓ, ≠).</div></div><div class="qblock"><div class="qhead">Q5</div><div class="stmt">(30 points) For a undirected simple graph G = (V, E), a set S of vertices of V is called a star of G
-   if there is a vertex v ∈ S such that vu ∈ E for all u ∈ S ∖ {v} and uu′ ∉ E for every pair (u, u′) of
-   vertices of S. Show that the following problem is NP-hard: Given an undirected graph G = (V, E)
-   and an integer g, check if there is a star S of G with |S| = g.</div><div class="note">주석: 텍스트 추출층의 깨진 글리프만 원문 PDF 대조 후 복원했다(uu′, ∉, u′).</div></div>
+<div class="qblock"><div class="qhead">Q1</div><p class="qp">(10 points) Write the dual to the following linear program.</p><div class="formula">max x + y</div><div class="formula">subject to 2x + y ≤ 3</div><div class="formula">x + 3y ≤ 5</div><div class="note">주석: 원문에 x,y ≥ 0 조건이 인쇄되어 있지 않다. 풀이에서는 이를 가정한다고 명시.</div></div><div class="qblock"><div class="qhead">Q2</div><div class="formula">(10 points) Suppose someone presents you with a solution to a max-flow problem on some network.</div><div class="formula">Give a linear-time algorithm to determine whether the solution does indeed give a maximum flow.</div></div><div class="qblock"><div class="qhead">Q3</div><div class="formula">(10 points) Show that there is no value t for which there exists a polynomial-time t-approximation</div><div class="formula">algorithm for TSP, unless P=NP.</div></div><div class="qblock"><div class="qhead">Q4</div><div class="formula">(30 points) Let P be a set of 2n points lying on a unit circle, such that n points are colored red and n</div><div class="formula">points are colored blue. A non-crossing alternating path on P is a sequence p1 , . . . , pℓ of points from</div><div class="formula">P so that (i) all points are pairwise distinct; (ii) any two consecutive points pi , pi+1 have different</div><div class="formula">colors; and (iii) any two segments pi pi+1 and pj pj+1 have disjoint relative interiors, for i ≠ j. Design</div><div class="formula">an efficient algorithm for computing the longest non-crossing alternating path on P .</div><div class="note">주석: 텍스트 추출층의 깨진 글리프만 원문 PDF 대조 후 복원했다(pℓ, ≠).</div></div><div class="qblock"><div class="qhead">Q5</div><div class="formula">(30 points) For a undirected simple graph G = (V, E), a set S of vertices of V is called a star of G</div><div class="formula">if there is a vertex v ∈ S such that vu ∈ E for all u ∈ S ∖ {v} and uu′ ∉ E for every pair (u, u′) of</div><div class="formula">vertices of S. Show that the following problem is NP-hard: Given an undirected graph G = (V, E)</div><div class="formula">and an integer g, check if there is a star S of G with |S| = g.</div><div class="note">주석: 텍스트 추출층의 깨진 글리프만 원문 PDF 대조 후 복원했다(uu′, ∉, u′).</div></div>
 <div class="pnav"><a href="index.html">← 기출 목록으로</a><a href="../index.html">노트 홈</a></div>
 </div></body></html>
