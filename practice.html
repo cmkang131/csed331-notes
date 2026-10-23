@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/study-note.css">
 <link rel="stylesheet" href="assets/v5-layer.css">
-</head>
+<style>.practice-check{width:22px;height:22px;vertical-align:middle;margin:0 6px 3px 0;accent-color:var(--ink,#222);cursor:pointer;min-width:22px} @media(pointer:coarse){.practice-check{width:44px;height:44px;min-width:44px}}@media(max-width:480px){.to-top{display:none !important}}</style></head>
 <body>
 <div class="paper">
   <div class="phead">
@@ -24,7 +24,7 @@
   <p class="psub">2026-10-19 정리 · HW1–HW5 전체 26개 문항 대응 · 무료 LeetCode 우선, 없으면 CSES · Premium 문제는 명시</p>
 
   <div class="nb">
-    <p class="bx-h">사용법과 일치도</p>
+    <p class="bx-h">사용법과 일치도</p><p id="progress-storage-note" role="status">체크 상태는 이 브라우저에 저장된다. 같은 문제는 다른 표에서도 함께 바뀐다.</p>
     <ul>
       <li><b>사용법</b> — 위에서부터 풀기. 먼저 30분 혼자 시도 → 막히면 해당 강의 노트 확인 → 정답 판정 후 시간복잡도와 Correctness를 한두 문장으로 기록</li>
       <li><b>일치도</b> — '동일/거의 동일'은 풀이 조건이 매우 비슷함. '유사/부분 유사'는 학습용일 뿐 과제의 완전한 대체가 아님. 증명·특수 기하 문제는 온라인 저지 1:1 대체가 어려움</li>
@@ -35,33 +35,33 @@
   <h2><a id="sec-1"></a>A. 강의와 HW에서 동시에 다룬 알고리즘 — 먼저 도전</h2>
   <table class="t rt">
     <tr><th>#</th><th>문제</th><th>HW 대응 · 일치도</th><th>메모</th></tr>
-    <tr><td>☑ 01</td><td><a href="https://leetcode.com/problems/coin-change/">LeetCode 322 Coin Change</a></td><td>HW5 P1 동전 DP · 거의 동일</td><td>원래 HW의 동전 1·4·6으로도 실행. 첫 문제 추천</td></tr>
-    <tr><td>☑ 02</td><td><a href="https://leetcode.com/problems/maximum-subarray/">LeetCode 53 Maximum Subarray</a></td><td>HW2 P5 최대 부분배열 · 목표 동일</td><td>HW는 분할정복이므로 O(n log n) 분할정복으로 풀어 보기</td></tr>
-    <tr><td>☐ 03</td><td><a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/">LeetCode 315 Count of Smaller Numbers After Self</a></td><td>HW2 P1 inversion counting · 유사</td><td>반환된 각 인덱스의 수를 합치면 HW의 inversion 개수. 병합정렬 방식</td></tr>
-    <tr><td>☐ 04</td><td><a href="https://cses.fi/problemset/task/1722/">CSES Fibonacci Numbers</a></td><td>HW1 P3 행렬 거듭제곱 · 거의 동일</td><td>O(log n) 알고리즘으로 구현</td></tr>
-    <tr><td>☑ 05</td><td><a href="https://leetcode.com/problems/flower-planting-with-no-adjacent/">LeetCode 1042 Flower Planting With No Adjacent</a></td><td>HW4 P1 Greedy 색칠 · 거의 동일</td><td>사이트는 d≤3, HW는 일반 최대 차수 d에 대해 d+1색</td></tr>
-    <tr><td>☐ 06</td><td><a href="https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/">LeetCode 2093 Minimum Cost to Reach City With Discounts</a> (Premium)</td><td>HW3 P3 상태 확장 Dijkstra · 유사</td><td>HW는 간선 하나를 0으로, LC는 여러 간선 반값 할인(무방향). 접근이 안 되면 <a href="https://cses.fi/problemset/task/1195/">CSES Flight Discount</a> (단 CSES는 항공편 하나 반값이라 HW의 0 변경과도 다름 — 상태 확장 연습용)</td></tr>
-    <tr><td>☐ 07</td><td><a href="https://leetcode.com/problems/parallel-courses-iii/">LeetCode 2050 Parallel Courses III</a></td><td>HW3 P4 DAG 최장 경로 · 유사</td><td>LC는 양수 정점 가중치, HW는 음수까지 가능한 간선 가중치</td></tr>
-    <tr><td>☐ 08</td><td><a href="https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/">LeetCode 363 Max Sum of Rectangle No Larger Than K</a></td><td>HW5 P2 2차원 최대 부분행렬 · 심화 변형</td><td>합 ≤ K 조건이 추가됨. 원문 먼저 구현한 뒤 도전</td></tr>
-    <tr><td>☐ 09</td><td><a href="https://leetcode.com/problems/choose-edges-to-maximize-score-in-a-tree/">LeetCode 2378 Choose Edges to Maximize Score in a Tree</a> (Premium)</td><td>HW4 P2 트리 매칭 · 유사</td><td>모든 간선 가중치를 1로 두면 최대 매칭 크기 연습. 접근이 안 되면 <a href="https://cses.fi/problemset/task/1130/">CSES Tree Matching</a></td></tr>
-    <tr><td>☐ 10</td><td><a href="https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/">LeetCode 1489 Critical and Pseudo-Critical Edges in MST</a></td><td>HW4 P5 MST 교체 분석 · 관련 심화</td><td>second-best MST의 최솟값을 직접 구하는 문제는 아님. 원래 HW는 따로 완성</td></tr>
-    <tr><td>☐ 11</td><td><a href="https://leetcode.com/problems/uncrossed-lines/">LeetCode 1035 Uncrossed Lines</a></td><td>HW5 P4 교차 없는 선분 · 기하 조건 다른 유사</td><td>원 위 현 문제와 다르므로 원문 문제를 따로 구현</td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="aa6d12a1e7f45708" aria-label="01LeetCode 322 Coin ChangeHW5 P1 동전 DP · 거의 동일원래 HW의 동전 1·4·6으로도 실행. 첫 문제 추천 완료" checked> 01</td><td><a href="https://leetcode.com/problems/coin-change/">LeetCode 322 Coin Change</a></td><td>HW5 P1 동전 DP · 거의 동일</td><td>원래 HW의 동전 1·4·6으로도 실행. 첫 문제 추천</td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="84ad1f2806e5e267" aria-label="02LeetCode 53 Maximum SubarrayHW2 P5 최대 부분배열 · 목표 동일HW는 분할정복이므로 O(n log n) 분할정복으로 풀어 보기 완료" checked> 02</td><td><a href="https://leetcode.com/problems/maximum-subarray/">LeetCode 53 Maximum Subarray</a></td><td>HW2 P5 최대 부분배열 · 목표 동일</td><td>HW는 분할정복이므로 O(n log n) 분할정복으로 풀어 보기</td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="81dd6cb932b7dfea" aria-label="03LeetCode 315 Count of Smaller Numbers After SelfHW2 P1 inversion counting · 유사반환된 각 인덱스의 수를 합치면 HW의 inversion 개수. 병합정렬 방식 완료"> 03</td><td><a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/">LeetCode 315 Count of Smaller Numbers After Self</a></td><td>HW2 P1 inversion counting · 유사</td><td>반환된 각 인덱스의 수를 합치면 HW의 inversion 개수. 병합정렬 방식</td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="2930011be7e7f3e0" aria-label="04CSES Fibonacci NumbersHW1 P3 행렬 거듭제곱 · 거의 동일O(log n) 알고리즘으로 구현 완료"> 04</td><td><a href="https://cses.fi/problemset/task/1722/">CSES Fibonacci Numbers</a></td><td>HW1 P3 행렬 거듭제곱 · 거의 동일</td><td>O(log n) 알고리즘으로 구현</td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="cebc368b8562feca" aria-label="05LeetCode 1042 Flower Planting With No AdjacentHW4 P1 Greedy 색칠 · 거의 동일사이트는 d≤3, HW는 일반 최대 차수 d에 대해 d+1색 완료" checked> 05</td><td><a href="https://leetcode.com/problems/flower-planting-with-no-adjacent/">LeetCode 1042 Flower Planting With No Adjacent</a></td><td>HW4 P1 Greedy 색칠 · 거의 동일</td><td>사이트는 d≤3, HW는 일반 최대 차수 d에 대해 d+1색</td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="5ad77de178169c20" aria-label="06LeetCode 2093 Minimum Cost to Reach City With Discounts (Premium)HW3 P3 상태 확장 Dijkstra · 유사HW는 간선 하나를 0으로, LC는 여러 간선 반값 할인(무방향). 완료"> 06</td><td><a href="https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/">LeetCode 2093 Minimum Cost to Reach City With Discounts</a> (Premium)</td><td>HW3 P3 상태 확장 Dijkstra · 유사</td><td>HW는 간선 하나를 0으로, LC는 여러 간선 반값 할인(무방향). 접근이 안 되면 <a href="https://cses.fi/problemset/task/1195/">CSES Flight Discount</a> (단 CSES는 항공편 하나 반값이라 HW의 0 변경과도 다름 — 상태 확장 연습용)</td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="fcb2fb6bd7e22335" aria-label="07LeetCode 2050 Parallel Courses IIIHW3 P4 DAG 최장 경로 · 유사LC는 양수 정점 가중치, HW는 음수까지 가능한 간선 가중치 완료"> 07</td><td><a href="https://leetcode.com/problems/parallel-courses-iii/">LeetCode 2050 Parallel Courses III</a></td><td>HW3 P4 DAG 최장 경로 · 유사</td><td>LC는 양수 정점 가중치, HW는 음수까지 가능한 간선 가중치</td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="c92202137a2448bb" aria-label="08LeetCode 363 Max Sum of Rectangle No Larger Than KHW5 P2 2차원 최대 부분행렬 · 심화 변형합 ≤ K 조건이 추가됨. 원문 먼저 구현한 뒤 도전 완료"> 08</td><td><a href="https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/">LeetCode 363 Max Sum of Rectangle No Larger Than K</a></td><td>HW5 P2 2차원 최대 부분행렬 · 심화 변형</td><td>합 ≤ K 조건이 추가됨. 원문 먼저 구현한 뒤 도전</td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="8c7f2cc1cf2341a2" aria-label="09LeetCode 2378 Choose Edges to Maximize Score in a Tree (Premium)HW4 P2 트리 매칭 · 유사모든 간선 가중치를 1로 두면 최대 매칭 크기 연습. 접근이 안 되면 CSES Tre 완료"> 09</td><td><a href="https://leetcode.com/problems/choose-edges-to-maximize-score-in-a-tree/">LeetCode 2378 Choose Edges to Maximize Score in a Tree</a> (Premium)</td><td>HW4 P2 트리 매칭 · 유사</td><td>모든 간선 가중치를 1로 두면 최대 매칭 크기 연습. 접근이 안 되면 <a href="https://cses.fi/problemset/task/1130/">CSES Tree Matching</a></td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="982e4974141c9f7b" aria-label="10LeetCode 1489 Critical and Pseudo-Critical Edges in MSTHW4 P5 MST 교체 분석 · 관련 심화second-best MST의 최솟값을 직접 구하는 문제는 아님. 원래 HW는 따로 완성 완료"> 10</td><td><a href="https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/">LeetCode 1489 Critical and Pseudo-Critical Edges in MST</a></td><td>HW4 P5 MST 교체 분석 · 관련 심화</td><td>second-best MST의 최솟값을 직접 구하는 문제는 아님. 원래 HW는 따로 완성</td></tr>
+    <tr><td><input type="checkbox" class="practice-check" data-progress-key="a29833e79144980c" aria-label="11LeetCode 1035 Uncrossed LinesHW5 P4 교차 없는 선분 · 기하 조건 다른 유사원 위 현 문제와 다르므로 원문 문제를 따로 구현 완료"> 11</td><td><a href="https://leetcode.com/problems/uncrossed-lines/">LeetCode 1035 Uncrossed Lines</a></td><td>HW5 P4 교차 없는 선분 · 기하 조건 다른 유사</td><td>원 위 현 문제와 다르므로 원문 문제를 따로 구현</td></tr>
   </table>
 
   <h2><a id="sec-2"></a>B. 실제로 중요한 알고리즘 — 과제와 무관해도 필수</h2>
   <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>왜</th></tr>
-    <tr><td>DFS/BFS</td><td>☐ <a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200 Number of Islands</a></td><td>그래프 탐색과 방문 처리의 기본</td></tr>
-    <tr><td>Topological Ordering</td><td>☐ <a href="https://leetcode.com/problems/course-schedule-ii/">LeetCode 210 Course Schedule II</a></td><td>위상정렬 필수, DAG 응용 전에 권장</td></tr>
-    <tr><td>Dijkstra</td><td>☐ <a href="https://leetcode.com/problems/network-delay-time/">LeetCode 743 Network Delay Time</a></td><td>Priority Queue + Relaxation. Flight Discount 전에</td></tr>
-    <tr><td>Bellman-Ford / 음수 사이클</td><td>☐ <a href="https://cses.fi/problemset/task/1197/">CSES Cycle Finding</a></td><td>음수 사이클을 실제로 찾는 문제. 대응 LeetCode가 없어 CSES</td></tr>
-    <tr><td>Floyd-Warshall</td><td>☐ <a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/">LeetCode 1334 Find the City</a></td><td>거리표로 임계값 안의 도시 수를 계산하는 응용</td></tr>
-    <tr><td>Union-Find</td><td>☐ <a href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/">LeetCode 1319 Make Network Connected</a></td><td>Path Compression + Union, MST 이전에</td></tr>
-    <tr><td>Kruskal / MST</td><td>☐ <a href="https://leetcode.com/problems/min-cost-to-connect-all-points/">LeetCode 1584 Min Cost to Connect All Points</a></td><td>최소 신장 트리</td></tr>
-    <tr><td>Knapsack DP</td><td>☐ <a href="https://leetcode.com/problems/last-stone-weight-ii/">LeetCode 1049 Last Stone Weight II</a></td><td>상태 정의와 1차원 DP</td></tr>
-    <tr><td>LIS</td><td>☐ <a href="https://leetcode.com/problems/longest-increasing-subsequence/">LeetCode 300 Longest Increasing Subsequence</a></td><td>O(n log n)까지 연습 가능</td></tr>
-    <tr><td>Edit Distance</td><td>☐ <a href="https://leetcode.com/problems/edit-distance/">LeetCode 72 Edit Distance</a></td><td>2차원 DP</td></tr>
-    <tr><td>Bitmask DP / TSP</td><td>☐ <a href="https://leetcode.com/problems/shortest-path-visiting-all-nodes/">LeetCode 847 Shortest Path Visiting All Nodes</a></td><td>무가중·재방문 허용·복귀 불필요 — 일반 가중치 TSP 폐회로와 다름</td></tr>
+    <tr><td>DFS/BFS</td><td><input type="checkbox" class="practice-check" data-progress-key="e60d12eddb0666c6" aria-label="DFS/BFS LeetCode 200 Number of Islands그래프 탐색과 방문 처리의 기본 완료"> <a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200 Number of Islands</a></td><td>그래프 탐색과 방문 처리의 기본</td></tr>
+    <tr><td>Topological Ordering</td><td><input type="checkbox" class="practice-check" data-progress-key="eb97876446959d66" aria-label="Topological Ordering LeetCode 210 Course Schedule II위상정렬 필수, DAG 응용 전에 권장 완료"> <a href="https://leetcode.com/problems/course-schedule-ii/">LeetCode 210 Course Schedule II</a></td><td>위상정렬 필수, DAG 응용 전에 권장</td></tr>
+    <tr><td>Dijkstra</td><td><input type="checkbox" class="practice-check" data-progress-key="ffb863e75bce2a99" aria-label="Dijkstra LeetCode 743 Network Delay TimePriority Queue + Relaxation. Flight Discount 전에 완료"> <a href="https://leetcode.com/problems/network-delay-time/">LeetCode 743 Network Delay Time</a></td><td>Priority Queue + Relaxation. Flight Discount 전에</td></tr>
+    <tr><td>Bellman-Ford / 음수 사이클</td><td><input type="checkbox" class="practice-check" data-progress-key="1ed0e05bb241103e" aria-label="Bellman-Ford / 음수 사이클 CSES Cycle Finding음수 사이클을 실제로 찾는 문제. 대응 LeetCode가 없어 CSES 완료"> <a href="https://cses.fi/problemset/task/1197/">CSES Cycle Finding</a></td><td>음수 사이클을 실제로 찾는 문제. 대응 LeetCode가 없어 CSES</td></tr>
+    <tr><td>Floyd-Warshall</td><td><input type="checkbox" class="practice-check" data-progress-key="7a8f0fc9a0e96475" aria-label="Floyd-Warshall LeetCode 1334 Find the City거리표로 임계값 안의 도시 수를 계산하는 응용 완료"> <a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/">LeetCode 1334 Find the City</a></td><td>거리표로 임계값 안의 도시 수를 계산하는 응용</td></tr>
+    <tr><td>Union-Find</td><td><input type="checkbox" class="practice-check" data-progress-key="ed468ef730c31b61" aria-label="Union-Find LeetCode 1319 Make Network ConnectedPath Compression + Union, MST 이전에 완료"> <a href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/">LeetCode 1319 Make Network Connected</a></td><td>Path Compression + Union, MST 이전에</td></tr>
+    <tr><td>Kruskal / MST</td><td><input type="checkbox" class="practice-check" data-progress-key="0b970f3b5d58b9d2" aria-label="Kruskal / MST LeetCode 1584 Min Cost to Connect All Points최소 신장 트리 완료"> <a href="https://leetcode.com/problems/min-cost-to-connect-all-points/">LeetCode 1584 Min Cost to Connect All Points</a></td><td>최소 신장 트리</td></tr>
+    <tr><td>Knapsack DP</td><td><input type="checkbox" class="practice-check" data-progress-key="39cc8daf37800e66" aria-label="Knapsack DP LeetCode 1049 Last Stone Weight II상태 정의와 1차원 DP 완료"> <a href="https://leetcode.com/problems/last-stone-weight-ii/">LeetCode 1049 Last Stone Weight II</a></td><td>상태 정의와 1차원 DP</td></tr>
+    <tr><td>LIS</td><td><input type="checkbox" class="practice-check" data-progress-key="67c5226bd1a23336" aria-label="LIS LeetCode 300 Longest Increasing SubsequenceO(n log n)까지 연습 가능 완료"> <a href="https://leetcode.com/problems/longest-increasing-subsequence/">LeetCode 300 Longest Increasing Subsequence</a></td><td>O(n log n)까지 연습 가능</td></tr>
+    <tr><td>Edit Distance</td><td><input type="checkbox" class="practice-check" data-progress-key="48f00e481a6157c2" aria-label="Edit Distance LeetCode 72 Edit Distance2차원 DP 완료"> <a href="https://leetcode.com/problems/edit-distance/">LeetCode 72 Edit Distance</a></td><td>2차원 DP</td></tr>
+    <tr><td>Bitmask DP / TSP</td><td><input type="checkbox" class="practice-check" data-progress-key="e2e9a37605bcddb6" aria-label="Bitmask DP / TSP LeetCode 847 Shortest Path Visiting All Nodes무가중·재방문 허용·복귀 불필요 — 일반 가중치 TSP 폐회로와 다름 완료"> <a href="https://leetcode.com/problems/shortest-path-visiting-all-nodes/">LeetCode 847 Shortest Path Visiting All Nodes</a></td><td>무가중·재방문 허용·복귀 불필요 — 일반 가중치 TSP 폐회로와 다름</td></tr>
   </table>
   <p class="bx-h">추천 시작 순서</p>
   <div class="bx">
@@ -77,87 +77,87 @@
   <h3>1. 효율성 · 점근표기 · 기하 기초</h3>
   <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
-    <tr><td>Fibonacci 재귀 vs DP</td><td>☐ <a href="https://leetcode.com/problems/fibonacci-number/">LeetCode 509</a></td><td>동일한 계산을 다른 복잡도로 구현</td></tr>
-    <tr><td>Fibonacci O(log n)</td><td>☐ <a href="https://cses.fi/problemset/task/1722/">CSES Fibonacci Numbers</a></td><td>HW1 P3에 가까운 무료 LeetCode가 없어 CSES</td></tr>
-    <tr><td>CCW 방향 판정</td><td>☐ <a href="https://cses.fi/problemset/task/2189/">CSES Point Location Test</a></td><td>좌·우·일직선 판정 연습</td></tr>
-    <tr><td>Convex Hull</td><td>☐ <a href="https://leetcode.com/problems/erect-the-fence/">LeetCode 587 Erect the Fence</a></td><td>Graham Scan · Monotone Chain</td></tr>
-    <tr><td>Big-O · 성장률 비교</td><td>☐ 원본 강의/HW 직접 증명</td><td>HW1 P1·P2는 수학적 증명 — 코드 저지만으로 불충분</td></tr>
+    <tr><td>Fibonacci 재귀 vs DP</td><td><input type="checkbox" class="practice-check" data-progress-key="6c77d299fb1b89f1" aria-label="Fibonacci 재귀 vs DP LeetCode 509동일한 계산을 다른 복잡도로 구현 완료"> <a href="https://leetcode.com/problems/fibonacci-number/">LeetCode 509</a></td><td>동일한 계산을 다른 복잡도로 구현</td></tr>
+    <tr><td>Fibonacci O(log n)</td><td><input type="checkbox" class="practice-check" data-progress-key="2930011be7e7f3e0" aria-label="Fibonacci O(log n) CSES Fibonacci NumbersHW1 P3에 가까운 무료 LeetCode가 없어 CSES 완료"> <a href="https://cses.fi/problemset/task/1722/">CSES Fibonacci Numbers</a></td><td>HW1 P3에 가까운 무료 LeetCode가 없어 CSES</td></tr>
+    <tr><td>CCW 방향 판정</td><td><input type="checkbox" class="practice-check" data-progress-key="b2b2bc2d51369fcf" aria-label="CCW 방향 판정 CSES Point Location Test좌·우·일직선 판정 연습 완료"> <a href="https://cses.fi/problemset/task/2189/">CSES Point Location Test</a></td><td>좌·우·일직선 판정 연습</td></tr>
+    <tr><td>Convex Hull</td><td><input type="checkbox" class="practice-check" data-progress-key="2ab10aed991ef6d9" aria-label="Convex Hull LeetCode 587 Erect the FenceGraham Scan · Monotone Chain 완료"> <a href="https://leetcode.com/problems/erect-the-fence/">LeetCode 587 Erect the Fence</a></td><td>Graham Scan · Monotone Chain</td></tr>
+    <tr><td>Big-O · 성장률 비교</td><td><input type="checkbox" class="practice-check" data-progress-key="e999ab715597b92e" aria-label="Big-O · 성장률 비교 원본 강의/HW 직접 증명HW1 P1·P2는 수학적 증명 — 코드 저지만으로 불충분 완료"> 원본 강의/HW 직접 증명</td><td>HW1 P1·P2는 수학적 증명 — 코드 저지만으로 불충분</td></tr>
   </table>
 
   <h3>2. 재귀 · 분할정복 · 선택 · 정렬</h3>
   <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
-    <tr><td>하노이 탑 재귀</td><td>☐ <a href="https://leetcode.com/problems/hanota-lcci/">LeetCode 08.06 Hanota (LCCI)</a></td><td>재귀 호출 · base case</td></tr>
-    <tr><td>Binary Search</td><td>☐ <a href="https://leetcode.com/problems/binary-search/">LeetCode 704</a></td><td>탐색 범위 불변식</td></tr>
-    <tr><td>Merge Sort / Quick Sort</td><td>☐ <a href="https://leetcode.com/problems/sort-an-array/">LeetCode 912 Sort an Array</a></td><td>내장 정렬 대신 직접 구현</td></tr>
-    <tr><td>Selection / Quickselect</td><td>☐ <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/">LeetCode 215 Kth Largest Element</a></td><td>정렬 대신 Quickselect</td></tr>
-    <tr><td>분할정복 거듭제곱</td><td>☐ <a href="https://leetcode.com/problems/powx-n/">LeetCode 50 Pow(x, n)</a></td><td>LC 50은 실수 거듭제곱, CSES 모듈러와 다름</td></tr>
-    <tr><td>행렬 거듭제곱</td><td>☐ <a href="https://cses.fi/problemset/task/1722/">CSES Fibonacci Numbers</a></td><td>HW1 P3, O(log n)</td></tr>
-    <tr><td>Inversion Counting</td><td>☐ <a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/">LeetCode 315</a></td><td>HW2 P1 — 각 위치의 작은 수 개수를 합해 전체 역순쌍</td></tr>
-    <tr><td>Maximum Subarray</td><td>☐ <a href="https://leetcode.com/problems/maximum-subarray/">LeetCode 53</a></td><td>HW2 P5는 Divide &amp; Conquer 해법을 요구</td></tr>
-    <tr><td>Closest Pair of Points</td><td>☐ <a href="https://cses.fi/problemset/task/2194/">CSES Minimum Euclidean Distance</a></td><td>동일한 무료 LeetCode가 없어 CSES</td></tr>
-    <tr><td>큰 정수 직접 곱셈</td><td>☐ <a href="https://leetcode.com/problems/multiply-strings/">LeetCode 43 Multiply Strings</a></td><td>HW1 P4 자릿수 배열 곱셈 (시간 분석 별도)</td></tr>
+    <tr><td>하노이 탑 재귀</td><td><input type="checkbox" class="practice-check" data-progress-key="88c57ea4349c9c6a" aria-label="하노이 탑 재귀 LeetCode 08.06 Hanota (LCCI)재귀 호출 · base case 완료"> <a href="https://leetcode.com/problems/hanota-lcci/">LeetCode 08.06 Hanota (LCCI)</a></td><td>재귀 호출 · base case</td></tr>
+    <tr><td>Binary Search</td><td><input type="checkbox" class="practice-check" data-progress-key="ec455acec907ac39" aria-label="Binary Search LeetCode 704탐색 범위 불변식 완료"> <a href="https://leetcode.com/problems/binary-search/">LeetCode 704</a></td><td>탐색 범위 불변식</td></tr>
+    <tr><td>Merge Sort / Quick Sort</td><td><input type="checkbox" class="practice-check" data-progress-key="a833b0461e064a54" aria-label="Merge Sort / Quick Sort LeetCode 912 Sort an Array내장 정렬 대신 직접 구현 완료"> <a href="https://leetcode.com/problems/sort-an-array/">LeetCode 912 Sort an Array</a></td><td>내장 정렬 대신 직접 구현</td></tr>
+    <tr><td>Selection / Quickselect</td><td><input type="checkbox" class="practice-check" data-progress-key="68eb3802ca1c2dbb" aria-label="Selection / Quickselect LeetCode 215 Kth Largest Element정렬 대신 Quickselect 완료"> <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/">LeetCode 215 Kth Largest Element</a></td><td>정렬 대신 Quickselect</td></tr>
+    <tr><td>분할정복 거듭제곱</td><td><input type="checkbox" class="practice-check" data-progress-key="a26926fc775f85f2" aria-label="분할정복 거듭제곱 LeetCode 50 Pow(x, n)LC 50은 실수 거듭제곱, CSES 모듈러와 다름 완료"> <a href="https://leetcode.com/problems/powx-n/">LeetCode 50 Pow(x, n)</a></td><td>LC 50은 실수 거듭제곱, CSES 모듈러와 다름</td></tr>
+    <tr><td>행렬 거듭제곱</td><td><input type="checkbox" class="practice-check" data-progress-key="2930011be7e7f3e0" aria-label="행렬 거듭제곱 CSES Fibonacci NumbersHW1 P3, O(log n) 완료"> <a href="https://cses.fi/problemset/task/1722/">CSES Fibonacci Numbers</a></td><td>HW1 P3, O(log n)</td></tr>
+    <tr><td>Inversion Counting</td><td><input type="checkbox" class="practice-check" data-progress-key="81dd6cb932b7dfea" aria-label="Inversion Counting LeetCode 315HW2 P1 — 각 위치의 작은 수 개수를 합해 전체 역순쌍 완료"> <a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/">LeetCode 315</a></td><td>HW2 P1 — 각 위치의 작은 수 개수를 합해 전체 역순쌍</td></tr>
+    <tr><td>Maximum Subarray</td><td><input type="checkbox" class="practice-check" data-progress-key="84ad1f2806e5e267" aria-label="Maximum Subarray LeetCode 53HW2 P5는 Divide &amp;amp; Conquer 해법을 요구 완료"> <a href="https://leetcode.com/problems/maximum-subarray/">LeetCode 53</a></td><td>HW2 P5는 Divide &amp; Conquer 해법을 요구</td></tr>
+    <tr><td>Closest Pair of Points</td><td><input type="checkbox" class="practice-check" data-progress-key="f79f8cc0e7ea197f" aria-label="Closest Pair of Points CSES Minimum Euclidean Distance동일한 무료 LeetCode가 없어 CSES 완료"> <a href="https://cses.fi/problemset/task/2194/">CSES Minimum Euclidean Distance</a></td><td>동일한 무료 LeetCode가 없어 CSES</td></tr>
+    <tr><td>큰 정수 직접 곱셈</td><td><input type="checkbox" class="practice-check" data-progress-key="8fbac8397fa9f20a" aria-label="큰 정수 직접 곱셈 LeetCode 43 Multiply StringsHW1 P4 자릿수 배열 곱셈 (시간 분석 별도) 완료"> <a href="https://leetcode.com/problems/multiply-strings/">LeetCode 43 Multiply Strings</a></td><td>HW1 P4 자릿수 배열 곱셈 (시간 분석 별도)</td></tr>
   </table>
 
   <h3>3. 그래프 탐색 · DAG</h3>
   <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
-    <tr><td>DFS/BFS 기초</td><td>☐ <a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200</a></td><td>한 방법으로 풀고 다른 방법으로 재구현</td></tr>
-    <tr><td>Connected Components</td><td>☐ <a href="https://leetcode.com/problems/number-of-provinces/">LeetCode 547 Number of Provinces</a></td><td>DFS forest나 Union-Find (인접행렬 입력)</td></tr>
-    <tr><td>BFS 최단 경로</td><td>☐ <a href="https://leetcode.com/problems/shortest-path-in-binary-matrix/">LeetCode 1091 Shortest Path in Binary Matrix</a></td><td>8방향 격자 BFS (경로 역추적은 별도 연습)</td></tr>
-    <tr><td>Bipartite</td><td>☐ <a href="https://leetcode.com/problems/is-graph-bipartite/">LeetCode 785 Is Graph Bipartite?</a></td><td>2색칠과 홀수 사이클</td></tr>
-    <tr><td>Cycle detection</td><td>☐ <a href="https://leetcode.com/problems/course-schedule/">LeetCode 207 Course Schedule</a></td><td>실제 사이클 경로 출력은 별도 구현</td></tr>
-    <tr><td>Topological Ordering</td><td>☐ <a href="https://leetcode.com/problems/course-schedule-ii/">LeetCode 210 Course Schedule II</a></td><td>Kahn algorithm (in-degree 0)</td></tr>
-    <tr><td>DAG 의존관계 DP</td><td>☐ <a href="https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/">LeetCode 2328 Increasing Paths in a Grid</a></td><td>임의 DAG의 지정 s→t 경로 수와는 다름</td></tr>
+    <tr><td>DFS/BFS 기초</td><td><input type="checkbox" class="practice-check" data-progress-key="e60d12eddb0666c6" aria-label="DFS/BFS 기초 LeetCode 200한 방법으로 풀고 다른 방법으로 재구현 완료"> <a href="https://leetcode.com/problems/number-of-islands/">LeetCode 200</a></td><td>한 방법으로 풀고 다른 방법으로 재구현</td></tr>
+    <tr><td>Connected Components</td><td><input type="checkbox" class="practice-check" data-progress-key="09e1f3f69c8a2446" aria-label="Connected Components LeetCode 547 Number of ProvincesDFS forest나 Union-Find (인접행렬 입력) 완료"> <a href="https://leetcode.com/problems/number-of-provinces/">LeetCode 547 Number of Provinces</a></td><td>DFS forest나 Union-Find (인접행렬 입력)</td></tr>
+    <tr><td>BFS 최단 경로</td><td><input type="checkbox" class="practice-check" data-progress-key="95568870809fba2c" aria-label="BFS 최단 경로 LeetCode 1091 Shortest Path in Binary Matrix8방향 격자 BFS (경로 역추적은 별도 연습) 완료"> <a href="https://leetcode.com/problems/shortest-path-in-binary-matrix/">LeetCode 1091 Shortest Path in Binary Matrix</a></td><td>8방향 격자 BFS (경로 역추적은 별도 연습)</td></tr>
+    <tr><td>Bipartite</td><td><input type="checkbox" class="practice-check" data-progress-key="be116ada0bbf66f6" aria-label="Bipartite LeetCode 785 Is Graph Bipartite?2색칠과 홀수 사이클 완료"> <a href="https://leetcode.com/problems/is-graph-bipartite/">LeetCode 785 Is Graph Bipartite?</a></td><td>2색칠과 홀수 사이클</td></tr>
+    <tr><td>Cycle detection</td><td><input type="checkbox" class="practice-check" data-progress-key="9d7ffa8d150fe497" aria-label="Cycle detection LeetCode 207 Course Schedule실제 사이클 경로 출력은 별도 구현 완료"> <a href="https://leetcode.com/problems/course-schedule/">LeetCode 207 Course Schedule</a></td><td>실제 사이클 경로 출력은 별도 구현</td></tr>
+    <tr><td>Topological Ordering</td><td><input type="checkbox" class="practice-check" data-progress-key="eb97876446959d66" aria-label="Topological Ordering LeetCode 210 Course Schedule IIKahn algorithm (in-degree 0) 완료"> <a href="https://leetcode.com/problems/course-schedule-ii/">LeetCode 210 Course Schedule II</a></td><td>Kahn algorithm (in-degree 0)</td></tr>
+    <tr><td>DAG 의존관계 DP</td><td><input type="checkbox" class="practice-check" data-progress-key="79ecdc77b7fb312b" aria-label="DAG 의존관계 DP LeetCode 2328 Increasing Paths in a Grid임의 DAG의 지정 s→t 경로 수와는 다름 완료"> <a href="https://leetcode.com/problems/number-of-increasing-paths-in-a-grid/">LeetCode 2328 Increasing Paths in a Grid</a></td><td>임의 DAG의 지정 s→t 경로 수와는 다름</td></tr>
   </table>
 
   <h3>4. Dijkstra · Bellman-Ford · Floyd-Warshall · TSP</h3>
   <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
-    <tr><td>Dijkstra</td><td>☐ <a href="https://leetcode.com/problems/network-delay-time/">LeetCode 743</a></td><td>가장 중요한 heap+relaxation 구현</td></tr>
-    <tr><td>Dijkstra 응용</td><td>☐ <a href="https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/">LeetCode 1976 Number of Ways to Arrive</a></td><td>최단 경로의 개수까지 계산</td></tr>
-    <tr><td>Bellman-Ford</td><td>☐ <a href="https://cses.fi/problemset/task/1673/">CSES High Score</a></td><td>도달 가능한 양의 사이클 영향까지 검사</td></tr>
-    <tr><td>Negative Cycle</td><td>☐ <a href="https://cses.fi/problemset/task/1197/">CSES Cycle Finding</a></td><td>실제 음수 사이클 검출·역추적</td></tr>
-    <tr><td>DAG 최장 경로</td><td>☐ <a href="https://leetcode.com/problems/parallel-courses-iii/">LeetCode 2050</a></td><td>HW3 P4의 음수 포함 간선 가중치와 다름</td></tr>
-    <tr><td>Floyd-Warshall</td><td>☐ <a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/">LeetCode 1334</a></td><td>Floyd 또는 반복 Dijkstra</td></tr>
-    <tr><td>Dijkstra 상태 확장</td><td>☐ <a href="https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/">LeetCode 2093</a> (Premium)</td><td>HW의 무료 간선 1개와 다름. <a href="https://cses.fi/problemset/task/1195/">CSES Flight Discount</a>로 대체 가능</td></tr>
-    <tr><td>Dijkstra 상태 확장</td><td>☐ <a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">LeetCode 787 Cheapest Flights Within K Stops</a> (무료)</td><td>경유 횟수 제한 최단 경로 — 상태(경유 수) 확장 연습. HW3 P3와 관련되나 간선 비용 변경은 아님</td></tr>
-    <tr><td>Bitmask TSP</td><td>☐ <a href="https://leetcode.com/problems/shortest-path-visiting-all-nodes/">LeetCode 847</a></td><td>무가중·재방문 허용·복귀 불필요 — 일반 TSP와 다름</td></tr>
-    <tr><td>Hamiltonian DP</td><td>☐ <a href="https://leetcode.com/problems/unique-paths-iii/">LeetCode 980 Unique Paths III</a></td><td>격자 전체를 한 번씩 방문하는 경로 수</td></tr>
+    <tr><td>Dijkstra</td><td><input type="checkbox" class="practice-check" data-progress-key="ffb863e75bce2a99" aria-label="Dijkstra LeetCode 743가장 중요한 heap+relaxation 구현 완료"> <a href="https://leetcode.com/problems/network-delay-time/">LeetCode 743</a></td><td>가장 중요한 heap+relaxation 구현</td></tr>
+    <tr><td>Dijkstra 응용</td><td><input type="checkbox" class="practice-check" data-progress-key="7a552e171c77b165" aria-label="Dijkstra 응용 LeetCode 1976 Number of Ways to Arrive최단 경로의 개수까지 계산 완료"> <a href="https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/">LeetCode 1976 Number of Ways to Arrive</a></td><td>최단 경로의 개수까지 계산</td></tr>
+    <tr><td>Bellman-Ford</td><td><input type="checkbox" class="practice-check" data-progress-key="5a6c68512639a801" aria-label="Bellman-Ford CSES High Score도달 가능한 양의 사이클 영향까지 검사 완료"> <a href="https://cses.fi/problemset/task/1673/">CSES High Score</a></td><td>도달 가능한 양의 사이클 영향까지 검사</td></tr>
+    <tr><td>Negative Cycle</td><td><input type="checkbox" class="practice-check" data-progress-key="1ed0e05bb241103e" aria-label="Negative Cycle CSES Cycle Finding실제 음수 사이클 검출·역추적 완료"> <a href="https://cses.fi/problemset/task/1197/">CSES Cycle Finding</a></td><td>실제 음수 사이클 검출·역추적</td></tr>
+    <tr><td>DAG 최장 경로</td><td><input type="checkbox" class="practice-check" data-progress-key="fcb2fb6bd7e22335" aria-label="DAG 최장 경로 LeetCode 2050HW3 P4의 음수 포함 간선 가중치와 다름 완료"> <a href="https://leetcode.com/problems/parallel-courses-iii/">LeetCode 2050</a></td><td>HW3 P4의 음수 포함 간선 가중치와 다름</td></tr>
+    <tr><td>Floyd-Warshall</td><td><input type="checkbox" class="practice-check" data-progress-key="7a8f0fc9a0e96475" aria-label="Floyd-Warshall LeetCode 1334Floyd 또는 반복 Dijkstra 완료"> <a href="https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/">LeetCode 1334</a></td><td>Floyd 또는 반복 Dijkstra</td></tr>
+    <tr><td>Dijkstra 상태 확장</td><td><input type="checkbox" class="practice-check" data-progress-key="5ad77de178169c20" aria-label="Dijkstra 상태 확장 LeetCode 2093 (Premium)HW의 무료 간선 1개와 다름. CSES Flight Discount로 대체 가능 완료"> <a href="https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/">LeetCode 2093</a> (Premium)</td><td>HW의 무료 간선 1개와 다름. <a href="https://cses.fi/problemset/task/1195/">CSES Flight Discount</a>로 대체 가능</td></tr>
+    <tr><td>Dijkstra 상태 확장</td><td><input type="checkbox" class="practice-check" data-progress-key="b66bab7256b66466" aria-label="Dijkstra 상태 확장 LeetCode 787 Cheapest Flights Within K Stops (무료)경유 횟수 제한 최단 경로 — 상태(경유 수) 확장 연습. HW3 P3와 관련되나 간선 비용 변경은 아님 완료"> <a href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">LeetCode 787 Cheapest Flights Within K Stops</a> (무료)</td><td>경유 횟수 제한 최단 경로 — 상태(경유 수) 확장 연습. HW3 P3와 관련되나 간선 비용 변경은 아님</td></tr>
+    <tr><td>Bitmask TSP</td><td><input type="checkbox" class="practice-check" data-progress-key="e2e9a37605bcddb6" aria-label="Bitmask TSP LeetCode 847무가중·재방문 허용·복귀 불필요 — 일반 TSP와 다름 완료"> <a href="https://leetcode.com/problems/shortest-path-visiting-all-nodes/">LeetCode 847</a></td><td>무가중·재방문 허용·복귀 불필요 — 일반 TSP와 다름</td></tr>
+    <tr><td>Hamiltonian DP</td><td><input type="checkbox" class="practice-check" data-progress-key="edaa5bdbcbc36b80" aria-label="Hamiltonian DP LeetCode 980 Unique Paths III격자 전체를 한 번씩 방문하는 경로 수 완료"> <a href="https://leetcode.com/problems/unique-paths-iii/">LeetCode 980 Unique Paths III</a></td><td>격자 전체를 한 번씩 방문하는 경로 수</td></tr>
   </table>
 
   <h3>5. Greedy · Union-Find · MST · Huffman</h3>
   <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
-    <tr><td>충전소 선택 Greedy</td><td>☐ 강의 Selecting Breakpoints 직접 구현</td><td>강의 모델 그대로 코딩</td></tr>
-    <tr><td>Union-Find</td><td>☐ <a href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/">LeetCode 1319</a></td><td>연결 요소 수/여분 간선 기반</td></tr>
-    <tr><td>Kruskal MST</td><td>☐ <a href="https://leetcode.com/problems/min-cost-to-connect-all-points/">LeetCode 1584</a></td><td>맨해튼 거리 완전그래프 MST</td></tr>
-    <tr><td>Prim MST</td><td>☐ <a href="https://leetcode.com/problems/min-cost-to-connect-all-points/">LeetCode 1584</a></td><td>Prim 또는 Kruskal</td></tr>
-    <tr><td>Second-Best MST 근접 응용</td><td>☐ <a href="https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/">LeetCode 1489</a></td><td>critical/pseudo-critical 분류 — HW4 P5의 second-best 비용과 다름</td></tr>
-    <tr><td>Interval Scheduling</td><td>☐ <a href="https://leetcode.com/problems/non-overlapping-intervals/">LeetCode 435 Non-overlapping Intervals</a></td><td>LC는 제거할 최소 구간 수를 반환</td></tr>
-    <tr><td>Interval Partitioning</td><td>☐ <a href="https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/">LeetCode 2406 Divide Intervals Into Groups</a></td><td>닫힌 구간이라 경계 처리 차이</td></tr>
-    <tr><td>Huffman(2진) 비용 합치기</td><td>☐ <a href="https://leetcode.com/problems/minimum-cost-to-connect-sticks/">LeetCode 1167 Connect Sticks</a></td><td>유료일 수 있음. HW4 P3은 3진으로 직접 바꾸기</td></tr>
-    <tr><td>Weighted Scheduling 연결</td><td>☐ <a href="https://leetcode.com/problems/maximum-profit-in-job-scheduling/">LeetCode 1235 Maximum Profit in Job Scheduling</a></td><td>Interval greedy가 실패하는 가중치 사례 · DP</td></tr>
-    <tr><td>Clustering of maximum spacing</td><td>☐ <a href="https://leetcode.com/problems/magnetic-force-between-two-balls/">LeetCode 1552 Magnetic Force Between Two Balls</a></td><td>최소 거리 최대화만 유사 — Kruskal 대신 이분 탐색</td></tr>
+    <tr><td>충전소 선택 Greedy</td><td><input type="checkbox" class="practice-check" data-progress-key="bc2b7512db0b6804" aria-label="충전소 선택 Greedy 강의 Selecting Breakpoints 직접 구현강의 모델 그대로 코딩 완료"> 강의 Selecting Breakpoints 직접 구현</td><td>강의 모델 그대로 코딩</td></tr>
+    <tr><td>Union-Find</td><td><input type="checkbox" class="practice-check" data-progress-key="ed468ef730c31b61" aria-label="Union-Find LeetCode 1319연결 요소 수/여분 간선 기반 완료"> <a href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/">LeetCode 1319</a></td><td>연결 요소 수/여분 간선 기반</td></tr>
+    <tr><td>Kruskal MST</td><td><input type="checkbox" class="practice-check" data-progress-key="0b970f3b5d58b9d2" aria-label="Kruskal MST LeetCode 1584맨해튼 거리 완전그래프 MST 완료"> <a href="https://leetcode.com/problems/min-cost-to-connect-all-points/">LeetCode 1584</a></td><td>맨해튼 거리 완전그래프 MST</td></tr>
+    <tr><td>Prim MST</td><td><input type="checkbox" class="practice-check" data-progress-key="0b970f3b5d58b9d2" aria-label="Prim MST LeetCode 1584Prim 또는 Kruskal 완료"> <a href="https://leetcode.com/problems/min-cost-to-connect-all-points/">LeetCode 1584</a></td><td>Prim 또는 Kruskal</td></tr>
+    <tr><td>Second-Best MST 근접 응용</td><td><input type="checkbox" class="practice-check" data-progress-key="982e4974141c9f7b" aria-label="Second-Best MST 근접 응용 LeetCode 1489critical/pseudo-critical 분류 — HW4 P5의 second-best 비용과 다름 완료"> <a href="https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/">LeetCode 1489</a></td><td>critical/pseudo-critical 분류 — HW4 P5의 second-best 비용과 다름</td></tr>
+    <tr><td>Interval Scheduling</td><td><input type="checkbox" class="practice-check" data-progress-key="f129d706302571e3" aria-label="Interval Scheduling LeetCode 435 Non-overlapping IntervalsLC는 제거할 최소 구간 수를 반환 완료"> <a href="https://leetcode.com/problems/non-overlapping-intervals/">LeetCode 435 Non-overlapping Intervals</a></td><td>LC는 제거할 최소 구간 수를 반환</td></tr>
+    <tr><td>Interval Partitioning</td><td><input type="checkbox" class="practice-check" data-progress-key="ef90d06fd3758543" aria-label="Interval Partitioning LeetCode 2406 Divide Intervals Into Groups닫힌 구간이라 경계 처리 차이 완료"> <a href="https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/">LeetCode 2406 Divide Intervals Into Groups</a></td><td>닫힌 구간이라 경계 처리 차이</td></tr>
+    <tr><td>Huffman(2진) 비용 합치기</td><td><input type="checkbox" class="practice-check" data-progress-key="e39a62df3aa16fde" aria-label="Huffman(2진) 비용 합치기 LeetCode 1167 Connect Sticks유료일 수 있음. HW4 P3은 3진으로 직접 바꾸기 완료"> <a href="https://leetcode.com/problems/minimum-cost-to-connect-sticks/">LeetCode 1167 Connect Sticks</a></td><td>유료일 수 있음. HW4 P3은 3진으로 직접 바꾸기</td></tr>
+    <tr><td>Weighted Scheduling 연결</td><td><input type="checkbox" class="practice-check" data-progress-key="422a81a23047f8a8" aria-label="Weighted Scheduling 연결 LeetCode 1235 Maximum Profit in Job SchedulingInterval greedy가 실패하는 가중치 사례 · DP 완료"> <a href="https://leetcode.com/problems/maximum-profit-in-job-scheduling/">LeetCode 1235 Maximum Profit in Job Scheduling</a></td><td>Interval greedy가 실패하는 가중치 사례 · DP</td></tr>
+    <tr><td>Clustering of maximum spacing</td><td><input type="checkbox" class="practice-check" data-progress-key="4bf1e5ba194e11dc" aria-label="Clustering of maximum spacing LeetCode 1552 Magnetic Force Between Two Balls최소 거리 최대화만 유사 — Kruskal 대신 이분 탐색 완료"> <a href="https://leetcode.com/problems/magnetic-force-between-two-balls/">LeetCode 1552 Magnetic Force Between Two Balls</a></td><td>최소 거리 최대화만 유사 — Kruskal 대신 이분 탐색</td></tr>
   </table>
 
   <h3>6. Dynamic Programming</h3>
   <table class="t rt">
     <tr><th>주제</th><th>문제</th><th>메모</th></tr>
-    <tr><td>Fibonacci DP</td><td>☐ <a href="https://leetcode.com/problems/fibonacci-number/">LeetCode 509</a></td><td>Bottom-up / memoization 비교</td></tr>
-    <tr><td>Bit strings 인접 1 제한</td><td>☐ 원본 노트 점화식 직접 구현</td><td>S(n) = S(n−1) + S(n−2)</td></tr>
-    <tr><td>Maximum Subarray</td><td>☐ <a href="https://leetcode.com/problems/maximum-subarray/">LeetCode 53</a></td><td>Kadane와 분할정복 각각 연습</td></tr>
-    <tr><td>LIS</td><td>☐ <a href="https://leetcode.com/problems/longest-increasing-subsequence/">LeetCode 300</a></td><td>O(n²) DP 후 O(n log n) 버전</td></tr>
-    <tr><td>Tree Independent Set</td><td>☐ <a href="https://leetcode.com/problems/house-robber-iii/">LeetCode 337 House Robber III</a></td><td>부모/자식 동시 선택 금지</td></tr>
-    <tr><td>Edit Distance</td><td>☐ <a href="https://leetcode.com/problems/edit-distance/">LeetCode 72</a></td><td>2차원 DP 표</td></tr>
-    <tr><td>Subset Sum</td><td>☐ <a href="https://cses.fi/problemset/task/1745/">CSES Money Sums</a></td><td>만들 수 있는 모든 합을 출력 — LC 416/1049는 변형이라 CSES</td></tr>
-    <tr><td>최소 동전</td><td>☐ <a href="https://leetcode.com/problems/coin-change/">LeetCode 322 Coin Change</a></td><td>HW5 P1 거의 동일</td></tr>
-    <tr><td>Matrix chain style 구간 DP</td><td>☐ <a href="https://leetcode.com/problems/minimum-score-triangulation-of-polygon/">LeetCode 1039 Minimum Score Triangulation</a></td><td>같은 형태의 구간 DP, 목표는 다름</td></tr>
-    <tr><td>Knapsack</td><td>☐ <a href="https://leetcode.com/problems/last-stone-weight-ii/">LeetCode 1049</a></td><td>subset sum/0-1 knapsack 변형</td></tr>
-    <tr><td>Weighted Interval Scheduling</td><td>☐ <a href="https://leetcode.com/problems/maximum-profit-in-job-scheduling/">LeetCode 1235</a></td><td>정렬 + 이진탐색 + DP</td></tr>
-    <tr><td>2D Maximum Subrectangle</td><td>☐ <a href="https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/">LeetCode 363</a></td><td>HW5 P2 원문보다 어려움 (합 ≤ K)</td></tr>
-    <tr><td>로봇 격자 최대합</td><td>☐ HW5 P3 직접 구현</td><td>일치하는 저지 확인 전까지 자체 테스트</td></tr>
-    <tr><td>TSP / bitmask DP</td><td>☐ <a href="https://leetcode.com/problems/shortest-path-visiting-all-nodes/">LeetCode 847</a></td><td>출발점 복귀 불필요 · 정점 재방문 가능</td></tr>
+    <tr><td>Fibonacci DP</td><td><input type="checkbox" class="practice-check" data-progress-key="6c77d299fb1b89f1" aria-label="Fibonacci DP LeetCode 509Bottom-up / memoization 비교 완료"> <a href="https://leetcode.com/problems/fibonacci-number/">LeetCode 509</a></td><td>Bottom-up / memoization 비교</td></tr>
+    <tr><td>Bit strings 인접 1 제한</td><td><input type="checkbox" class="practice-check" data-progress-key="ba93eaeee53a4e6b" aria-label="Bit strings 인접 1 제한 원본 노트 점화식 직접 구현S(n) = S(n−1) + S(n−2) 완료"> 원본 노트 점화식 직접 구현</td><td>S(n) = S(n−1) + S(n−2)</td></tr>
+    <tr><td>Maximum Subarray</td><td><input type="checkbox" class="practice-check" data-progress-key="84ad1f2806e5e267" aria-label="Maximum Subarray LeetCode 53Kadane와 분할정복 각각 연습 완료"> <a href="https://leetcode.com/problems/maximum-subarray/">LeetCode 53</a></td><td>Kadane와 분할정복 각각 연습</td></tr>
+    <tr><td>LIS</td><td><input type="checkbox" class="practice-check" data-progress-key="67c5226bd1a23336" aria-label="LIS LeetCode 300O(n²) DP 후 O(n log n) 버전 완료"> <a href="https://leetcode.com/problems/longest-increasing-subsequence/">LeetCode 300</a></td><td>O(n²) DP 후 O(n log n) 버전</td></tr>
+    <tr><td>Tree Independent Set</td><td><input type="checkbox" class="practice-check" data-progress-key="684090a47f1838a5" aria-label="Tree Independent Set LeetCode 337 House Robber III부모/자식 동시 선택 금지 완료"> <a href="https://leetcode.com/problems/house-robber-iii/">LeetCode 337 House Robber III</a></td><td>부모/자식 동시 선택 금지</td></tr>
+    <tr><td>Edit Distance</td><td><input type="checkbox" class="practice-check" data-progress-key="48f00e481a6157c2" aria-label="Edit Distance LeetCode 722차원 DP 표 완료"> <a href="https://leetcode.com/problems/edit-distance/">LeetCode 72</a></td><td>2차원 DP 표</td></tr>
+    <tr><td>Subset Sum</td><td><input type="checkbox" class="practice-check" data-progress-key="d824a1feeceda588" aria-label="Subset Sum CSES Money Sums만들 수 있는 모든 합을 출력 — LC 416/1049는 변형이라 CSES 완료"> <a href="https://cses.fi/problemset/task/1745/">CSES Money Sums</a></td><td>만들 수 있는 모든 합을 출력 — LC 416/1049는 변형이라 CSES</td></tr>
+    <tr><td>최소 동전</td><td><input type="checkbox" class="practice-check" data-progress-key="aa6d12a1e7f45708" aria-label="최소 동전 LeetCode 322 Coin ChangeHW5 P1 거의 동일 완료"> <a href="https://leetcode.com/problems/coin-change/">LeetCode 322 Coin Change</a></td><td>HW5 P1 거의 동일</td></tr>
+    <tr><td>Matrix chain style 구간 DP</td><td><input type="checkbox" class="practice-check" data-progress-key="ef9561b8b9ea78fd" aria-label="Matrix chain style 구간 DP LeetCode 1039 Minimum Score Triangulation같은 형태의 구간 DP, 목표는 다름 완료"> <a href="https://leetcode.com/problems/minimum-score-triangulation-of-polygon/">LeetCode 1039 Minimum Score Triangulation</a></td><td>같은 형태의 구간 DP, 목표는 다름</td></tr>
+    <tr><td>Knapsack</td><td><input type="checkbox" class="practice-check" data-progress-key="39cc8daf37800e66" aria-label="Knapsack LeetCode 1049subset sum/0-1 knapsack 변형 완료"> <a href="https://leetcode.com/problems/last-stone-weight-ii/">LeetCode 1049</a></td><td>subset sum/0-1 knapsack 변형</td></tr>
+    <tr><td>Weighted Interval Scheduling</td><td><input type="checkbox" class="practice-check" data-progress-key="422a81a23047f8a8" aria-label="Weighted Interval Scheduling LeetCode 1235정렬 + 이진탐색 + DP 완료"> <a href="https://leetcode.com/problems/maximum-profit-in-job-scheduling/">LeetCode 1235</a></td><td>정렬 + 이진탐색 + DP</td></tr>
+    <tr><td>2D Maximum Subrectangle</td><td><input type="checkbox" class="practice-check" data-progress-key="c92202137a2448bb" aria-label="2D Maximum Subrectangle LeetCode 363HW5 P2 원문보다 어려움 (합 ≤ K) 완료"> <a href="https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/">LeetCode 363</a></td><td>HW5 P2 원문보다 어려움 (합 ≤ K)</td></tr>
+    <tr><td>로봇 격자 최대합</td><td><input type="checkbox" class="practice-check" data-progress-key="50e01b19415389ce" aria-label="로봇 격자 최대합 HW5 P3 직접 구현일치하는 저지 확인 전까지 자체 테스트 완료"> HW5 P3 직접 구현</td><td>일치하는 저지 확인 전까지 자체 테스트</td></tr>
+    <tr><td>TSP / bitmask DP</td><td><input type="checkbox" class="practice-check" data-progress-key="e2e9a37605bcddb6" aria-label="TSP / bitmask DP LeetCode 847출발점 복귀 불필요 · 정점 재방문 가능 완료"> <a href="https://leetcode.com/problems/shortest-path-visiting-all-nodes/">LeetCode 847</a></td><td>출발점 복귀 불필요 · 정점 재방문 가능</td></tr>
   </table>
 
   <h2><a id="sec-4"></a>HW1–HW5 전체 대응표</h2>
@@ -238,5 +238,6 @@
 </div>
 <script>window.addEventListener("beforeprint",function(){document.querySelectorAll("details").forEach(function(d){d.setAttribute("open","")})});</script>
 <script src="assets/v5.js"></script>
+<script src="assets/practice-progress.js"></script>
 </body>
 </html>
