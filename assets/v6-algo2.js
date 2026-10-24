@@ -132,10 +132,12 @@ V6.register('sort-selection', function (root) {
           '</b>과 현재 최솟값 a[' + oldMin + '] = <b>' + oldVal +
           '</b>를 비교한다. ' +
           (isNew
-            ? '더 작으므로 최솟값 인덱스를 <b>' + min + '</b>으로 갱신한다.'
-            : '더 작지 않으므로 최솟값을 유지한다.') +
-          ' <span style="color:' + RED + '">빨강: 비교 대상</span>, ' +
-          '잉크 테두리: 현재 최솟값 후보.',
+            ? '더 작으므로 최솟값 인덱스를 <b>' + min + '</b>으로 갱신한다. ' +
+              '<span style="color:' + RED + '">빨강: 갱신된 새 최솟값</span>, ' +
+              '잉크 테두리: 직전 최솟값 후보.'
+            : '더 작지 않으므로 최솟값을 유지한다. ' +
+              '<span style="color:' + RED + '">빨강: 비교 대상</span>, ' +
+              '잉크 테두리: 현재 최솟값 후보(유지).'),
         svg: barSvg(a, cmpHL)
       });
     }
@@ -386,6 +388,9 @@ V6.register('bellman-ford', function (root) {
       'margin-top:10px;font-family:\'Noto Sans KR\',sans-serif;font-size:12px;' +
       'color:#1a1a1a;background:#fff">';
 
+    s += '<caption style="text-align:left;font-size:11.5px;color:#1a1a1a;' +
+      'padding:4px 2px">각 라운드의 갱신은 <b>직전 라운드 스냅샷</b>으로 계산(동기식). ' +
+      '셀은 dist / prev.</caption>';
     s += '<thead><tr>';
     var headings = ['라운드', 'A', 'B', 'C', 'D', 'E'];
 
@@ -1395,6 +1400,8 @@ V6.register('union-find', function (root) {
     '<b>6. union(B, G).</b> find(B)=E→D, 따라서 root는 D(rank 2). ' +
     'find(G)=F(rank 1). rank가 낮은 F를 D 아래에 붙인다. ' +
     'π(F)=D이며 rank(D)는 2로 유지된다. 연결 성분 수 <b>2→1</b>. ' +
+    '손계산 표와 마찬가지로 union 단계의 find는 경로 압축 없이 추적하므로 ' +
+    'π(B)=E가 유지된다(압축 효과는 다음 find(G) 단계에서 확인). ' +
     '최종 root는 D 하나이고, 트리 높이는 2다. 연결 성분 수는 <b>7→4→2→1</b>로 감소했다.',
     {
       redNodes: ['F'],
@@ -1434,8 +1441,8 @@ V6.register('union-find', function (root) {
     '복잡도 분석',
     afterFindG,
     '<b>시간 복잡도.</b> n개 원소에 대해 union n−1번과 find를 합쳐 총 m번의 연산(m ≥ n)을 임의 순서로 수행하면 ' +
-    'O(m log* n) (분할 상환, 슬라이드 15–17)이다. 더 정밀한 한계는 ' +
-    'Tarjan(1975)의 Θ(m·α(m,n))이다. α는 Ackermann(아커만) 함수의 역함수이며, ' +
+    'O(m log* n) (분할 상환, 슬라이드 15–17)이다. 더 정밀한 상한 ' +
+    'O(m·α(m,n))이 알려져 있다 (Tarjan–van Leeuwen 1984; 일치하는 하한은 Fredman–Saks 1989). α는 Ackermann(아커만) 함수의 역함수이며, ' +
   
   'n &lt; 2<sup>65536</sup>에서는 α ≤ 3이므로 사실상 상수다. ' +
     'union by rank와 path compression을 함께 사용하면 연산 전체의 분할 상환 비용이 매우 작다.',
