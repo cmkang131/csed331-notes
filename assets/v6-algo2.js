@@ -1,5 +1,5 @@
 /* csed331 v6-algo2.js — 알고리즘 인터랙티브 위젯 팩 2
-   ChatGPT web(Plus) 작성, 트레이스는 강의 손계산 표와 대조 검증됨.
+   트레이스는 강의 손계산 표와 대조 검증됨.
    스타일: 흰 배경, 잉크 #1a1a1a, 빨강 #9e2b25 포인트만. */
 
 /* ---- 선택 정렬 (sort-selection) ---- */
@@ -18,7 +18,7 @@ V6.register('sort-selection', function (root) {
 
   function svgOpen(w, hgt) {
     return '<svg xmlns="' + NS + '" width="' + w + '" height="' + hgt +
-      '" style="max-width:100%;height:auto;display:block;background:#fff;font-family:\'Noto Sans KR\',sans-serif">';
+      '" style="max-width:none;height:auto;display:block;background:#fff;font-family:\'Noto Sans KR\',sans-serif">';
   }
 
   function barSvg(arr, hl, labels) {
@@ -105,34 +105,39 @@ V6.register('sort-selection', function (root) {
     startHL[min] = RED;
 
     steps.push({
-      note: 'i = <b>' + i + '</b>. 정렬된 앞구간은 0..' + (i - 1) +
-        ', 미정렬 구간은 <b>' + i + '..' + (a.length - 1) +
-        '</b>. 최솟값 탐색을 시작한다. 현재 최솟값(minimum)은 a[' +
+      note: 'i = <b>' + i + '</b>. ' +
+        (i === 0
+          ? '정렬된 앞구간은 아직 없고, 미정렬 구간은 <b>0..' + (a.length - 1) + '</b>다.'
+          : '정렬된 앞구간은 0..' + (i - 1) +
+            ', 미정렬 구간은 <b>' + i + '..' + (a.length - 1) + '</b>다.') +
+        ' 최솟값 탐색을 시작한다. 현재 최솟값(minimum)은 a[' +
         min + '] = <b>' + a[min] + '</b>.',
       svg: barSvg(a, startHL)
     });
 
     for (var j = i + 1; j < a.length; j++) {
-      if (a[j] < a[min]) {
-        var oldMin = min;
-        var oldVal = a[oldMin];
-        var newVal = a[j];
+      var oldMin = min;
+      var oldVal = a[oldMin];
+      var newVal = a[j];
+      var isNew = newVal < oldVal;
 
-        min = j;
+      if (isNew) min = j;
 
-        var cmpHL = {};
-        cmpHL[oldMin] = INK;
-        cmpHL[j] = RED;
+      var cmpHL = {};
+      cmpHL[oldMin] = INK;
+      cmpHL[j] = RED;
 
-        steps.push({
-          note: 'a[' + j + '] = <b>' + newVal +
-            '</b> &lt; 기존 최솟값 a[' + oldMin + '] = <b>' + oldVal +
-            '</b>. 최솟값 인덱스를 <b>' + min + '</b>으로 갱신한다. ' +
-            '<span style="color:' + RED + '">빨강: 새 최솟값 후보</span>, ' +
-            '잉크 테두리: 이전 최솟값 후보.',
-          svg: barSvg(a, cmpHL)
-        });
-      }
+      steps.push({
+        note: 'a[' + j + '] = <b>' + newVal +
+          '</b>과 현재 최솟값 a[' + oldMin + '] = <b>' + oldVal +
+          '</b>를 비교한다. ' +
+          (isNew
+            ? '더 작으므로 최솟값 인덱스를 <b>' + min + '</b>으로 갱신한다.'
+            : '더 작지 않으므로 최솟값을 유지한다.') +
+          ' <span style="color:' + RED + '">빨강: 비교 대상</span>, ' +
+          '잉크 테두리: 현재 최솟값 후보.',
+        svg: barSvg(a, cmpHL)
+      });
     }
 
     var selected = a[min];
@@ -181,7 +186,7 @@ V6.register('bellman-ford', function (root) {
   function svgOpen(w, hgt) {
     return '<svg xmlns="' + NS + '" width="' + w + '" height="' + hgt +
       '" viewBox="0 0 ' + w + ' ' + hgt +
-      '" style="max-width:100%;height:auto;display:block;background:#fff;font-family:\'Noto Sans KR\',sans-serif">';
+      '" style="max-width:none;height:auto;display:block;background:#fff;font-family:\'Noto Sans KR\',sans-serif">';
   }
 
   var nodes = ['A', 'B', 'C', 'D', 'E'];
@@ -563,7 +568,7 @@ V6.register('bellman-ford', function (root) {
   function svgOpen(w, height) {
     return '<svg xmlns="' + NS + '" width="' + w + '" height="' + height +
       '" viewBox="0 0 ' + w + ' ' + height +
-      '" style="max-width:100%;height:auto;display:block;background:#fff;' +
+      '" style="max-width:none;height:auto;display:block;background:#fff;' +
       'font-family:\'Noto Sans KR\',sans-serif">';
   }
 
@@ -836,7 +841,7 @@ V6.register('bellman-ford', function (root) {
       },
       {
         id: 'AB', add: false, before: 1, after: 1, total: 14,
-        note: '<b>8. A–B (5)</b>: find(A)=A, find(B)=A. 이미 같은 집합이므로 버린다. 집합 수 <b>1</b>, 누적 weight=<b>14</b>.'
+        note: '<b>8. A–B (5)</b>: find(A)=A, find(B)=A. 이미 같은 집합이므로 버린다. MST는 7번 검사에서 완성됐으므로 여기서 종료할 수 있지만, 손계산 표(8–10행)처럼 남은 간선을 끝까지 검사하면 모두 버려진다. 집합 수 <b>1</b>, 누적 weight=<b>14</b>.'
       },
       {
         id: 'CE', add: false, before: 1, after: 1, total: 14,
@@ -996,7 +1001,7 @@ V6.register('union-find', function (root) {
   function svgOpen(w, height) {
     return '<svg xmlns="' + NS + '" width="' + w + '" height="' + height +
       '" viewBox="0 0 ' + w + ' ' + height +
-      '" style="max-width:100%;height:auto;display:block;background:#fff;' +
+      '" style="max-width:none;height:auto;display:block;background:#fff;' +
       'font-family:\'Noto Sans KR\',sans-serif">';
   }
 
@@ -1169,7 +1174,7 @@ V6.register('union-find', function (root) {
         color + '">' + n + '</text>';
 
       s += '<text x="' + p.x + '" y="' + (p.y + 10) +
-        '" text-anchor="middle" font-size="8.5" fill="' + color +
+        '" text-anchor="middle" font-size="10" fill="' + color +
         '">r=' + state.rank[n] + '</text>';
     });
 
@@ -1428,7 +1433,7 @@ V6.register('union-find', function (root) {
   addStep(
     '복잡도 분석',
     afterFindG,
-    '<b>시간 복잡도.</b> find m번과 union n−1번을 임의 순서로 수행하면 ' +
+    '<b>시간 복잡도.</b> n개 원소에 대해 union n−1번과 find를 합쳐 총 m번의 연산(m ≥ n)을 임의 순서로 수행하면 ' +
     'O(m log* n) (분할 상환, 슬라이드 15–17)이다. 더 정밀한 한계는 ' +
     'Tarjan(1975)의 Θ(m·α(m,n))이다. α는 Ackermann(아커만) 함수의 역함수이며, ' +
   
@@ -1461,7 +1466,7 @@ V6.register('np-reduction', function (root) {
   function svgOpen() {
     return '<svg xmlns="' + NS +
       '" width="720" height="205" viewBox="0 0 720 205"' +
-      ' style="max-width:100%;height:auto;display:block;background:#fff;' +
+      ' style="max-width:none;height:auto;display:block;background:#fff;' +
       'font-family:\'Noto Sans KR\',sans-serif">';
   }
 
@@ -1523,8 +1528,9 @@ V6.register('np-reduction', function (root) {
 
     'is-vc':
       '같은 그래프 G에서 I가 independent set ⟺ V ∖ I가 vertex cover(정점 덮개): ' +
-      '간선의 양 끝이 I 밖에 있으면 I의 독립성에 모순, 반대로 인접한 둘이 I에 있으면 ' +
-      'V ∖ I가 그 간선을 못 덮어 모순. 목표 크기는 k ↦ n − k. ' +
+      '어떤 간선의 양 끝이 모두 I 안에 있으면 I의 독립성에 모순이므로, 독립 집합이면 ' +
+      '모든 간선이 끝점 하나 이상을 V ∖ I에 둔다(덮개). 반대로 V ∖ I가 덮개가 아니면 ' +
+      '덮이지 않는 간선의 양 끝이 모두 I에 있어 I가 독립 집합이 아니다. 목표 크기는 k ↦ n − k. ' +
       '같은 map으로 VC → IS도 성립.',
 
     'vc-clique':
@@ -1665,8 +1671,9 @@ V6.register('np-reduction', function (root) {
     '다항시간에 검증 · NP-hard = 모든 NP 문제가 다항시간에 reduce · ' +
     'NP-complete = NP ∩ NP-hard.</div>' +
     '<div style="margin-top:5px;">' +
-    '이 연쇄의 출발점인 3SAT의 NP-completeness는 Cook–Levin 정리 ' +
-    '(증명 자체는 이 노트 범위 밖, 결과만 인용).</div>';
+    '이 연쇄의 출발점은 Cook–Levin 정리가 직접 확립한 SAT의 NP-completeness ' +
+    '(증명 자체는 이 노트 범위 밖, 결과만 인용)이며, 3SAT의 NP-completeness는 ' +
+    'SAT ≤p 3SAT 환원으로 얻는다.</div>';
 
   var buttons = [
     { id: 'sat-is', label: '3SAT → IS' },
