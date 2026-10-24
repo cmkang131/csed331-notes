@@ -95,7 +95,7 @@ V6.register('sort-selection', function (root) {
   var steps = [];
 
   steps.push({
-    note: '초기 배열. 미정렬 구간의 최솟값을 찾아 앞 원소와 교환하는 선택 정렬(Selection Sort)을 시작한다.',
+    note: '보충: 삽입 정렬과 비교하는 선택 정렬 시각화. 강의 슬라이드 직접 근거 미확인. 초기 배열. 미정렬 구간의 최솟값을 찾아 앞 원소와 교환하는 선택 정렬(Selection Sort)을 시작한다.',
     svg: barSvg(a, null)
   });
 
@@ -161,7 +161,7 @@ V6.register('sort-selection', function (root) {
     svg: barSvg(a, null)
   });
 
-  player(root, '선택 정렬 (Selection Sort)', steps);
+  player(root, '선택 정렬 (Selection Sort) — 보충', steps);
 });
 
 /* ---- Bellman-Ford (bellman-ford) ---- */
