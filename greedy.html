@@ -1089,6 +1089,69 @@
           transition: none;
         }
       }
+    
+      /* 통합 단계 레이아웃 안정화 (2026-10-25): 버튼·배지·변동 영역 크기 고정 — 내용·로직 무변경 */
+      [data-kruskal-widget] .kw-btn {
+        box-sizing: border-box;
+        height: 44px;
+        min-height: 44px;
+        padding: 0 15px;
+        line-height: 1.2;
+        white-space: nowrap;
+        flex: 0 0 auto;
+        min-width: 84px;
+        font-weight: 700;
+      }
+
+      [data-kruskal-widget] .kw-btn[data-action="reset"] {
+        min-width: 96px;
+      }
+
+      [data-kruskal-widget] .kw-btn[data-action="auto"] {
+        min-width: 124px;
+      }
+
+      [data-kruskal-widget] .kw-btn[data-action="next"],
+      [data-kruskal-widget] .kw-btn[data-action="auto"] {
+        border-width: 1px;
+        font-weight: 700;
+      }
+
+      [data-kruskal-widget] .kw-btn:active {
+        border-width: 1px;
+        font-weight: 700;
+      }
+
+      [data-kruskal-widget] .kw-state-heading {
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.4;
+        min-height: calc(1.4em + 12px);
+        min-width: 17em;
+      }
+
+      [data-kruskal-widget] .kw-stat-value {
+        line-height: 1.5;
+        min-height: 3em;
+      }
+
+      [data-kruskal-widget] .kw-components {
+        min-height: 75px;
+        align-content: flex-start;
+      }
+
+      [data-kruskal-widget] .kw-mst-list {
+        min-height: 10em;
+      }
+
+      @media (max-width: 680px) {
+        [data-kruskal-widget] .kw-btn {
+          min-width: 0;
+        }
+      }
     </style>
 
     <section class="kw-panel" aria-label="Kruskal 단계별 시뮬레이션">
@@ -2373,6 +2436,72 @@
           transition: none;
         }
       }
+    
+      /* 통합 단계 레이아웃 안정화 (2026-10-25): 버튼·배지·변동 영역 크기 고정 — 내용·로직 무변경 */
+      [data-prim-widget] .prim-btn {
+        box-sizing: border-box;
+        height: 44px;
+        min-height: 44px;
+        padding: 0 15px;
+        line-height: 1.2;
+        white-space: nowrap;
+        flex: 0 0 auto;
+        min-width: 84px;
+        font-weight: 700;
+      }
+
+      [data-prim-widget] .prim-btn[data-action="reset"] {
+        min-width: 96px;
+      }
+
+      [data-prim-widget] .prim-btn[data-action="auto"] {
+        min-width: 124px;
+      }
+
+      [data-prim-widget] .prim-btn[data-action="next"],
+      [data-prim-widget] .prim-btn[data-action="auto"] {
+        border-width: 1px;
+        font-weight: 700;
+      }
+
+      [data-prim-widget] .prim-btn:active {
+        border-width: 1px;
+        font-weight: 700;
+      }
+
+      [data-prim-widget] .prim-stage {
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.4;
+        min-height: calc(1.4em + 12px);
+        min-width: 15em;
+      }
+
+      [data-prim-widget] .prim-stat-value {
+        line-height: 1.5;
+        min-height: 3em;
+      }
+
+      [data-prim-widget] .prim-stat-value[data-role="description"] {
+        min-height: 9em;
+      }
+
+      [data-prim-widget] .prim-operation {
+        min-height: 9.6em;
+      }
+
+      [data-prim-widget] .prim-mst-list {
+        min-height: 10em;
+      }
+
+      @media (max-width: 680px) {
+        [data-prim-widget] .prim-btn {
+          min-width: 0;
+        }
+      }
     </style>
 
     <section class="prim-panel" aria-label="Prim 단계별 시뮬레이션">
@@ -3552,6 +3681,77 @@
         [data-union-find-widget] .uf-pointer,
         [data-union-find-widget] .uf-btn {
           transition: none;
+        }
+      }
+    
+      /* 통합 단계 레이아웃 안정화 (2026-10-25): 버튼·배지·변동 영역 크기 고정 — 내용·로직 무변경 */
+      [data-union-find-widget] .uf-btn {
+        box-sizing: border-box;
+        height: 44px;
+        min-height: 44px;
+        padding: 0 15px;
+        line-height: 1.2;
+        white-space: nowrap;
+        flex: 0 0 auto;
+        min-width: 84px;
+        font-weight: 700;
+      }
+
+      [data-union-find-widget] .uf-btn[data-action="reset"] {
+        min-width: 96px;
+      }
+
+      [data-union-find-widget] .uf-btn[data-action="auto"] {
+        min-width: 124px;
+      }
+
+      [data-union-find-widget] .uf-btn[data-action="next"],
+      [data-union-find-widget] .uf-btn[data-action="auto"] {
+        border-width: 1px;
+        font-weight: 700;
+      }
+
+      [data-union-find-widget] .uf-btn:active {
+        border-width: 1px;
+        font-weight: 700;
+      }
+
+      [data-union-find-widget] .uf-stage {
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.4;
+        min-height: calc(1.4em + 12px);
+        min-width: 17em;
+      }
+
+      [data-union-find-widget] .uf-stat-value {
+        line-height: 1.5;
+        min-height: 1.5em;
+      }
+
+      [data-union-find-widget] .uf-stat-value[data-role="operation-name"] {
+        min-height: 4.5em;
+      }
+
+      [data-union-find-widget] .uf-stat-value[data-role="description"] {
+        min-height: 9em;
+      }
+
+      [data-union-find-widget] .uf-operation-text {
+        min-height: 16.5em;
+      }
+
+      [data-union-find-widget] .uf-components {
+        min-height: 75px;
+        align-content: flex-start;
+      }
+
+      @media (max-width: 680px) {
+        [data-union-find-widget] .uf-btn {
+          min-width: 0;
         }
       }
     </style>
