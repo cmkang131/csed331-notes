@@ -1441,8 +1441,8 @@ V6.register('union-find', function (root) {
     '복잡도 분석',
     afterFindG,
     '<b>시간 복잡도.</b> n개 원소에 대해 union n−1번과 find를 합쳐 총 m번의 연산(m ≥ n)을 임의 순서로 수행하면 ' +
-    'O(m log* n) (분할 상환, 슬라이드 15–17)이다. 더 정밀한 상한 ' +
-    'O(m·α(m,n))이 알려져 있다 (Tarjan–van Leeuwen 1984; 일치하는 하한은 Fredman–Saks 1989). α는 Ackermann(아커만) 함수의 역함수이며, ' +
+    'O(m log* n) (분할 상환, 슬라이드 15–17)이다. 더 정밀한 한계로 ' +
+    'Tarjan(1975)의 Θ(m·α(m,n))이 알려져 있다. α는 Ackermann(아커만) 함수의 역함수이며, ' +
   
   'n &lt; 2<sup>65536</sup>에서는 α ≤ 3이므로 사실상 상수다. ' +
     'union by rank와 path compression을 함께 사용하면 연산 전체의 분할 상환 비용이 매우 작다.',
