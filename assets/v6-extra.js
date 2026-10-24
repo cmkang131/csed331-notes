@@ -39,14 +39,19 @@
   function svgOpen(w, hgt) { return '<svg xmlns="' + NS + '" width="' + w + '" height="' + hgt + '" style="background:#fff">'; }
 
   /* 막대 배열 SVG. hl = {index: color} */
-  function barSvg(arr, hl, labels) {
+  function barSvg(arr, hl, labels, held) {
+    var top = (held != null) ? 26 : 0;
     var w = arr.length * 44 + 20, max = Math.max.apply(null, arr), unit = 120 / max;
-    var s = svgOpen(w, 165);
+    var s = svgOpen(w, 165 + top);
+    if (held != null) {
+      s += '<rect x="12" y="4" width="150" height="18" rx="3" fill="none" stroke="' + RED + '" stroke-width="1.3" stroke-dasharray="4 3"/>';
+      s += '<text x="20" y="17" font-size="11.5" fill="' + RED + '">키 ' + held + ' — 변수에 보관 중</text>';
+    }
     for (var i = 0; i < arr.length; i++) {
       var c = (hl && hl[i]) || INK;
       var bh = arr[i] * unit;
-      s += '<rect x="' + (12 + i * 44) + '" y="' + (140 - bh) + '" width="32" height="' + bh + '" fill="none" stroke="' + c + '" stroke-width="' + (hl && hl[i] ? 2.5 : 1.5) + '"/>';
-      s += '<text x="' + (28 + i * 44) + '" y="156" font-size="12" text-anchor="middle" fill="' + c + '">' + (labels ? labels[i] : arr[i]) + '</text>';
+      s += '<rect x="' + (12 + i * 44) + '" y="' + (140 + top - bh) + '" width="32" height="' + bh + '" fill="none" stroke="' + c + '" stroke-width="' + (hl && hl[i] ? 2.5 : 1.5) + '"/>';
+      s += '<text x="' + (28 + i * 44) + '" y="' + (156 + top) + '" font-size="12" text-anchor="middle" fill="' + c + '">' + (labels ? labels[i] : arr[i]) + '</text>';
     }
     return s + '</svg>';
   }
@@ -60,11 +65,12 @@
     steps.push({ note: '초기 배열. 앞부분(인덱스 0)은 이미 정렬된 것으로 본다.', svg: barSvg(a, { 0: RED }) });
     for (var i = 1; i < a.length; i++) {
       var key = a[i], j = i - 1;
-      steps.push({ note: '키 = <b>' + key + '</b>. 정렬된 구간에서 삽입 위치를 찾는다.', svg: barSvg(a, { i: RED }) });
+      var kh = {}; kh[i] = RED;
+      steps.push({ note: '키 = <b>' + key + '</b>. 정렬된 구간에서 삽입 위치를 찾는다.', svg: barSvg(a, kh, null, key) });
       while (j >= 0 && a[j] > key) {
         a[j + 1] = a[j];
         var hm = {}; hm[j + 1] = RED;
-        steps.push({ note: a[j] + ' &gt; ' + key + ' 이므로 한 칸 뒤로.', svg: barSvg(a, hm) });
+        steps.push({ note: a[j] + ' &gt; ' + key + ' 이므로 한 칸 뒤로.', svg: barSvg(a, hm, null, key) });
         j--;
       }
       a[j + 1] = key;
