@@ -36,7 +36,7 @@ b{color:var(--ink)}
 <li><b>(a)</b> 비트 수 = log<sub>2</sub>(<i>N</i>!) + <i>O</i>(1) = &Theta;(<i>N</i> log <i>N</i>). <i>N</i> = &Theta;(2<sup><i>n</i></sup>)이므로 log <i>N</i> = &Theta;(<i>n</i>)이고, 답은 <b>&Theta;(<i>n</i> &middot; 2<sup><i>n</i></sup>) 비트</b> (= &Theta;(<i>N</i> log <i>N</i>)).</li>
 <li><b>(b) 알고리즘</b> <i>r</i> &larr; 1; <b>for</b> <i>k</i> = 2, 3, &hellip;, <i>N</i>: <i>r</i> &larr; <i>r</i> &middot; <i>k</i>.</li>
 <li><b>곱셈 횟수</b> <i>N</i>&minus;1 = &Theta;(2<sup><i>n</i></sup>) 번. <i>k</i> 번째 곱셈에서 <i>r</i> = (<i>k</i>&minus;1)!의 비트 길이는 (a)에 의해 최대 &Theta;(<i>n</i> &middot; 2<sup><i>n</i></sup>) 비트이다.</li>
-<li><b>시간</b> 문제의 가정을 피연산자 비트 길이 <i>m</i> 에 대해 <i>O</i>(log <i>m</i>)으로 적용하면, 매 곱셈은 <i>O</i>(log(<i>n</i> &middot; 2<sup><i>n</i></sup>)) = <i>O</i>(<i>n</i>). 따라서 총 <b><i>O</i>(<i>n</i> &middot; 2<sup><i>n</i></sup>)</b>. (가정의 해석에 따라 &Theta;(2<sup><i>n</i></sup>) 번의 곱셈 각각을 <i>O</i>(log <i>n</i>)으로 보아 <i>O</i>(2<sup><i>n</i></sup> log <i>n</i>)으로 쓰기도 한다; 곱셈이 전체를 지배한다는 점은 동일하다.)</li>
+<li><b>시간</b> 문제의 가정을 피연산자 비트 길이 <i>m</i> 에 대해 <i>O</i>(log <i>m</i>)으로 적용하면, 매 곱셈은 <i>O</i>(log(<i>n</i> &middot; 2<sup><i>n</i></sup>)) = <i>O</i>(<i>n</i>). 따라서 총 <b><i>O</i>(<i>n</i> &middot; 2<sup><i>n</i></sup>)</b>. (원문의 <i>n</i>을 입력 크기로 고정해 해석하면 곱셈 &Theta;(2<sup><i>n</i></sup>)회 × <i>O</i>(log <i>n</i>) = <i>O</i>(2<sup><i>n</i></sup> log <i>n</i>)이 되지만, 이는 곱셈 비용이 피연산자 길이와 무관하게 입력의 <i>n</i>에만 의존한다는 추가 가정이 필요한 해석이다.)</li>
 </ol></div></details>
 <div class="sec">관련 노트: <a href="../efficiency.html">효율성 · 점근 표기</a></div>
 <div class="pnav"><span><a href="A5.html">&lsaquo; 이전</a></span><a href="index.html">&larr; 목차</a><span><a href="B1.html">다음 &rsaquo;</a></span></div></div></body></html>
