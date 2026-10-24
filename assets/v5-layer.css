@@ -116,6 +116,23 @@ html[data-theme="dark"] svg [fill="#fff"],html[data-theme="dark"] svg [fill="#ff
 html[data-theme="dark"] svg [fill="#f2f2f2"]{fill:#e0e0e0}
 html[data-theme="dark"] details.v5d[open]>summary{background:#e0e0e0}
 
+/* 12b. 다크 모드 대비 보정 (2026-10-24): 다크는 전체 반전(invert+hue-rotate)이라
+   렌더링 명도는 지정값의 명도를 뒤집은 값이 된다. 아래는 반전 후 기준으로 고른 값이며
+   전부 html[data-theme="dark"] 스코프 안이라 라이트 모드 표시는 바뀌지 않는다. */
+html[data-theme="dark"]{--hl:#e8d184}
+html[data-theme="dark"] .hl{color:#141414}
+html[data-theme="dark"] svg .barn{fill:#141414}
+html[data-theme="dark"] svg .barh{fill:#c9c9c9}
+html[data-theme="dark"] svg .ci{fill:#4d4d4d}
+html[data-theme="dark"] svg .ew{fill:#595959}
+html[data-theme="dark"] svg .axl{fill:#595959}
+html[data-theme="dark"] svg .lg{fill:#454545}
+html[data-theme="dark"] svg .sqn{fill:#454545}
+html[data-theme="dark"] svg .tlabel{fill:#454545}
+html[data-theme="dark"] [data-widget="mst-prim"] svg circle[fill="#1a1a1a"]{fill:#ededed;stroke:#9e2b25;stroke-width:2.6}
+html[data-theme="dark"] [data-widget="mst-prim"] svg text[fill="#fff"]{fill:#141414}
+html[data-theme="dark"] [data-widget="mst-kruskal"] svg path[stroke="#e8e6e0"]{stroke:#4a4a4a}
+
 /* 13. 인쇄 */
 @media print{
   .phead .theme-toggle,.v5-bar,.to-top,.skip-link,.v5-anchor,nav.v5-toc,.pnav,.v5-pn,.theme-toggle{display:none!important}
