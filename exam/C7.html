@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C7 · Dijkstra 최단 경로 표와 SPT - CSED331 기출</title><style>
+:root{--ink:#1a1a1a;--red:#9e2b25}
+*{box-sizing:border-box}a{color:var(--ink)}a:visited{color:var(--ink)}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.75 "Noto Sans KR",system-ui,sans-serif}
+.paper{max-width:860px;margin:0 auto;padding:24px 28px 80px}
+.phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding-bottom:8px;margin-bottom:22px;font-size:14px}
+.phead a{color:var(--ink)}
+h1{font-size:26px;margin:.2em 0 .4em}h2{font-size:19px;border-bottom:1px solid var(--ink);padding-bottom:4px;margin:30px 0 10px}
+.problem{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
+.prob-no{font-weight:700;font-size:15px;color:var(--red)}.ref{font-size:13px;color:#555;margin-bottom:6px}
+details.dx{border:1px solid var(--ink);margin:10px 0}
+details.dx>summary{cursor:pointer;padding:8px 14px;font-weight:700;list-style:none}
+details.dx>summary::-webkit-details-marker{display:none}
+details.dx[open]>summary{border-bottom:1px solid var(--ink)}
+.dx-body{padding:6px 18px 10px}
+ol.steps{padding-left:22px}ol.steps li{margin:.5em 0}
+.mjx-display{margin:9px 0;overflow-x:auto;padding:7px 14px;border:1px solid var(--ink)}
+.mjx-display svg{display:block;margin:0 auto}
+.mjx svg{display:inline-block;vertical-align:middle;overflow:visible}
+pre.code{border:1px solid var(--ink);padding:10px 14px;overflow-x:auto;font:13.5px/1.6 ui-monospace,Menlo,Consolas,monospace;background:#fff;margin:8px 0}
+.sec{margin-top:18px;border-top:1px solid var(--ink);padding-top:8px;font-size:14px}
+.sec a{color:var(--ink)}
+.pnav{display:flex;justify-content:space-between;margin-top:26px;border-top:1.5px solid var(--ink);padding-top:10px;font-size:14px}
+.pnav a{color:var(--ink)}
+table.t{border-collapse:collapse;width:100%;margin:8px 0}table.t td,table.t th{border:1px solid var(--ink);padding:6px 10px;text-align:left;font-size:14.5px}
+b{color:var(--ink)}
+</style></head><body><div class="paper">
+<div class="phead"><a href="index.html">&larr; 목차</a><span>C7 · Dijkstra 최단 경로 표와 SPT</span><span>CSED331 · 기출 <a href="../index.html">노트 홈</a></span></div>
+<div class="problem"><div class="prob-no">C7</div><div class="ref">2007 Mid #3 (2007-10-23, 원 과목코드 CSED431)</div><p>아래 그래프에서 정점 <i>A</i> 에서 시작해 Dijkstra 최단 경로 알고리즘을 실행할 때, 각 반복(iteration)에서의 중간 거리 값을 표로 그리고, 최종 최단 경로 트리(shortest path tree)를 제시하라.</p>
+<img src="fig-2007-oct-q3.png" alt="원문 Figure 1 - Dijkstra 그래프 (스캔 원본)" style="display:block;max-width:100%;margin:0 auto">
+<p style="font-size:14px;color:#555">간선(스캔 원본에서 판독, 가중치 13개): A&ndash;B 1, A&ndash;E 4, A&ndash;F 8, B&ndash;G 6 (상단 곡선), B&ndash;F 6, E&ndash;F 5, B&ndash;C 2, F&ndash;G 8, C&ndash;G 3, D&ndash;G 1, G&ndash;H 1, C&ndash;D 1, D&ndash;H 4.</p>
+<p style="font-size:14px;color:#555"><span style="color:var(--red)">[원문 주석]</span> ① 그림 캡션이 인쇄 원문에서 &ldquo;Figure 1: Final shortest path tree.&rdquo;로 되어 있으나, 문제 본문은 표와 SPT를 <b>그리라는</b> 지문이다(캡션은 원문 그대로). ② 스캔의 화살표·동그라미는 학생 손글씨 흔적으로 보이며, 간선은 무방향으로 인쇄된 것으로 판독했다. ③ 상단 곡선 간선의 끝점은 <i>B</i> 이다(곡선이 <i>A</i> 위를 지나가 <i>A</i>&ndash;<i>G</i> 로 오독하기 쉽다).</p></div>
+<details class="dx"><summary>힌트 보기</summary><div class="dx-body"><p>매 단계 아직 확정되지 않은 정점 중 거리 값이 가장 작은 정점을 꺼내 확정하고, 그 정점의 인접 간선으로 나머지 정점의 거리를 완화(relax)한다. 중간에 <i>D</i> 와 <i>E</i> 가 4로 동률이 되는데, 어느 것을 먼저 꺼내도 최종 결과는 같다.</p></div></details>
+<details class="dx"><summary>정답 보기</summary><div class="dx-body">
+<p>각 행은 해당 정점을 꺼내 확정한 <b>직후</b>의 거리 값이다.</p>
+<table class="t"><tr><th>확정</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr>
+<tr><td>시작</td><td>&infin;</td><td>&infin;</td><td>&infin;</td><td>&infin;</td><td>&infin;</td><td>&infin;</td><td>&infin;</td></tr>
+<tr><td>A (0)</td><td>1</td><td>&infin;</td><td>&infin;</td><td>4</td><td>8</td><td>&infin;</td><td>&infin;</td></tr>
+<tr><td>B (1)</td><td>&ndash;</td><td>3</td><td>&infin;</td><td>4</td><td>7</td><td>7</td><td>&infin;</td></tr>
+<tr><td>C (3)</td><td>&ndash;</td><td>&ndash;</td><td>4</td><td>4</td><td>7</td><td>6</td><td>&infin;</td></tr>
+<tr><td>D (4)</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>4</td><td>7</td><td>5</td><td>8</td></tr>
+<tr><td>E (4)</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>7</td><td>5</td><td>8</td></tr>
+<tr><td>G (5)</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>7</td><td>&ndash;</td><td>6</td></tr>
+<tr><td>H (6)</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>7</td><td>&ndash;</td><td>&ndash;</td></tr>
+<tr><td>F (7)</td><td colspan="7">모든 정점 확정, 종료</td></tr></table>
+<p>주요 완화: B 확정 시 F&larr;1+6=7, G&larr;1+6=7(곡선 간선), C&larr;3 · C 확정 시 D&larr;4, G&larr;3+3=6 · D 확정 시 G&larr;4+1=5, H&larr;4+4=8 · G 확정 시 H&larr;5+1=6.</p>
+<p><b>최종 거리:</b> A 0 · B 1 · C 3 · D 4 · E 4 · F 7 · G 5 · H 6.</p>
+<p><b>최단 경로 트리 (7개 간선, 총 가중치 16):</b> A&ndash;B, A&ndash;E, B&ndash;C, B&ndash;F, C&ndash;D, D&ndash;G, G&ndash;H.</p>
+</div></details>
+<div class="sec">관련 노트: <a href="../graph-2.html">그래프 2 — 최단 경로</a></div>
+<div class="pnav"><span><a href="C6.html">&lsaquo; 이전</a></span><a href="index.html">&larr; 목차</a><span><a href="D1.html">다음 &rsaquo;</a></span></div></div></body></html>

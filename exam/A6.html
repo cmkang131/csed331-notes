@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A6 · N!의 비트 수와 계산 - CSED331 기출</title><style>
+:root{--ink:#1a1a1a;--red:#9e2b25}
+*{box-sizing:border-box}a{color:var(--ink)}a:visited{color:var(--ink)}
+body{margin:0;background:#fff;color:var(--ink);font:16px/1.75 "Noto Sans KR",system-ui,sans-serif}
+.paper{max-width:860px;margin:0 auto;padding:24px 28px 80px}
+.phead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding-bottom:8px;margin-bottom:22px;font-size:14px}
+.phead a{color:var(--ink)}
+h1{font-size:26px;margin:.2em 0 .4em}h2{font-size:19px;border-bottom:1px solid var(--ink);padding-bottom:4px;margin:30px 0 10px}
+.problem{border:1.5px solid var(--ink);padding:14px 18px;margin:0 0 18px}
+.prob-no{font-weight:700;font-size:15px;color:var(--red)}.ref{font-size:13px;color:#555;margin-bottom:6px}
+details.dx{border:1px solid var(--ink);margin:10px 0}
+details.dx>summary{cursor:pointer;padding:8px 14px;font-weight:700;list-style:none}
+details.dx>summary::-webkit-details-marker{display:none}
+details.dx[open]>summary{border-bottom:1px solid var(--ink)}
+.dx-body{padding:6px 18px 10px}
+ol.steps{padding-left:22px}ol.steps li{margin:.5em 0}
+.mjx-display{margin:9px 0;overflow-x:auto;padding:7px 14px;border:1px solid var(--ink)}
+.mjx-display svg{display:block;margin:0 auto}
+.mjx svg{display:inline-block;vertical-align:middle;overflow:visible}
+pre.code{border:1px solid var(--ink);padding:10px 14px;overflow-x:auto;font:13.5px/1.6 ui-monospace,Menlo,Consolas,monospace;background:#fff;margin:8px 0}
+.sec{margin-top:18px;border-top:1px solid var(--ink);padding-top:8px;font-size:14px}
+.sec a{color:var(--ink)}
+.pnav{display:flex;justify-content:space-between;margin-top:26px;border-top:1.5px solid var(--ink);padding-top:10px;font-size:14px}
+.pnav a{color:var(--ink)}
+table.t{border-collapse:collapse;width:100%;margin:8px 0}table.t td,table.t th{border:1px solid var(--ink);padding:6px 10px;text-align:left;font-size:14.5px}
+b{color:var(--ink)}
+</style></head><body><div class="paper">
+<div class="phead"><a href="index.html">&larr; 목차</a><span>A6 · <i>N</i>!의 비트 수와 계산</span><span>CSED331 · 기출 <a href="../index.html">노트 홈</a></span></div>
+<div class="problem"><div class="prob-no">A6</div><div class="ref">2009 Mid #2 (2009-04-21)</div><p><i>N</i>! = 1 &middot; 2 &middot; 3 &hellip; <i>N</i> 을 계산하는 문제를 생각하자.</p>
+<p><b>(a)</b> <i>N</i> 이 <i>n</i> 비트 수일 때, <i>N</i>!은 대략 몇 비트인가 (&Theta; 표기로 답하라).</p>
+<p><b>(b)</b> <i>N</i>!을 계산하는 알고리즘을 제시하고 수행 시간을 분석하라. 단, 두 <i>n</i> 비트 수의 곱셈에 <i>O</i>(log <i>n</i>) 시간이 걸린다고 가정한다. <span style="color:var(--red)">[원문: 곱셈 비용이 인쇄 원문에서 <i>O</i>(log <i>n</i>)으로 되어 있음 — 그대로 옮김. 실제 알려진 곱셈 알고리즘(초등법 <i>O</i>(<i>n</i><sup>2</sup>), FFT 계열 <i>O</i>(<i>n</i> log <i>n</i>))과는 다른 가정이므로 오쇄 가능성이 있다. 아래 풀이는 이 가정을 문면 그대로 적용한 것이다.]</span></p></div>
+<details class="dx"><summary>힌트 보기</summary><div class="dx-body"><p>(a) <i>N</i>!의 비트 수는 log<sub>2</sub>(<i>N</i>!) = &Sigma;<sub><i>k</i>=1..<i>N</i></sub> log<sub>2</sub> <i>k</i>. Stirling 근사(log <i>N</i>! = <i>N</i> log <i>N</i> &minus; <i>N</i> log <i>e</i> + <i>O</i>(log <i>N</i>))을 쓴다. <i>n</i> 비트 수라는 것은 <i>N</i> = &Theta;(2<sup><i>n</i></sup>)이라는 뜻이다. (b) 곱셈 횟수는 <i>N</i>&minus;1번. 중간 결과의 비트 길이는 (a)의 결과를 넘지 않는다.</p></div></details>
+<details class="dx"><summary>정답 보기</summary><div class="dx-body"><ol class="steps">
+<li><b>(a)</b> 비트 수 = log<sub>2</sub>(<i>N</i>!) + <i>O</i>(1) = &Theta;(<i>N</i> log <i>N</i>). <i>N</i> = &Theta;(2<sup><i>n</i></sup>)이므로 log <i>N</i> = &Theta;(<i>n</i>)이고, 답은 <b>&Theta;(<i>n</i> &middot; 2<sup><i>n</i></sup>) 비트</b> (= &Theta;(<i>N</i> log <i>N</i>)).</li>
+<li><b>(b) 알고리즘</b> <i>r</i> &larr; 1; <b>for</b> <i>k</i> = 2, 3, &hellip;, <i>N</i>: <i>r</i> &larr; <i>r</i> &middot; <i>k</i>.</li>
+<li><b>곱셈 횟수</b> <i>N</i>&minus;1 = &Theta;(2<sup><i>n</i></sup>) 번. <i>k</i> 번째 곱셈에서 <i>r</i> = (<i>k</i>&minus;1)!의 비트 길이는 (a)에 의해 최대 &Theta;(<i>n</i> &middot; 2<sup><i>n</i></sup>) 비트이다.</li>
+<li><b>시간</b> 문제의 가정을 피연산자 비트 길이 <i>m</i> 에 대해 <i>O</i>(log <i>m</i>)으로 적용하면, 매 곱셈은 <i>O</i>(log(<i>n</i> &middot; 2<sup><i>n</i></sup>)) = <i>O</i>(<i>n</i>). 따라서 총 <b><i>O</i>(<i>n</i> &middot; 2<sup><i>n</i></sup>)</b>. (가정의 해석에 따라 &Theta;(2<sup><i>n</i></sup>) 번의 곱셈 각각을 <i>O</i>(log <i>n</i>)으로 보아 <i>O</i>(2<sup><i>n</i></sup> log <i>n</i>)으로 쓰기도 한다; 곱셈이 전체를 지배한다는 점은 동일하다.)</li>
+</ol></div></details>
+<div class="sec">관련 노트: <a href="../efficiency.html">효율성 · 점근 표기</a></div>
+<div class="pnav"><span><a href="A5.html">&lsaquo; 이전</a></span><a href="index.html">&larr; 목차</a><span><a href="B1.html">다음 &rsaquo;</a></span></div></div></body></html>
