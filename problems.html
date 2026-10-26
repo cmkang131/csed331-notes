@@ -464,7 +464,12 @@
     </a>
 </section>
 <section><h2>NP · 계산 불가능성 8 <span style="font-weight:400;font-size:13px;color:#666">범위는 <a href="exam-info.html">시험 정보</a> 참고</span></h2>
-<div class="v6-widget" data-widget="np-reduction"></div>
+<div class="figwrap static-widget">
+<div class="v6-title">NP-complete reduction 지도 — 3SAT → IS → VC → Clique</div>
+<img src="assets/static/problems-np-reduction.png" alt="NP-complete reduction 지도 — 3SAT → IS → VC → Clique">
+<div class="v6-params">기본값: 3SAT → IS</div>
+<div class="v6x-read">절(clause)마다 삼각형 gadget을 만들고 꼭짓점은 그 절의 리터럴 3개. 서로 모순되는 리터럴(x와 ¬x) 쌍마다 간선을 추가. k = 절의 개수. 만족하는 배정이 있으면 각 삼각형에서 참인 리터럴 하나씩 고른 것이 크기 k의 independent set(독립 집합). 반대로 크기 k의 independent set은 삼각형마다 꼭짓점 정확히 하나를 포함하고, 그 리터럴들을 참으로 두면 모순 없이 모든 절이 참.<br>복잡도 분류<br>P = 다항시간 결정 · NP = YES 인스턴스의 다항 크기 certificate(증명서)를 다항시간에 검증 · NP-hard = 모든 NP 문제가 다항시간에 reduce · NP-complete = NP ∩ NP-hard.<br>이 연쇄의 출발점은 Cook–Levin 정리가 직접 확립한 SAT의 NP-completeness (증명 자체는 이 노트 범위 밖, 결과만 인용)이며, 3SAT의 NP-completeness는 SAT ≤p 3SAT 환원으로 얻는다.</div>
+</div>
     <a class="card" href="problems/np-01.html">
       <span class="go">→</span>
       <div class="card-t"><span class="no">NP-1</span>개념</div>
@@ -510,8 +515,6 @@
   <div class="foot">HW 변형 수치와 C 출력은 스크립트/gcc로 검증됨. 복습 체크리스트 수치는 계산으로 확인함. 기출 원문(PLMS HW)은 비공개라 변형만 수록.</div>
 </div>
 <link rel="stylesheet" href="assets/v6.css">
-<script src="assets/v6.js" defer></script>
-<script src="assets/v6-algo2.js" defer></script>
 <script src="assets/v5.js"></script>
 </body>
 </html>
